@@ -2,6 +2,7 @@
 <flexLibProperties version="1">
 <includeClasses>
 <classEntry path="com.philemonworks.flex.controls.TimeField"/>
+<classEntry path="com.philemonworks.flex.controls.WindowDropDown"/>
 <classEntry path="com.philemonworks.flex.dialogs.BasicDialog"/>
 <classEntry path="com.philemonworks.flex.dialogs.ListSelectionDialog"/>
 <classEntry path="com.philemonworks.flex.dialogs.LoginDialog"/>
