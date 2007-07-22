@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Button x="27" y="31" label="Select..." click="doSelect()"/>
+	
+	<mx:Model id="entries">
+		<root>
+			<entry id="0" value="Maandag" />
+			<entry id="1" value="Dinsdag" />			
+		</root>
+	</mx:Model>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.dialogs.MessageDialog;
+			import com.philemonworks.flex.dialogs.BasicDialog;			
+			import com.philemonworks.flex.dialogs.LoginDialog;
+			import com.philemonworks.flex.dialogs.ListSelectionDialog;
+			import mx.controls.Alert;
+			
+			public function doSelect():void {
+				var dialog:ListSelectionDialog = ListSelectionDialog.newFor(this)
+				this.setup(dialog)
+				// For Array
+				// dialog.items = ['Hello','World']
+				// For XML
+				dialog.items = entries.entry
+				dialog.labelField = 'value'
+				
+				dialog.initialSelectionIndex = 1
+				dialog.show(okHandler)
+			}
+			public function okHandler(dialog:ListSelectionDialog):void {
+				Alert.show("selection accepted:" + dialog.list.selectedItem)
+			}			
+			public function doLogin():void {
+				var dialog:LoginDialog = LoginDialog.newFor(this)
+				this.setup(dialog)
+				dialog.title = 'TestDialogs requires authentication'
+				dialog.show(loginHandler)				
+			}
+			public function loginHandler(dialog:LoginDialog):void {
+				Alert.show("login accepted:" + dialog.userText.text)
+			}
+			public function doConfirm():void {
+				var dialog:MessageDialog = MessageDialog.newFor(this)
+				this.setup(dialog)
+				dialog.setConfirmation("Are you awake?")
+				dialog.show(confirmHandler)
+			}
+			public function confirmHandler(dialog:MessageDialog):void {
+				Alert.show("confirmed")
+			}			
+			public function doWarning():void {
+				var dialog:MessageDialog = MessageDialog.newFor(this)
+				this.setup(dialog)
+				dialog.setWarning("How long can a warning message be until it is no longer displayed?")
+				dialog.show()
+			}
+			public function doError():void {
+				var dialog:MessageDialog = MessageDialog.newFor(this)
+				this.setup(dialog)
+				dialog.setError("Sorry, your disk has crashed")
+				dialog.show()
+			}	
+			public function setup(dialog:BasicDialog):void {
+				dialog.center = centerBox.selected
+				dialog.slide = slideBox.selected
+			}		
+		]]>
+	</mx:Script>
+	<mx:Button x="108" y="31" label="Login" click="doLogin()" />
+	<mx:Button x="172" y="31" label="Confirm" click="doConfirm()" />
+	<mx:Button x="251" y="31" label="Warn" click="doWarning()" />	
+	<mx:Button x="316" y="31" label="Error" click="doError()" />
+	<mx:CheckBox x="27" y="95" label="Slide" id="slideBox" />
+	<mx:CheckBox x="27" y="121" label="Center" id="centerBox" />
+</mx:Application>

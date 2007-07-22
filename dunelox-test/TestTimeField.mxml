@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:controls="com.philemonworks.flex.controls.*">
+	<controls:TimeField id="field" time="{time}" />
+	
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.util.Time;
+
+			[Bindable]
+			private var time:Time = new Time();
+			
+			private function doApply():void {
+				time = Time.parse(field.text)
+			}
+		]]>
+	</mx:Script>
+	<mx:Button x="168" y="0" label="Apply" click="doApply()"/>
+</mx:Application>
