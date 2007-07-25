@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" preinitialize="preInit()">
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.util.ApplicationContext;
+			private function doChange():void {
+				trace('doChange')
+				ApplicationContext.current.put('label.text', 'changed value')
+			}		
+		]]>
+	</mx:Script>
+	<mx:HBox x="23" y="23" backgroundColor="#ffffff">		
+		<mx:Button label="Change" click="doChange()" />		
+		<mx:Label text="{ApplicationContext.current.get('label.text')}" />
+	</mx:HBox>
+	
+	<mx:Script>
+		<![CDATA[
+			public function preInit():void {
+				// Initialize the variable in the context to enable change propagation
+				ApplicationContext.current.put('label.text', 'initial value')
+			}
+		]]>
+	</mx:Script>
+	
+</mx:Application>
