@@ -21,10 +21,8 @@ package com.philemonworks.flex.controls
 	public class WindowDropDown
 	{
 		[Bindable]
-		public var endFunction:Function;
-		
+		public var endFunction:Function; // must be zero-argument function	
 		private var target:UIComponent;
-		private var closeEvent:Event;
 		
 		public static function start(component:UIComponent, endHandler:Function):void {
 			var dropper:WindowDropDown = new WindowDropDown()
@@ -37,7 +35,6 @@ package com.philemonworks.flex.controls
 			this.slideInCenterFromTop()			
 		}		
 	   public function end(event:Event):void {
-	   		closeEvent = event
 	   		this.slideOutCenterToTop()
 	   }		
 	   private function slideInCenterFromTop():void {
@@ -60,7 +57,7 @@ package com.philemonworks.flex.controls
 	   }			
 	   private function slideEnded(event:Event):void {
 	   		if (endFunction == null) return
-	   		endFunction.call(this,closeEvent)
+	   		endFunction.call(this)
 	   }		
 	}
 }
