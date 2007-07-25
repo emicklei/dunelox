@@ -14,23 +14,36 @@ package com.philemonworks.flex.util
 		{
 			super(source);
 		}
-		private var _keyToIndexHash:Object = new Object()
+		private var _keyToIndexHash:Object = new Object();
 		
+		[Bindable("collectionChange")]
 		public function put(key:Object,value:Object):void {
-			var index:int = this.length
-			this.addItem(value)
-			_keyToIndexHash[key]=index
-		}		
-		
-		[Bindable("collectionChange")]		
+			var indexOrNull:* = _keyToIndexHash[key]
+			if (indexOrNull == undefined) {
+				var index:int = this.length
+				this.addItem(value)
+				_keyToIndexHash[key]=index
+			} else {
+				this.setItemAt(value,indexOrNull as int)
+			}
+		}			
+		[Bindable("collectionChange")]
 		public function get(key:Object):Object {
 			var indexOrNull:* = _keyToIndexHash[key]
 			if (indexOrNull == undefined) {
-				trace('no value for key [' + key + ']')
+				trace('no value for key [' + key + '] returning null')
 				return null
 			}
 			var index:int = indexOrNull as int
 			return super.getItemAt(index)
+		}
+		/**
+		 * Convenience method to access a String value
+		 */
+		[Bindable("collectionChange")]
+		public function getString(key:String):String {
+			var value:Object = this.get(key)
+			return value == null ? null : value as String
 		}
 	}
 }
