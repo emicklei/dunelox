@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="doAuthorize()">
+	<mx:ComboBox x="589" y="10" change="roleChanged(event)">
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:String>admin</mx:String>
+				<mx:String>engineer</mx:String>
+				<mx:String>manager</mx:String>
+			</mx:Array>
+		</mx:dataProvider>
+	</mx:ComboBox>
+	<mx:Panel id="panel" x="192" y="100" width="250" height="200" layout="absolute" title="Authorized Panel">
+		<mx:CheckBox x="10" y="10" label="Checkbox"/>
+		<mx:CheckBox x="10" y="36" label="Checkbox"/>
+		<mx:CheckBox x="10" y="62" label="Checkbox"/>
+	</mx:Panel>
+	<mx:VBox x="10" y="100">
+		<mx:DateChooser id="dateChooser" />
+		<mx:Label text="label below chooser" />
+	</mx:VBox>
+	<mx:Button id="button" x="79" y="10" label="Delete"/>
+	<mx:TextInput id="input" x="79" y="54"/>
+		
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.access.Authorizer;
+			
+			private var authorizer:Authorizer = new Authorizer("admin");
+
+			public function doAuthorize():void {				
+				authorizer.allowEnabled(button,['admin'],'You are not allowed to delete this Account', 'Delete Account')				
+				authorizer.allowEditable(input,['admin'],'You are not allowed to change the password')
+				authorizer.allowEnabled(panel,['admin','manager'],'You are not allowed to change any of this')
+				authorizer.allowVisible(dateChooser,['engineer'])
+			}			
+			public function roleChanged(event:Event):void {
+				authorizer.role = String(ComboBox(event.target).selectedItem)
+				this.doAuthorize()
+			}
+		]]>
+	</mx:Script>
+	<mx:Label x="10" y="56" text="Password:"/>
+	<mx:Label x="358" y="12" text="Watch component availability for role:"/>
+
+	
+</mx:Application>
