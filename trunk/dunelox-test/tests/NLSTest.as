@@ -2,18 +2,16 @@ package tests
 {
 	import flexunit.framework.TestCase;
 	import com.philemonworks.flex.nls.NLS;
-	import com.philemonworks.flex.nls.NLSResourceBundle;
+	import com.philemonworks.flex.nls.NLSResourceBundle_US;
 
 	public class NLSTest extends TestCase
 	{
 		override public function setUp():void {
-			NLS.setProvider(new NLSResourceBundle("us"))
+			NLS.setProvider(new NLSResourceBundle_US())
 		}
 		
 		public function testGetText():void {
-			assertEquals(NLS.text('test'),'TestMe')
-			NLS.setProvider(new NLSResourceBundle("nl"))
-			assertEquals(NLS.text('test'),'TestMij')
+			assertEquals('TestMe',NLS.text('test'))
 		}
 		public function testGetTextDefault():void {
 			assertEquals(NLS.text('missing','DEFAULT'),'DEFAULT')
