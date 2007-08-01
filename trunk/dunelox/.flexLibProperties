@@ -15,7 +15,7 @@
 <classEntry path="com.philemonworks.flex.navigation.PageNavigator"/>
 <classEntry path="com.philemonworks.flex.nls.NLS"/>
 <classEntry path="com.philemonworks.flex.nls.NLSProvider"/>
-<classEntry path="com.philemonworks.flex.nls.NLSResourceBundle"/>
+<classEntry path="com.philemonworks.flex.nls.NLSResourceBundle_US"/>
 <classEntry path="com.philemonworks.flex.nls.RecordingNLSProvider"/>
 <classEntry path="com.philemonworks.flex.nls.RecordingNLSWindow"/>
 <classEntry path="com.philemonworks.flex.util.ApplicationContext"/>
