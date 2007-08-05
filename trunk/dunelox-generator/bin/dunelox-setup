@@ -1,6 +1,0 @@
-require 'fileutils'
-
-# Copy the default Rake task from the lib folder into 
-# the lib/tasks folder of the current Rails application.
-#
-FileUtils.cp(File.join(__FILE__,'../../lib/dunelox-generate.rake'),'lib/tasks/dunelox-generate.rake')
