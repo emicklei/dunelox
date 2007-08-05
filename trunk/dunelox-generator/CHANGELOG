@@ -1,0 +1,4 @@
+= 0.1
+=== 4 August, 2007
+Adobe Flex source generator for creating models,views and test from ActiveRecord definitions.
+Generated classes require the Dunelox Flex Library.
