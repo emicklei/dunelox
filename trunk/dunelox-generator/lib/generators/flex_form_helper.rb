@@ -1,4 +1,4 @@
-module Flexolop
+module Dunelox
   
   class FlexFormHelper
     attr_accessor :formitem_field, :modified_update

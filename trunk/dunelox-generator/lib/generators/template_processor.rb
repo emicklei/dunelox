@@ -1,4 +1,4 @@
-module Flexolop
+module Dunelox
 
 class TemplateProcessor
   attr_accessor :source, :target , :test_base_url
@@ -30,6 +30,7 @@ class TemplateProcessor
     # template variables hash
     @tmap = { 'timestamp' => Time.now.httpdate}
     @tmap['testbaseurl'] = test_url
+    @tmap['flexgenerator'] = 'Dunelox::FlexGenerator'
   end
   
   def setup_for_model(model_id,options = nil)
@@ -40,7 +41,7 @@ class TemplateProcessor
   end
   
   def log(what)
-    puts "[flexolop::flexgen] " + what
+    puts "[#{@tmap['flexgenerator']}] " + what
   end
   
   # Read and transform a template using a map of key-value pairs
@@ -88,4 +89,4 @@ class TemplateProcessor
 
 end #class
 
-end #module
+end #Dunelox

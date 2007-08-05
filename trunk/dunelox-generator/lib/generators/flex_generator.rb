@@ -6,7 +6,7 @@ require 'flex_model_generator'
 
 require 'flex_view_generator'
 
-module Flexolop
+module Dunelox
 # Class FlexGenerator is a development tool to generate ActionScript class and Flex components 
 # using meta information available and provided by the script that invokes the generator
 # Database connection is required because it reflects on Rails Controllers
@@ -32,7 +32,7 @@ end # class
 end #module
 
 # DSL globals
-@@flexgen = Flexolop::FlexGenerator.new
+@@flexgen = Dunelox::FlexGenerator.new
 
 # DSL functions
 def rails_project_root(path)
