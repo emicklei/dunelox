@@ -1,1 +1,0 @@
-require 'generators/flex_generator'
