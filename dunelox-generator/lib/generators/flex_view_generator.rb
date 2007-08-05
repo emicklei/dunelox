@@ -1,7 +1,7 @@
 require 'template_processor'
 require 'flex_form_helper'
 
-module Flexolop
+module Dunelox
 # Class FlexViewGenerator is 
 #
 # * view :model

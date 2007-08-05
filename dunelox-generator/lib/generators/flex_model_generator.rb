@@ -1,6 +1,6 @@
 require 'template_processor'
 
-module Flexolop
+module Dunelox
 
 class FlexModelGenerator < TemplateProcessor
 

@@ -1,0 +1,1 @@
+puts "copying Rake task to lib/tasks"

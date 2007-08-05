@@ -7,13 +7,13 @@ require 'fileutils'
 include FileUtils
 
 NAME = "dunelox-generator"
-REV = `svn info`[/Revision: (\d+)/, 1] rescue nil
-VERS = ENV['VERSION'] || "0.1" + (REV ? ".#{REV}" : "")
+VERS = ENV['VERSION'] || "0.1"
 PKG = "#{NAME}-#{VERS}"
 
 RDOC_OPTS = ['--quiet', '--title', 'Dunelox Generator', '--main', 'README', '--inline-source']
 PKG_FILES = %w(CHANGELOG COPYING README Rakefile) +
       Dir.glob("{bin,doc,test,lib,extras}/**/*")
+puts PKG_FILES     
 SPEC =
   Gem::Specification.new do |s|
     s.name = NAME
@@ -29,7 +29,8 @@ SPEC =
     s.homepage = 'http://dunelox.googlecode.com'
     s.files = PKG_FILES
     s.require_paths = ["lib"]
-    s.bindir = "bin"
+    s.autorequire = "lib/dunelox-generator"
+    s.executables = ["dunelox-setup"] 
   end
 
 Rake::RDocTask.new do |rdoc|
@@ -39,10 +40,7 @@ Rake::RDocTask.new do |rdoc|
     rdoc.rdoc_files.add ['README', 'CHANGELOG', 'COPYING', 'lib/**/*.rb']
 end
 
-Rake::GemPackageTask.new(SPEC) do |p|
-    p.need_tar = true
-    p.gem_spec = SPEC
-end
+Rake::GemPackageTask.new(SPEC) do |p| end
 
 task :install do
     Gem::GemRunner.new.run(['install','pkg/dunelox-generator'])
