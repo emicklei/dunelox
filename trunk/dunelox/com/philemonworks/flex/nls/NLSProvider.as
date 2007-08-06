@@ -17,7 +17,15 @@ package com.philemonworks.flex.nls
 {
 	public interface NLSProvider
 	{
+		/**
+		 * Return the language of the values.
+		 */
 		function language():String;
+		/**
+		 * Return the String value associated with the key parameter.
+		 * If no value is present then return the absentValue parameter value
+		 * or if the absentValue parameter is null then return the key.
+		 */
 		function getString(key:String,absentValue:String):String;
 	}
 }

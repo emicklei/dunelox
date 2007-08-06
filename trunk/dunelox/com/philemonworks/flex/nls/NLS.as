@@ -18,8 +18,7 @@ package com.philemonworks.flex.nls
 	import mx.formatters.DateFormatter;
 	import mx.formatters.CurrencyFormatter;
 	/**
-	 * NLS is a class that encapsulates internationalized values
-	 * Based on the language set (nl|us), a lookup of values is done
+	 * NLS is a class that encapsulates internationalized values for string keys.
 	 * NLS provides convenience methods to access text (with defaults),dates,money,phone formatter values
 	 * 
 	 * @author ernest.micklei@philemonworks.com, 2007
@@ -28,13 +27,14 @@ package com.philemonworks.flex.nls
 	{
 	   public static const NLS_KEY_DATE:String = "nls-format-date"	   
 	   private static var nlsProvider:NLSProvider;
-	   
+	   	
 		/**
-		 * Gets a string from the ResourceBundle for the current language.
+		 * Gets a string from the current NLS Provider.
 		 * Return the absentValue if the key was missing. This exception is traced.
+		 * If the absentValue is null and no value is associated to the key, then return the key.
 		 * Try binding parameter values if provided and referenced by the string (using {index} notation)
 		 */
-		public static function text(key:String,absentValue:String = 'NLS-MISSING-KEY', parameters:Array = null):String {
+		public static function text(key:String,absentValue:String = null, parameters:Array = null):String {
 			if (nlsProvider == null) {
 				trace("NLS: no provider")
 				return absentValue
