@@ -32,18 +32,20 @@ package com.philemonworks.flex.nls
 		
 		public function getString(key:String, absentValue:String):String
 		{
+			var localAbsentValue:String = "RecordingNLSProvider"
 			var value:String = entries[key]
 			if (value.length == 0) {
 				if (fallback != null) {
-					value = fallback.getString(key,null)
-					if (value != null) {
+					value = fallback.getString(key,localAbsentValue)
+					if (value != localAbsentValue) {
 						if (!recordNewOnly) entries[key]=value
 						return value
 					}
 				}
 				trace("[nls recorder] hit miss, recording default value for:" + key)
-				entries[key] = absentValue
-				value = absentValue
+				var recordedValue:String = absentValue == null ? key : absentValue
+				entries[key] = recordedValue
+				value = recordedValue
 			}
 			return value				
 		}

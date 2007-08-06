@@ -33,7 +33,8 @@ package com.philemonworks.flex.nls
 				// Probably key absent
 				trace("NLS warning: unable to get string because: " + e.message);
 			}
-			return absentValue			
+			// If no absentValue was specified then return the key to show what is missing from the bundle.
+			return absentValue == null ? key : absentValue
 		}
 	}
 }
