@@ -52,7 +52,7 @@ package com.philemonworks.flex.util
 		
 		public static function parse(input:String):Time {			
 			if (input == null) return null
-			var trimmed:String = StringUtil.trim(input)
+			var trimmed:String = mx.utils.StringUtil.trim(input)
 			if (trimmed.length == 0) return null
 			var delta_negative:Boolean = trimmed.indexOf('-') == 0
 			var delta_positive:Boolean = trimmed.indexOf('+') == 0
