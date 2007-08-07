@@ -39,7 +39,8 @@ package com.philemonworks.flex.nls
 				trace("NLS: no provider")
 				return absentValue
 			}
-			return nlsProvider.getString(key,absentValue)
+			var value:String = nlsProvider.getString(key,absentValue)
+			return parameters == null ? value : StringHelper.substituteParameters(value,parameters)
 		}
 		/**
 		 * Gets a formatted date using the ResourceBundle for the current language.
