@@ -18,6 +18,8 @@ package com.philemonworks.flex.nls
 	import mx.formatters.DateFormatter;
 	import mx.formatters.CurrencyFormatter;
 	import com.philemonworks.flex.util.StringHelper;
+	import mx.controls.dataGridClasses.DataGridColumn;
+	import com.philemonworks.flex.util.XMLHelper;
 	/**
 	 * NLS is a class that encapsulates internationalized values for string keys.
 	 * NLS provides convenience methods to access text (with defaults),dates,money,phone formatter values
@@ -27,6 +29,7 @@ package com.philemonworks.flex.nls
 	public class NLS
 	{
 	   public static const NLS_KEY_DATE:String = "nls-format-date"	   
+	   public static const NLS_KEY_DATETIME:String = "nls-format-datetime"	   
 	   private static var nlsProvider:NLSProvider;
 	   	
 		/**
@@ -59,15 +62,41 @@ package com.philemonworks.flex.nls
 		// Formatters
 		//----------------
 		/**
+		 * Use this function as a labelFunction for a DataGridColumn that needs a formatted Date whos value is a xsd:datetime formatted String.
+		 * @param item the item of the row
+		 * @param column the column that specifies which dataField value (XSD format) to format using NLS rules.
+		 * @return Formatted date
+		 */
+		public static function formatStringAsDate(item:Object, column:DataGridColumn):String {
+			var date:Date = XMLHelper.stringToDate(item[column.dataField])
+			return getDateFormatter().format(date)
+		}
+		/**
+		 * Use this function as a labelFunction for a DataGridColumn that needs a formatted Date with Time whos value is a xsd:datetime formatted String.
+		 * @param item the item of the row
+		 * @param column the column that specifies which dataField value (XSD format) to format using NLS rules.
+		 * @return Formatted date
+		 */
+		public static function formatStringAsDateTime(item:Object, column:DataGridColumn):String {
+			var date:Date = XMLHelper.stringToDate(item[column.dataField])
+			return getDateTimeFormatter().format(date)
+		}
+				
+		/**
 		  <mx:DateFormatter
 		    formatString="Y|M|D|A|E|H|J|K|L|N|S"
 		   /> 
    		*/ 	
 		public static function getDateFormatter():DateFormatter {
 		    var formatter:DateFormatter = new DateFormatter();
-			formatter.formatString = text(NLS_KEY_DATE,"YY-DD-MM");
+			formatter.formatString = text(NLS_KEY_DATE,"YYYY-DD-MM");
 			return formatter;			
 		}
+		public static function getDateTimeFormatter():DateFormatter {
+		    var formatter:DateFormatter = new DateFormatter();
+			formatter.formatString = text(NLS_KEY_DATETIME,"YYYY-DD-MM HH:NN");
+			return formatter;			
+		}		
 		/**
 		  <mx:CurrencyFormatter
 		    alignSymbol="left|right" 
