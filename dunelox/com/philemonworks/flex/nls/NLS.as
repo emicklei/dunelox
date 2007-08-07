@@ -17,6 +17,7 @@ package com.philemonworks.flex.nls
 {
 	import mx.formatters.DateFormatter;
 	import mx.formatters.CurrencyFormatter;
+	import com.philemonworks.flex.util.StringHelper;
 	/**
 	 * NLS is a class that encapsulates internationalized values for string keys.
 	 * NLS provides convenience methods to access text (with defaults),dates,money,phone formatter values
