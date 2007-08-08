@@ -98,5 +98,17 @@ package com.philemonworks.flex.access
 				widget.width = 0
 			}
 		}		
+		/**
+		 * Changes the visible-property of a collection of components based on whether the current role is one of the expected roles.
+		 * In addition to setting the visibility, the size of the component can be zero-ed
+		 * and will be restored to its default when the component is visible.
+		 * 
+		 * @param widgets the collection of UIComponent
+		 * @param roles the collection of role names (String)
+		 * @param resize if true then width and height are set to zero if not allowed
+		 */		
+		public function allowAllVisible(widgets:Array,roles:Array,resize:Boolean = true):void {
+			for (var i:int;i<widgets.length;i++) this.allowVisible(widgets[i],roles,resize)	
+		}
 	}
 }
