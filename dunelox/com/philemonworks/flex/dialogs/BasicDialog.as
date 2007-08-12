@@ -36,6 +36,10 @@ package com.philemonworks.flex.dialogs
 				this.close()
 			else if (this.validateOk()) okCallback.call(this,this);
 		}
+		// this is called directly from the buttons		
+		protected function doCancel():void {
+			this.close()
+		}
 		// this is called directly from the buttons or indirectly from the window		
 		public function close():void {
 			if (slide) 
