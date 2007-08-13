@@ -35,7 +35,7 @@ package com.philemonworks.flex.util
 		public function toString():String {
 			return formattedDay 
 		}
-		public function asDate():Date {
+		public function toDate():Date {
 			var parts:Array = formattedDay.split('-')
 			// The month (0 for January, 1 for February, and so on)
 			// The day of the month (an integer from 1 to 31)
