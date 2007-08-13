@@ -20,6 +20,7 @@ package com.philemonworks.flex.nls
 	import com.philemonworks.flex.util.StringHelper;
 	import mx.controls.dataGridClasses.DataGridColumn;
 	import com.philemonworks.flex.util.XMLHelper;
+	import com.philemonworks.flex.util.Day;
 	/**
 	 * NLS is a class that encapsulates internationalized values for string keys.
 	 * NLS provides convenience methods to access text (with defaults),dates,money,phone formatter values
@@ -62,14 +63,14 @@ package com.philemonworks.flex.nls
 		// Formatters
 		//----------------
 		/**
-		 * Use this function as a labelFunction for a DataGridColumn that needs a formatted Date whos value is a xsd:datetime formatted String.
+		 * Use this function as a labelFunction for a DataGridColumn that needs a formatted Day whos value is a xsd:date formatted String.
 		 * @param item the item of the row
 		 * @param column the column that specifies which dataField value (XSD format) to format using NLS rules.
-		 * @return Formatted date
+		 * @return Formatted date without time
 		 */
-		public static function formatStringAsDate(item:Object, column:DataGridColumn):String {
-			var date:Date = XMLHelper.stringToDate(item[column.dataField])
-			return getDateFormatter().format(date)
+		public static function formatStringAsDay(item:Object, column:DataGridColumn):String {
+			var someDay:Day = XMLHelper.stringToDay(item[column.dataField])
+			return getDateFormatter().format(someDay.toDate())
 		}
 		/**
 		 * Use this function as a labelFunction for a DataGridColumn that needs a formatted Date with Time whos value is a xsd:datetime formatted String.
