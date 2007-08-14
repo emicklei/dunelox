@@ -1,6 +1,6 @@
-#summary Highlights the components that have similar responsiblity in the Cairngorm framework
+#summary Highlights the components that have common responsiblities in the Cairngorm framework
 
-= ApplicationContext versus ModelLocator =
+= !ApplicationContext versus ModelLocator =
 
 The ModelLocator in Cairngorm is a singleton for keeping a set of bindable properties that contain the current state of an applications in terms of Business Objects. For each model object, a variable is added and annotated with [Bindable]. Views of the application can bind to this property and are notified about changes to its value.
 
