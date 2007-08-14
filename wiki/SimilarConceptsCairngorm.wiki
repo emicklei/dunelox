@@ -1,0 +1,17 @@
+#Highlights the components that have similar responsiblity in the Cairngorm framework
+
+= ApplicationContext versus ModelLocator =
+
+The ModelLocator in Cairngorm is a singleton for keeping a set of bindable properties that contain the current state of an applications in terms of Business Objects. For each model object, a variable is added and annotated with [Bindable]. Views of the application can bind to this property and are notified about changes to its value.
+
+The ApplicationContext in Dunelox has exact the same responsibility but is different in its implementation. Instead of a property per model object, it holds a special dictionary (HashCollection) in which objects are stored using a String key. Model objects are stored by key-value pairs, therefore the ApplicationContext class is actually a generic ModelLocator implementation. Because the ApplicationContext has no dependencies to your Model Objects, components from other Flex libaries can bind and manipulate to values from the current ApplicationContext. The design allows for breaking up a large application into multiple independent Flex libraries, each defining components in a particular sub domain.
+
+= UseCase versus Command =
+
+Command in Cairngorm is used to perform a specific action as a response to a global event. Typical actions include sending messages to an application service (FDS) through a Delegate.
+
+ * *TO COMPLETE*
+
+= Delegate versus ControllerClient = 
+
+Delegate in Cairngorm is a client representation of a server-side component that provides functionality to the client application. It encapsulates the message handling involved when sending requests and receiving responses. ControllerClient has exact the same responsibility. The reason why it is called differently is because it is related to its server-side implementation. Ruby on Rails webservices are implemented by ActionControllers, Pocogese Java webservices are implemented by RestControllers. The Pocogese project provides tools to generate tools ActionScript ControllerClient classes from their server definitions.
