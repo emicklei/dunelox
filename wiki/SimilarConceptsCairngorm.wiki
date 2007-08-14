@@ -1,4 +1,4 @@
-#Highlights the components that have similar responsiblity in the Cairngorm framework
+#summary Highlights the components that have similar responsiblity in the Cairngorm framework
 
 = ApplicationContext versus ModelLocator =
 
