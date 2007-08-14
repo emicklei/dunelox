@@ -31,6 +31,10 @@ package com.philemonworks.flex.nls
 	{
 	   public static const NLS_KEY_DATE:String = "nls-format-date"	   
 	   public static const NLS_KEY_DATETIME:String = "nls-format-datetime"	   
+	   
+	   public static var NLS_DateFormatter:DateFormatter;
+	   public static var NLS_DateTimeFormatter:DateFormatter;
+	   
 	   private static var nlsProvider:NLSProvider;
 	   	
 		/**
@@ -89,14 +93,16 @@ package com.philemonworks.flex.nls
 		   /> 
    		*/ 	
 		public static function getDateFormatter():DateFormatter {
+			if (NLS_DateFormatter != null) return NLS_DateFormatter
 		    var formatter:DateFormatter = new DateFormatter();
-			formatter.formatString = text(NLS_KEY_DATE,"YYYY-DD-MM");
-			return formatter;			
+			formatter.formatString = text(NLS_KEY_DATE,"YYYY-DD-MM")
+			return (NLS_DateFormatter = formatter)			
 		}
 		public static function getDateTimeFormatter():DateFormatter {
+			if (NLS_DateTimeFormatter != null) return NLS_DateTimeFormatter
 		    var formatter:DateFormatter = new DateFormatter();
 			formatter.formatString = text(NLS_KEY_DATETIME,"YYYY-DD-MM HH:NN");
-			return formatter;			
+			return (NLS_DateTimeFormatter = formatter);			
 		}		
 		/**
 		  <mx:CurrencyFormatter

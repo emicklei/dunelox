@@ -46,7 +46,7 @@ package com.philemonworks.flex.util
 		public function get(key:Object):Object {
 			var indexOrNull:* = _keyToIndexHash[key]
 			if (indexOrNull == undefined) {
-				trace('no value for key [' + key + '] returning null')
+				// no value for key so we return null
 				return null
 			}
 			var index:int = indexOrNull as int
