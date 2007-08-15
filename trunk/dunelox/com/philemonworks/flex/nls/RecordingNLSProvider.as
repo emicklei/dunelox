@@ -22,7 +22,7 @@ package com.philemonworks.flex.nls
 		private var entries:XML;
 		private var fallback:NLSProvider;
 		[Bindable]
-		public var recordNewOnly:Boolean = false;
+		public var recordNewOnly:Boolean = true;
 		
 		public function RecordingNLSProvider(hitmissProvider:NLSProvider = null) {
 			super()
