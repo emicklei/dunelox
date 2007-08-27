@@ -17,7 +17,7 @@ package com.philemonworks.flex.nls
 {
 	import mx.formatters.DateFormatter;
 	import mx.formatters.CurrencyFormatter;
-	import com.philemonworks.flex.util.StringHelper;
+	import com.philemonworks.flex.helpers.StringHelper;
 	import mx.controls.dataGridClasses.DataGridColumn;
 	import com.philemonworks.flex.util.XMLHelper;
 	import com.philemonworks.flex.util.Day;

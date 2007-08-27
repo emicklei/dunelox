@@ -21,7 +21,21 @@ package com.philemonworks.flex.navigation
 	import flash.events.EventDispatcher;
 	import mx.events.DataGridEvent;
 	import mx.controls.dataGridClasses.DataGridColumn;
-	
+	/**
+	 * PageNavigator is a mediator for a DataGrid that handles navigating through pages of rows.
+	 * 
+	 * Usage:
+	  
+<PageNavigator
+	id="navigator"
+	dataGrid="{grid}" 
+	navigationBar="{navigationBar}" 
+	pageLoaded="populateGrid"
+	sortkey="name"
+	sortmethod="ascending" />
+	 
+	 * 
+	 */
 	public class PageNavigator extends EventDispatcher
 	{		
 		public var resultFunction:Function;
@@ -40,6 +54,7 @@ package com.philemonworks.flex.navigation
 		public var sortmethod:String = "ascending";
 		[Bindable]
 		public var sortkey:String = null;
+		private var lastSearchPattern:String = null;
 		
 		public function set navigationBar(newBar:PageNavigationBar):void{
 			_bar = newBar;
@@ -56,7 +71,7 @@ package com.philemonworks.flex.navigation
 		// the user has clicked on the header to change the sort order of the rows	
 		private function handleHeaderRelease(event:DataGridEvent):void {
 			var column:DataGridColumn = _dataGrid.columns[event.columnIndex]
-			var newkey = column.dataField
+			var newkey:String = column.dataField
 			// if same key then toggle method: descending/ascending
 			if (sortkey == newkey) {
 				sortmethod = sortmethod == 'ascending' ? 'descending' : 'ascending'
@@ -90,9 +105,18 @@ package com.philemonworks.flex.navigation
 			totalRows = 0;
 		}	
 
+		private function newEvent(type:String):PageNavigationEvent {
+			var event:PageNavigationEvent = new PageNavigationEvent(type)
+			event.to = this.computeTo()
+			event.from = this.computeFrom()
+			event.sortKey = sortkey
+			event.sortMethod = sortmethod
+			event.searchPattern = lastSearchPattern
+			return event			
+		}
+
 		public function fetchPage():void {
-			var event:PageNavigationEvent = new PageNavigationEvent("refresh")
-			this.dispatchEvent(event)
+			this.dispatchEvent(this.newEvent('refresh'))
 		}
 
 		public function dataReceived(data:XML):void {			
@@ -121,6 +145,10 @@ package com.philemonworks.flex.navigation
     	public function updateSortInfo(sortkey:String,sortmethod:String):void {
     		sortkey = sortkey
     		sortmethod = sortmethod
-    	}		 			
+    	}		 
+    	public function search(pattern:String):void {
+    		lastSearchPattern = pattern
+    		this.fetchPage()    		
+    	}			
 	}
 }

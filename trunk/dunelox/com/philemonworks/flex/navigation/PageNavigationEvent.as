@@ -19,11 +19,23 @@ package com.philemonworks.flex.navigation
 	
 	public class PageNavigationEvent extends Event
 	{		
+		public var to:int;
+		public var from:int;
+		public var sortKey:String;
+		public var sortMethod:String;
+		public var searchPattern:String;
+
 		public function PageNavigationEvent(type:String) {
 			super(type)
 		}
 		override public function clone():Event {
-			return new PageNavigationEvent(type)
+			var event:PageNavigationEvent = new PageNavigationEvent(type)
+			event.to = to
+			event.from = from
+			event.sortKey = sortKey
+			event.sortMethod = sortMethod
+			event.searchPattern = searchPattern
+			return event
 		}		
 		override public function toString():String {
 			return "PageNavigationEvent[type="+type+"]"
@@ -31,11 +43,5 @@ package com.philemonworks.flex.navigation
 		public function getNavigator():PageNavigator {
 			return PageNavigator(this.target)
 		}	
-		public function to():int {
-			return this.getNavigator().computeTo()
-		}
-		public function from():int {
-			return this.getNavigator().computeFrom()
-		}
 	}
 }
