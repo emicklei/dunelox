@@ -19,6 +19,8 @@ package com.philemonworks.flex.navigation
 	import flash.events.Event;
 	import mx.controls.DataGrid;
 	import flash.events.EventDispatcher;
+	import mx.events.DataGridEvent;
+	import mx.controls.dataGridClasses.DataGridColumn;
 	
 	public class PageNavigator extends EventDispatcher
 	{		
@@ -35,7 +37,7 @@ package com.philemonworks.flex.navigation
 		[Bindable]
 		public var preferredRowHeight:int = 10;
 		[Bindable]
-		public var sortmethod:String = "descending";
+		public var sortmethod:String = "ascending";
 		[Bindable]
 		public var sortkey:String = null;
 		
@@ -45,11 +47,25 @@ package com.philemonworks.flex.navigation
 		}
 		public function set dataGrid(newDataGrid:DataGrid):void {
 			_dataGrid = newDataGrid
+			_dataGrid.addEventListener(DataGridEvent.HEADER_RELEASE,handleHeaderRelease)
 		}		
 		public function set pageLoaded(callback:Function):void {
 			_pageLoaded = callback
-		}	
-			
+		}
+		
+		// the user has clicked on the header to change the sort order of the rows	
+		private function handleHeaderRelease(event:DataGridEvent):void {
+			var column:DataGridColumn = _dataGrid.columns[event.columnIndex]
+			var newkey = column.dataField
+			// if same key then toggle method: descending/ascending
+			if (sortkey == newkey) {
+				sortmethod = sortmethod == 'ascending' ? 'descending' : 'ascending'
+			}
+			this.sortkey = newkey
+			// this prevents from default handling the header click event
+			event.stopImmediatePropagation()
+			this.refresh()
+		}			
 		
 		// the user has requested to view a page (could be refresh of the current)
 		public function pageRequested(event:Event):void {
