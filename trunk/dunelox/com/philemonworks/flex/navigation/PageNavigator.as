@@ -147,6 +147,7 @@ package com.philemonworks.flex.navigation
     		sortmethod = sortmethod
     	}		 
     	public function search(pattern:String):void {
+    		this.reset()
     		lastSearchPattern = pattern
     		this.fetchPage()    		
     	}			
