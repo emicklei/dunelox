@@ -38,6 +38,7 @@ package com.philemonworks.flex.util
 				var index:int = this.length
 				this.addItem(value)
 				_keyToIndexHash[key]=index
+				this.setItemAt(value,index)
 			} else {
 				this.setItemAt(value,indexOrNull as int)
 			}
