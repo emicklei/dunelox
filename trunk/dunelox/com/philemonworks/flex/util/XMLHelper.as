@@ -67,6 +67,14 @@ package com.philemonworks.flex.util
 		public static function stringToTime(value:String):Time {
 			if (value.length == 0) return null			
 			return Time.parse(value)
-		}		
+		}
+		/**
+		 * Append a child node if the value is non-empty and not null
+		 */
+		 public static function appendChildTo(tag:String,valueOrNull:String,xml:XML):void {
+			if (valueOrNull == null) return
+			if (valueOrNull.length == 0) return
+			xml[tag]=valueOrNull
+		 }
 	}
 }
