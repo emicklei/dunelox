@@ -16,6 +16,13 @@
 package com.philemonworks.flex.helpers
 {
 	import mx.controls.DataGrid;
+	import mx.printing.PrintDataGrid;
+	import flash.printing.PrintJob;
+	import com.philemonworks.flex.dialogs.MessageDialog;
+	import mx.containers.Canvas;
+	import mx.controls.dataGridClasses.DataGridColumn;
+	import mx.utils.ColorUtil;
+	import mx.controls.Alert;
 	
 	public class UIComponentHelper
 	{
@@ -44,6 +51,33 @@ package com.philemonworks.flex.helpers
 			for (var i:int;i<grid.columnCount;i++) {
 				grid.columns[i].width = values[i]
 			}
-		}		
+		}	
+		public static function printFromDataGrid(dataGrid:DataGrid):void {
+			if (true) { Alert.show('No printing available yet'); return }
+			var page:Canvas = new Canvas()	
+			var printGrid:PrintDataGrid = new PrintDataGrid()
+			printGrid.percentWidth = 100
+			printGrid.percentHeight = 100
+			printGrid.dataProvider = dataGrid.dataProvider
+			for (var c:int;c<printGrid.columns.length;c++){
+				var pc:DataGridColumn = new DataGridColumn()
+				var vc:DataGridColumn = DataGridColumn(printGrid.columns[c])
+				pc.dataField = vc.dataField
+				pc.headerText = vc.headerText
+				printGrid.columns.push(pc)
+			}
+			page.addChild(printGrid)
+			
+			var myPrintJob:PrintJob = new PrintJob();
+		    myPrintJob.start() ;
+		    try {
+		    	page.height = myPrintJob.pageHeight
+		    	page.width = myPrintJob.pageWidth
+			    myPrintJob.addPage(page);
+			    myPrintJob.send();
+		    } catch (error:Error) {
+		    	MessageDialog.showError(null,"Unable to print")
+		    }		    			
+		}	
 	}
 }
