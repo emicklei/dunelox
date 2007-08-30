@@ -23,7 +23,8 @@ package com.philemonworks.flex.util
 		public class YourUseCase extends UseCase
 		{
 			override protected function begin():void {
-				// do not forget to include this.end() in the last step of the usecase when completed with success
+				// do not forget to call this.end() in the last step of the usecase when completed with success
+				// or to call this.stop() when the usecase completed with a failure
 			}		
 		}
 	*/	
@@ -31,15 +32,27 @@ package com.philemonworks.flex.util
 	{
 		public var view:DisplayObject;
 		private var _endHandler:Function;		
+		private var _abortHandler:Function;
 		
-		public function start(parentView:DisplayObject = null,endHandler:Function = null):void {
+		/**
+		 * Start the UseCase.
+		 * 
+		 * @param parentView DisplayObject (optional)
+		 * @param finishedHandler Function (optional)
+		 * @param abortedHandler Function (optional)
+		 */ 
+		public function start(parentView:DisplayObject = null,finishedHandler:Function = null, abortedHandler:Function = null):void {
 			view = parentView
-			_endHandler = endHandler
-			this.begin()
+			_endHandler = finishedHandler
+			this.checkPreconditions() ? this.begin() : this.stop()
 		}
 		public function stop():void {
-			// aborting
+			if (_abortHandler != null) _abortHandler.call(this,this)
 		}
+		protected function checkPreconditions():Boolean {
+			return true
+		}
+		
 		protected function begin():void {
 			trace("[warning] all subclasses should implement begin()")
 		}
