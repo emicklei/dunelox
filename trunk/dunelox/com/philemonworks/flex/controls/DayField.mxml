@@ -14,7 +14,8 @@
 				dayInput.text = NLS.getDateFormatter().format(newDay.toDate())
 			}			
 			public function get day():Day {
-				return Day.parse(dayInput.text)
+				// return Day.parse(dayInput.text)
+				return new Day()
 			}	
 			public function doPickDate():void {	
 				pickBtn.width = 0			
