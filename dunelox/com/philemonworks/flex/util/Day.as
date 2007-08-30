@@ -32,6 +32,11 @@ package com.philemonworks.flex.util
 				this.setDate(new Date())
 			}
 		}
+		public static function fromDate(dateTime:Date):Day {
+			var newDay:Day = new Day()
+			newDay.setDate(dateTime)
+			return newDay
+		}
 		public function toString():String {
 			return formattedDay 
 		}
@@ -45,6 +50,6 @@ package com.philemonworks.flex.util
 			var formatter:DateFormatter = new DateFormatter()
 			formatter.formatString = "YYYY-MM-DD"
 			formattedDay = formatter.format(dateTime)						
-		}
+		}		
 	}	
 }

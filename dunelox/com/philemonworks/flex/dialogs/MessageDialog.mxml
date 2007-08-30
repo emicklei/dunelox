@@ -48,26 +48,26 @@
 			}
 			public function setConfirmation(msg:String):void {
 				msgText.text = msg
-				this.title = NLS.text('confirm','Confirm')
+				this.title = NLS.text('dialog.confirm','Confirm')
 				imgIcon.source = questionSymbol
 			}						
 			public function setWarning(msg:String):void {
 				msgText.text = msg
-				this.title = NLS.text('warning','Warning')
+				this.title = NLS.text('dialog.warning','Warning')
 				this.showCloseButton = true
 				this.btnCancel.width = 0
 				imgIcon.source = warningSymbol
 			}									
 			public function setInformation(msg:String):void {
 				msgText.text = msg
-				this.title = NLS.text('information','Information') 	
+				this.title = NLS.text('dialog.information','Information') 	
 				this.showCloseButton = true	
 				this.btnCancel.width = 0		
 				imgIcon.source = informationSymbol
 			}									
 			public function setError(msg:String):void {
 				msgText.text = msg
-				this.title = NLS.text('failure','Failure')	
+				this.title = NLS.text('dialog.failure','Failure')	
 				this.showCloseButton = true	
 				this.btnCancel.width = 0
 				imgIcon.source = criticalSymbol
