@@ -21,6 +21,7 @@
 </sourceAttachmentPath>
 </compiler>
 <applications>
+<application path="TestDayField.mxml"/>
 <application path="TestAuthorizer.mxml"/>
 <application path="main.mxml"/>
 <application path="TestApplicationContext.mxml"/>
