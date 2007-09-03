@@ -149,7 +149,13 @@ package com.philemonworks.flex.navigation
     	public function search(pattern:String):void {
     		this.reset()
     		lastSearchPattern = pattern
-    		this.fetchPage()    		
-    	}			
+    		this.refresh()  		
+    	}	
+    	/**
+    	 * Disrecard search pattern information
+    	 */
+    	public function clearSearch():void {
+    		lastSearchPattern = null
+    	}		
 	}
 }
