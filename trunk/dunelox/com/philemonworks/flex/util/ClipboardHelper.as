@@ -34,17 +34,16 @@ package com.philemonworks.flex.util
 		 * @param grid
 		 */
 		public static function copyFromDataGrid(grid:DataGrid):void {
+			var lines:String = ""			
 			if (grid.selectedItem != null) { // single row
 				System.setClipboard(rowToStringFromDataGrid(grid.selectedItem,grid))
 			} else if (grid.selectedIndices.length > 0) { // multiple rows
-				var lines:String = ""
 				for (var r:int=0;r<grid.selectedIndices.length;r++) {
 					if (r>0) lines += "\n"
 					lines += rowToStringFromDataGrid(grid.selectedItems[r],grid)
 				}
 				System.setClipboard(lines)
 			} else { // complete table contents
-				var lines:String = ""
 				for (var r:int=0;r<grid.dataProvider.length;r++) {
 					if (r>0) lines += "\n"
 					lines += rowToStringFromDataGrid(grid.dataProvider[r],grid)
