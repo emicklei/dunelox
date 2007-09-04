@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.philemonworks.flex.util
+package com.philemonworks.flex.helpers
 {
 	import mx.controls.DataGrid;
 	import flash.system.System;
@@ -39,13 +39,13 @@ package com.philemonworks.flex.util
 				System.setClipboard(rowToStringFromDataGrid(grid.selectedItem,grid))
 			} else if (grid.selectedIndices.length > 0) { // multiple rows
 				for (var r:int=0;r<grid.selectedIndices.length;r++) {
-					if (r>0) lines += "\n"
+					if (r>0) lines += "\r\n"
 					lines += rowToStringFromDataGrid(grid.selectedItems[r],grid)
 				}
 				System.setClipboard(lines)
 			} else { // complete table contents
 				for (var r:int=0;r<grid.dataProvider.length;r++) {
-					if (r>0) lines += "\n"
+					if (r>0) lines += "\r\n"
 					lines += rowToStringFromDataGrid(grid.dataProvider[r],grid)
 				}
 				System.setClipboard(lines)

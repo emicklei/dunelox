@@ -78,10 +78,11 @@
 				dialog.setError(msg)
 				dialog.show()				
 			}		
-			public static function showInformation(parent:DisplayObject,msg:String):void {
+			public static function showInformation(parent:DisplayObject,msg:String, okHandler:Function = null):void {
 				var dialog:MessageDialog = MessageDialog.newFor(parent)
 				dialog.setInformation(msg)
-				dialog.show()				
+				dialog.show()
+				dialog.okCallback = okHandler
 			}
 			public static function showWarning(parent:DisplayObject,msg:String):void {
 				var dialog:MessageDialog = MessageDialog.newFor(parent)
