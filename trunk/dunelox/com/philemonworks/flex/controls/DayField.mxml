@@ -2,33 +2,34 @@
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" horizontalGap="0">
 	<mx:TextInput id="dayInput"/>
 	<mx:Button id="pickBtn" click="doPickDate()" />
-	<mx:DateChooser id="dateChooser" visible="false" change="changedChoosenDate()" yearNavigationEnabled="true"/>
+	<mx:DateChooser id="dateChooser" visible="false" change="dateChosenChanged()" yearNavigationEnabled="true"/>
 	<mx:Script>
 		<![CDATA[
+			import mx.formatters.DateFormatter;
 			import mx.controls.DateField;
 			import mx.controls.DateChooser;
 			import com.philemonworks.flex.nls.NLS;
 			import com.philemonworks.flex.util.Day;
 			
 			public function set day(newDay:Day):void {
-				dayInput.text = NLS.getDateFormatter().format(newDay.toDate())
+				dayInput.text = day.toString()
 			}			
 			public function get day():Day {
-				// return Day.parse(dayInput.text)
-				return new Day()
+				return Day.parse(dayInput.text)
 			}	
 			public function doPickDate():void {	
-				pickBtn.width = 0			
+				pickBtn.width = 0
+				var now:Date = new Date() 			
 				dateChooser.visible = true
 			}		
 			public function undoPickDate():void {
 				pickBtn.width = pickBtn.measuredWidth
 				dateChooser.visible = false
 			}	
-			public function changedChoosenDate():void {
+			public function dateChosenChanged():void {
 				dayInput.text = NLS.getDateFormatter().format(dateChooser.selectedDate)
 				this.undoPickDate()
-			}					
+			}			
 		]]>
 	</mx:Script>
 </mx:HBox>
