@@ -1,5 +1,5 @@
 /*
-   Copyright [2007] Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2007 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -16,40 +16,74 @@
 package com.philemonworks.flex.util
 {
 	import mx.formatters.DateFormatter;
+	import com.philemonworks.flex.nls.NLS;
 	
 	/**
-	 * 1967-11-20
+	 * Day represents the day part of a Date, i.e. no Time information.
+	 * 
+	 * @author ernestt.micklei@philemonworks.com
 	 */
 	public class Day
 	{
-		private var formattedDay:String
-		
-		public function Day(dayString:String = "") {
-			super()			
-			if (dayString.length != 0) {
-				formattedDay = dayString
+		private var year:int = 0;
+		private var month:int = 0; // The month (0 for January, 1 for February, and so on)
+		private var dayInMonth:int = 0; // The day of the month (an integer from 1 to 31)
+						
+		/**
+		 * @xmlFormattedString String YYYY-MM-DD
+		 */						
+		public function Day(xmlFormattedString:String = "") {
+			if (xmlFormattedString.length != 0) {
+				var parts:Array = xmlFormattedString.split('-')
+				this.init(int(parts[0]),int(parts[1])-1,int(parts[2]))
 			} else {
-				this.setDate(new Date())
+				var today:Date = new Date()
+				this.init(today.fullYear,today.month,today.day)		
 			}
+		}
+		/**
+		 * Initialize me.
+		 * 
+		 * @param month int The month (0 for January, 1 for February, and so on)
+		 * @param day int The day of the month (an integer from 1 to 31)
+		 */
+		public function init(year:int,month:int,day:int):Day {
+			this.year = year
+			this.month = month
+			this.dayInMonth = day			
+			return this
 		}
 		public static function fromDate(dateTime:Date):Day {
 			var newDay:Day = new Day()
-			newDay.setDate(dateTime)
+			newDay.init(dateTime.fullYear,dateTime.month,dateTime.day)		
 			return newDay
 		}
-		public function toString():String {
-			return formattedDay 
-		}
-		public function toDate():Date {
-			var parts:Array = formattedDay.split('-')
-			// The month (0 for January, 1 for February, and so on)
-			// The day of the month (an integer from 1 to 31)
-			return new Date(int(parts[0]),int(parts[1])-1,int(parts[2]))
-		}
-		public function setDate(dateTime:Date):void {
+		/**
+		 * Parse using format of NLS
+		 */
+		public static function parse(input:String):Day {
+			if (input.length == 0) return new Day()			
+			return NLS.getDateFormatter().for
+		}		
+		/**
+		 * Format using YYYY-MM-DD
+		 */
+		public function toXMLString():String {
 			var formatter:DateFormatter = new DateFormatter()
 			formatter.formatString = "YYYY-MM-DD"
-			formattedDay = formatter.format(dateTime)						
+			return formatter.format(this.toDate())
+		}		
+		/**
+		 * Format using NLS
+		 */
+		public function toString():String {
+			return NLS.getDateFormatter().format(this.toDate())
+		}
+		public function toDate():Date {
+			return new Date(year,month,dayInMonth)
+		}
+		public function setDate(dateTime:Date):void {
+			this.init(dateTime.fullYear,dateTime.month,dateTime.day)					
 		}		
 	}	
 }
