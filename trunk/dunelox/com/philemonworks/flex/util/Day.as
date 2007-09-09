@@ -63,7 +63,8 @@ package com.philemonworks.flex.util
 		 */
 		public static function parse(input:String):Day {
 			if (input.length == 0) return new Day()			
-			return NLS.getDateFormatter().for
+			// return NLS.getDateFormatter().format(input)
+			return new Day()
 		}		
 		/**
 		 * Format using YYYY-MM-DD
