@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:controls="com.philemonworks.flex.controls.*">
-	<controls:DayField id="field" day="{day}" y="0" x="0"/>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:controls="com.philemonworks.flex.controls.*" creationComplete="init()">
+	<controls:DayField id="field" day="{day}" y="0" x="0" toolTip="yyyy-mm-dd"/>
 	<mx:Button x="10" y="30" label="Apply" click="doApply()"/>
 	<mx:Script>
 		<![CDATA[
@@ -9,8 +9,12 @@
 			[Bindable]
 			private var day:Day = new Day();
 			
-			private function doApply():void {
+			private function init():void {
 				
+			}
+			
+			private function doApply():void {
+				trace(field.day)
 			}
 		]]>
 	</mx:Script>
