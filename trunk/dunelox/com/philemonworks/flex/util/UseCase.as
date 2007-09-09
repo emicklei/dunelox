@@ -37,12 +37,12 @@ package com.philemonworks.flex.util
 		/**
 		 * Start the UseCase.
 		 * 
-		 * @param parentView DisplayObject (optional)
+		 * @param parentView Object (optional, but if specified than make sure it is a DisplayObject)
 		 * @param finishedHandler Function (optional)
 		 * @param abortedHandler Function (optional)
 		 */ 
-		public function start(parentView:DisplayObject = null,finishedHandler:Function = null, abortedHandler:Function = null):void {
-			view = parentView
+		public function start(parentView:Object = null,finishedHandler:Function = null, abortedHandler:Function = null):void {
+			view = parentView == null ? null : parentView as DisplayObject
 			_endHandler = finishedHandler
 			this.checkPreconditions() ? this.begin() : this.stop()
 		}
