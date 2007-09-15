@@ -1,5 +1,5 @@
 /*
-   Copyright [2007] Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2007 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -76,5 +76,19 @@ package com.philemonworks.flex.util
 			if (valueOrNull.length == 0) return
 			xml[tag]=valueOrNull
 		 }
-	}
-}
+		 /**
+		  * Return an XML of the form <strings each="meaning"><s>...</s></strings>
+		  * 
+		  * @param strings Array
+		  * @param meaning String|null
+		  */ 
+		 public static function stringsToXML(strings:Array,meaning:String = null):XML {
+		 	var stringsXML:XML = <strings/>;
+		 	if (meaning != null) stringsXML.@each = meaning
+		 	for (var i:int; i<strings.length;i++){
+		 		if (strings[i] != null) stringsXML.appendChild(<s>{strings[i]}</s>)
+		 	}
+		 	return stringsXML
+		 }
+	} // class
+} // package

@@ -41,15 +41,32 @@ package com.philemonworks.flex.nls
 		 * Gets a string from the current NLS Provider.
 		 * Return the absentValue if the key was missing. This exception is traced.
 		 * If the absentValue is null and no value is associated to the key, then return the key.
-		 * Try binding parameter values if provided and referenced by the string (using {index} notation)
+		 * 
+		 * @param key String non-empty key to lookup the text
+		 * @param absentValue String if not null and no text was found for key then return this value
 		 */
-		public static function text(key:String,absentValue:String = null, parameters:Array = null):String {
+		public static function text(key:String,absentValue:String = null):String {
 			if (nlsProvider == null) {
 				trace("NLS: no provider")
 				return absentValue
 			}
-			var value:String = nlsProvider.getString(key,absentValue)
-			return parameters == null ? value : StringHelper.substituteParameters(value,parameters)
+			return nlsProvider.getString(key,absentValue)
+		}
+		/**
+		 * Gets a string from the current NLS Provider.
+		 * Return the key itself if the key was missing. This exception is traced.
+		 * Bind parameter values using {index} notation
+		 * 
+		 * @param key String non-empty key to lookup the macro text
+		 * @param parameters Array collection of String
+		 */
+		public static function expandText(key:String,parameters:Array):String {
+			if (nlsProvider == null) {
+				trace("NLS: no provider")
+				return key
+			}
+			var value:String = nlsProvider.getString(key,key)
+			return StringHelper.substituteParameters(value,parameters)
 		}
 		/**
 		 * Gets a formatted date using the ResourceBundle for the current language.
