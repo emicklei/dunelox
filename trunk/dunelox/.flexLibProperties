@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties version="1">
   <includeClasses>
-    <classEntry path="com.philemonworks.flex.access.Authorizable"/>
-    <classEntry path="com.philemonworks.flex.access.Authorizer"/>
-    <classEntry path="com.philemonworks.flex.controls.DayField"/>
-    <classEntry path="com.philemonworks.flex.controls.TimeField"/>
-    <classEntry path="com.philemonworks.flex.controls.WindowDropDown"/>
-    <classEntry path="com.philemonworks.flex.dialogs.BasicDialog"/>
-    <classEntry path="com.philemonworks.flex.dialogs.ListSelectionDialog"/>
-    <classEntry path="com.philemonworks.flex.dialogs.LoginDialog"/>
-    <classEntry path="com.philemonworks.flex.dialogs.MessageDialog"/>
-    <classEntry path="com.philemonworks.flex.events.ObjectDataEvent"/>
-    <classEntry path="com.philemonworks.flex.helpers.ClipboardHelper"/>
-    <classEntry path="com.philemonworks.flex.helpers.StringHelper"/>
-    <classEntry path="com.philemonworks.flex.helpers.UIComponentHelper"/>
-    <classEntry path="com.philemonworks.flex.navigation.PageNavigationBar"/>
-    <classEntry path="com.philemonworks.flex.navigation.PageNavigationEvent"/>
-    <classEntry path="com.philemonworks.flex.navigation.PageNavigator"/>
-    <classEntry path="com.philemonworks.flex.nls.NLS"/>
-    <classEntry path="com.philemonworks.flex.nls.NLSProvider"/>
     <classEntry path="com.philemonworks.flex.nls.NLSResourceBundle_US"/>
-    <classEntry path="com.philemonworks.flex.nls.RecordingNLSProvider"/>
-    <classEntry path="com.philemonworks.flex.nls.RecordingNLSWindow"/>
+    <classEntry path="com.philemonworks.flex.navigation.PageNavigator"/>
+    <classEntry path="com.philemonworks.flex.dialogs.MessageDialog"/>
+    <classEntry path="com.philemonworks.flex.navigation.PageNavigationEvent"/>
+    <classEntry path="com.philemonworks.flex.helpers.Defend"/>
     <classEntry path="com.philemonworks.flex.util.ApplicationContext"/>
-    <classEntry path="com.philemonworks.flex.util.Day"/>
-    <classEntry path="com.philemonworks.flex.util.HashCollection"/>
-    <classEntry path="com.philemonworks.flex.util.Observe"/>
+    <classEntry path="com.philemonworks.flex.controls.TimeField"/>
+    <classEntry path="com.philemonworks.flex.nls.RecordingNLSProvider"/>
     <classEntry path="com.philemonworks.flex.util.Randomizer"/>
-    <classEntry path="com.philemonworks.flex.util.Time"/>
+    <classEntry path="com.philemonworks.flex.nls.NLSProvider"/>
+    <classEntry path="com.philemonworks.flex.navigation.PageNavigationBar"/>
+    <classEntry path="com.philemonworks.flex.access.Authorizer"/>
+    <classEntry path="com.philemonworks.flex.dialogs.BasicDialog"/>
+    <classEntry path="com.philemonworks.flex.helpers.UIComponentHelper"/>
     <classEntry path="com.philemonworks.flex.util.UseCase"/>
+    <classEntry path="com.philemonworks.flex.nls.NLS"/>
     <classEntry path="com.philemonworks.flex.util.XMLHelper"/>
+    <classEntry path="com.philemonworks.flex.nls.RecordingNLSWindow"/>
+    <classEntry path="com.philemonworks.flex.events.ObjectDataEvent"/>
+    <classEntry path="com.philemonworks.flex.controls.WindowDropDown"/>
+    <classEntry path="com.philemonworks.flex.helpers.ClipboardHelper"/>
+    <classEntry path="com.philemonworks.flex.util.HashCollection"/>
+    <classEntry path="com.philemonworks.flex.util.Day"/>
+    <classEntry path="com.philemonworks.flex.dialogs.LoginDialog"/>
+    <classEntry path="com.philemonworks.flex.access.Authorizable"/>
+    <classEntry path="com.philemonworks.flex.helpers.StringHelper"/>
+    <classEntry path="com.philemonworks.flex.controls.DayField"/>
+    <classEntry path="com.philemonworks.flex.util.Observe"/>
+    <classEntry path="com.philemonworks.flex.util.Time"/>
+    <classEntry path="com.philemonworks.flex.dialogs.ListSelectionDialog"/>
   </includeClasses>
   <includeResources>
     <resourceEntry destPath="assets/README.txt" sourcePath="assets/README.txt"/>
