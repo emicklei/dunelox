@@ -23,7 +23,7 @@ package tests
 			assertNotNull(NLS.money(123.45))
 		}
 		public function testParam0():void {
-			assertEquals('this is parameter zero',NLS.text('param0',null,['zero']))
+			assertEquals('this is parameter zero',NLS.expandText('param0',['zero']))
 		}
 	}
 }
