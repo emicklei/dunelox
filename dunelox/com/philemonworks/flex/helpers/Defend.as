@@ -32,7 +32,16 @@ package com.philemonworks.flex.helpers
 				// throw new Error
 				trace ('[Defend] empty string' + Defend.sourceOfAttack()) 
 			}			
+		}	
+		
+		public static function againstNull(value:*, variableName:String = null):void {
+			if (value == null) {
+				var msg:String = '[Defend] null value'
+				if (variableName != null) msg = msg + ' for [' + variableName + ']'
+				trace (msg + Defend.sourceOfAttack()) 
+			}
 		}		
+			
 		private static function sourceOfAttack():String {
 			var traceString:String;
 			try {
