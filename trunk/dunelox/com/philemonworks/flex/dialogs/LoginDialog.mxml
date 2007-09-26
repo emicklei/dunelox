@@ -35,7 +35,7 @@
 			public var passwordForgotten:Boolean = false;
 			
 			public static function newFor(parent:DisplayObject):LoginDialog {
-				return LoginDialog(PopUpManager.createPopUp(parent, LoginDialog,true));	
+				return LoginDialog(PopUpManager.createPopUp(parent, LoginDialog,false));	
 			}							
 			public function doForgotPassword():void {
 				passwordForgotten = true
