@@ -16,6 +16,7 @@
 package com.philemonworks.flex.util
 {
 	import flash.display.DisplayObject;
+	import flash.events.EventDispatcher;
 	/*
 		import flash.display.DisplayObject;
 		
@@ -32,7 +33,7 @@ package com.philemonworks.flex.util
 			}	
 		}
 	*/	
-	public class UseCase
+	public class UseCase extends EventDispatcher
 	{
 		/**
 		 * The view in which the UseCase is started if provided by start(...)
