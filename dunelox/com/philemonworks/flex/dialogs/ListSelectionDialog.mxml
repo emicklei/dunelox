@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-   Copyright [2007] Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2007 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 -->
 <phw:BasicDialog xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:phw="com.philemonworks.flex.dialogs.*" width="300" height="300"
 	showCloseButton="true" 
-	title="Please select from the list">
+	title="&lt;title&gt;">
 	
 	<mx:VBox width="100%" height="100%">
-		<mx:Label id="listLabel" text="Items"/>	
+		<mx:Label id="listLabel" text="{itemsTitle}"/>	
 		<mx:List 
 			id="list" 
 			dataProvider="{items}" 
@@ -28,12 +28,12 @@
 			height="100%" width="100%">
 		</mx:List>
 		<mx:HBox>
-			<mx:Label text="{NLS.text('search','Search')}"/>		
+			<mx:Label text="{NLS.text('button.search')}"/>		
 			<mx:TextInput width="100%"/>
 		</mx:HBox>
 		<mx:HBox horizontalAlign="center" width="100%">
-			<mx:Button label="{NLS.text('ok','Ok')}" click="doOk()" />		
-			<mx:Button label="{NLS.text('cancel','Cancel')}" click="closeThis()"/>
+			<mx:Button label="{NLS.text('button.ok')}" click="doOk()" />		
+			<mx:Button label="{NLS.text('button.cancel')}" click="closeThis()"/>
 		</mx:HBox>
 	</mx:VBox>
 
@@ -47,6 +47,8 @@
 			public var labelField:String;
 			[Bindable]
 			public var initialSelectionIndex:int = -1;
+			[Bindable]
+			public var itemsTitle:String = "<itemsTitle>";
 			
 			
 			public static function newFor(parent:DisplayObject):ListSelectionDialog {
