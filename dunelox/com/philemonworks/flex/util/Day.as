@@ -84,7 +84,7 @@ package com.philemonworks.flex.util
 			return new Date(year,month,dayInMonth)
 		}
 		public function setDate(dateTime:Date):void {
-			this.init(dateTime.fullYear,dateTime.month,dateTime.day)					
+			this.init(dateTime.fullYear,dateTime.month,dateTime.date)					
 		}		
 	}	
 }
