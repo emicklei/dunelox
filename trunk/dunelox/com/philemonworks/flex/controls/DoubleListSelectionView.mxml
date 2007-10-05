@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+	<mx:HBox width="100%" height="100%">
+		<mx:VBox width="50%" height="100%" >
+			<mx:Label id="label_left" text="{NLS.text(nls_labelLeft)}" />
+			<mx:List id="list_left" width="100%" height="100%" allowMultipleSelection="true"/>			
+		</mx:VBox>
+		<mx:VBox verticalAlign="middle" height="100%">
+			<mx:Button label="{NLS.text('button.lefttoright')}" click="doLeftToRight()" enabled="{list_left.selectedIndices.length != 0}"/>
+			<mx:Button label="{NLS.text('button.righttoleft')}" click="doRightToLeft()" enabled="{list_right.selectedIndices.length != 0}"/>
+		</mx:VBox>
+		<mx:VBox width="50%" height="100%">
+			<mx:Label id="label_right" text="{NLS.text(nls_labelRight)}" />
+			<mx:List id="list_right" width="100%" height="100%" allowMultipleSelection="true"/>			
+		</mx:VBox>			
+	</mx:HBox>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import com.philemonworks.flex.nls.NLS;
+		[Bindable]
+		public var leftToRight:Function;
+
+		[Bindable]
+		public var rightToLeft:Function;
+		
+		[Bindable]
+		public var nls_labelLeft:String;
+		
+		[Bindable]
+		public var nls_labelRight:String;
+
+		[Bindable]
+		public var sortProperty:String = null; // means no sorting
+
+		private function doLeftToRight():void {
+			if (list_left.selectedIndices.length == 0) return
+
+			var selections:Array = list_left.selectedItems			
+			var source:ArrayCollection = list_left.dataProvider as ArrayCollection
+			var target:ArrayCollection = list_right.dataProvider as ArrayCollection
+			this.moveItems(selections,source,target)
+		}
+		private function doRightToLeft():void {
+			if (list_right.selectedIndices.length == 0) return			
+
+			var selections:Array = list_right.selectedItems			
+			var source:ArrayCollection = list_right.dataProvider as ArrayCollection
+			var target:ArrayCollection = list_left.dataProvider as ArrayCollection
+			this.moveItems(selections,source,target)
+		}		
+		
+		private function moveItems(items:Array,source:ArrayCollection,target:ArrayCollection):void {		
+			for (var i:int;i<items.length;i++){
+				var each:Object = items[i]
+				target.addItem(each)				
+				var where:int = source.getItemIndex(each)
+				source.removeItemAt(where)
+			}	
+			if (sortProperty != null) target.source.sortOn(sortProperty)		
+		}
+		]]>
+	</mx:Script>
+</mx:Canvas>
