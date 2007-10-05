@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BasicDialog xmlns="com.philemonworks.flex.dialogs.*" xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" xmlns:controls="com.philemonworks.flex.controls.*"
+	defaultButton="{ok}" showCloseButton="true">
+
+	<mx:VBox width="100%" height="100%" >
+		<controls:DoubleListSelectionView id="doublelist" />
+		<mx:HBox width="100%" horizontalAlign="center">
+			<mx:Button label="{NLS.text('button.cancel')}" click="this.doCancel()" />
+			<mx:Button id="ok" label="{NLS.text('button.ok')}" click="this.doOk()" />		
+		</mx:HBox>
+	</mx:VBox>
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			import com.philemonworks.flex.nls.NLS;
+
+			public static function newFor(parent:DisplayObject):DoubleListSelectionDialog {
+				return DoubleListSelectionDialog(PopUpManager.createPopUp(parent, DoubleListSelectionDialog,true));	
+			}			
+		]]>
+	</mx:Script>
+	
+</BasicDialog>
