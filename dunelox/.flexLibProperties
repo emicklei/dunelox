@@ -27,6 +27,7 @@
     <classEntry path="com.philemonworks.flex.nls.RecordingNLSWindow"/>
     <classEntry path="com.philemonworks.flex.util.ApplicationContext"/>
     <classEntry path="com.philemonworks.flex.util.Day"/>
+    <classEntry path="com.philemonworks.flex.util.DisplayItem"/>
     <classEntry path="com.philemonworks.flex.util.HashCollection"/>
     <classEntry path="com.philemonworks.flex.util.Observe"/>
     <classEntry path="com.philemonworks.flex.util.Randomizer"/>
