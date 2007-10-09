@@ -30,11 +30,13 @@ package com.philemonworks.flex.dialogs
 		protected var okCallback:Function;
 				
 		protected function doOk():void {
+			if (!this.validateOk()) return
 			accepted = true
 			// this causes the function to be executed on the object that "popupped" the login
-			if (okCallback == null)
-				this.close()
-			else if (this.validateOk()) okCallback.call(this,this);
+			if (okCallback != null) {
+				okCallback.call(this,this);
+			}
+			this.close()
 		}
 		// this is called directly from the buttons		
 		protected function doCancel():void {
@@ -63,7 +65,7 @@ package com.philemonworks.flex.dialogs
 		// Subclasses may redefine this to do extra checks.
 		// Do not forget to call super.validateOk()
 		protected function validateOk():Boolean {
-			return okCallback != null && accepted
+			return true
 		}
 		private function destroy():void {
 			PopUpManager.removePopUp(IFlexDisplayObject(this));
