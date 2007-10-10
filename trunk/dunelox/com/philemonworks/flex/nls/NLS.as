@@ -78,8 +78,7 @@ package com.philemonworks.flex.nls
 		 * Gets a formatted Day using the ResourceBundle for the current language.
 		 */		
 		public static function day(someDay:Day):String {
-			// TODO
-			return someDay.toString();
+			return getDateFormatter().format(someDay.toDate())
 		}
 		
 		/**
