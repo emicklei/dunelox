@@ -6,7 +6,7 @@
 	
 	<mx:Script>
 		<![CDATA[
-			import tests.DefendTest;
+			import tests.PreTest;
 			import tests.XMLHelperTest;
 			import tests.DayTest;
 			import tests.ApplicationContextTest;
@@ -26,7 +26,7 @@
  				ts.addTestSuite(ApplicationContextTest)
  				ts.addTestSuite(XMLHelperTest)
  				ts.addTestSuite(DayTest) 				
- 				ts.addTestSuite(DefendTest) 				
+ 				ts.addTestSuite(PreTest) 				
  				return ts;
  			}
 			
