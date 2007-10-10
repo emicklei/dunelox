@@ -14,7 +14,7 @@
     <classEntry path="com.philemonworks.flex.dialogs.MessageDialog"/>
     <classEntry path="com.philemonworks.flex.events.ObjectDataEvent"/>
     <classEntry path="com.philemonworks.flex.helpers.ClipboardHelper"/>
-    <classEntry path="com.philemonworks.flex.helpers.Defend"/>
+    <classEntry path="com.philemonworks.flex.helpers.Pre"/>
     <classEntry path="com.philemonworks.flex.helpers.StringHelper"/>
     <classEntry path="com.philemonworks.flex.helpers.UIComponentHelper"/>
     <classEntry path="com.philemonworks.flex.navigation.PageNavigationBar"/>
