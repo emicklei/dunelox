@@ -16,7 +16,6 @@
 package com.philemonworks.flex.util
 {
 	import mx.formatters.DateFormatter;
-	import com.philemonworks.flex.nls.NLS;
 	
 	/**
 	 * Day represents the day part of a Date, i.e. no Time information.
@@ -75,10 +74,10 @@ package com.philemonworks.flex.util
 			return formatter.format(this.toDate())
 		}		
 		/**
-		 * Format using NLS
+		 * Format using YYYY-MM-DD
 		 */
 		public function toString():String {
-			return NLS.getDateFormatter().format(this.toDate())
+			return this.toXMLString()
 		}
 		public function toDate():Date {
 			return new Date(year,month,dayInMonth)

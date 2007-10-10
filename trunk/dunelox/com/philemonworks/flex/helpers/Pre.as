@@ -15,33 +15,28 @@
 */
 package com.philemonworks.flex.helpers
 {
-	public class Defend
+	public class Pre
 	{
-		public static function notNull(value:*):void {
+		public static function notNull(value:*,variable:String = null):void {
 			if (value == null) {
 				// throw new Error
-				trace ('[Defend] null value' + Defend.sourceOfAttack()) 
+				var arg:String = variable == null ? '' : ' of variable ['+variable+']'
+				trace ('[Precondition FAILED] null value' + arg + Pre.sourceOfAttack()) 
 			}
 		}
-		public static function notEmpty(value:String):void {
+		public static function notEmpty(value:String,variable:String = null):void {
 			if (value == null) {
 				// throw new Error
-				trace ('[Defend] null value' + Defend.sourceOfAttack()) 
+				var arg:String = variable == null ? '' : ' of variable ['+variable+']'
+				trace ('[Precondition FAILED] null value' + arg + Pre.sourceOfAttack()) 
 			}
 			if (value.length == 0) {
 				// throw new Error
-				trace ('[Defend] empty string' + Defend.sourceOfAttack()) 
+				var arg:String = variable == null ? '' : ' of variable ['+variable+']'
+				trace ('[Precondition FAILED] empty string' + arg + Pre.sourceOfAttack()) 
 			}			
 		}	
-		
-		public static function againstNull(value:*, variableName:String = null):void {
-			if (value == null) {
-				var msg:String = '[Defend] null value'
-				if (variableName != null) msg = msg + ' for [' + variableName + ']'
-				trace (msg + Defend.sourceOfAttack()) 
-			}
-		}		
-			
+				
 		private static function sourceOfAttack():String {
 			var traceString:String;
 			try {

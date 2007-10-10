@@ -1,5 +1,5 @@
 /*
-   Copyright [2007] Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2007 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -74,6 +74,14 @@ package com.philemonworks.flex.nls
 		public static function date(someDay:Date):String {
 			return getDateFormatter().format(someDay);
 		}
+		/**
+		 * Gets a formatted Day using the ResourceBundle for the current language.
+		 */		
+		public static function day(someDay:Day):String {
+			// TODO
+			return someDay.toString();
+		}
+		
 		/**
 		 * Gets a formatted monetary amount using the ResourceBundle for the current language.
 		 */		
