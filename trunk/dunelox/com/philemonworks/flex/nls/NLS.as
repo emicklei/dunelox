@@ -21,6 +21,7 @@ package com.philemonworks.flex.nls
 	import mx.controls.dataGridClasses.DataGridColumn;
 	import com.philemonworks.flex.util.XMLHelper;
 	import com.philemonworks.flex.util.Day;
+	import com.philemonworks.flex.helpers.Pre;
 	/**
 	 * NLS is a class that encapsulates internationalized values for string keys.
 	 * NLS provides convenience methods to access text (with defaults),dates,money,phone formatter values
@@ -46,6 +47,7 @@ package com.philemonworks.flex.nls
 		 * @param absentValue String if not null and no text was found for key then return this value
 		 */
 		public static function text(key:String,absentValue:String = null):String {
+			Pre.notNull(key,'key')
 			if (nlsProvider == null) {
 				trace("NLS: no provider")
 				return absentValue
