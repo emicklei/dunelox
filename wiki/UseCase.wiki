@@ -1,0 +1,10 @@
+#summary Mediator that implements the flow of application and user interactions
+
+= Introduction =
+
+=== Examples ===
+Login
+Logout
+SearchAccount
+NewEditDestroyAccount
+AssignAccountToGroup
