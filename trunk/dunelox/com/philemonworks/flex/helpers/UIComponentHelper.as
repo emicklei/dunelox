@@ -23,6 +23,9 @@ package com.philemonworks.flex.helpers
 	import mx.controls.dataGridClasses.DataGridColumn;
 	import mx.utils.ColorUtil;
 	import mx.controls.Alert;
+	import mx.core.Application;
+	import com.philemonworks.flex.events.ObjectDataEvent;
+	import com.philemonworks.flex.nls.NLS;
 	
 	public class UIComponentHelper
 	{
@@ -78,6 +81,17 @@ package com.philemonworks.flex.helpers
 		    } catch (error:Error) {
 		    	MessageDialog.showError(null,"Unable to print")
 		    }		    			
-		}	
+		}
+		/**
+		 * Dispatch an event of type notify with a message found by a key using NLS
+		 * This can be used by an application to display a notification to the user from any component in the hierarchy.
+		 * 
+		 * @param nls_key String
+		 * @param args    Array optional string parameters for the message to bind
+		 */
+		public static function notify(nls_key:String, args:Array = null):void {
+			var message:String = args == null? NLS.text(nls_key) : NLS.expandText(nls_key,args)
+			Application.application.dispatchEvent(new ObjectDataEvent("notify",message))
+		}			
 	}
 }
