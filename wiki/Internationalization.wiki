@@ -23,10 +23,15 @@ NLS.expandText('label.filenotfound', '/where.doc') => 'File /where.doc cannot be
 NLS.date(new Date()) =>  1967/11/20
 Alert.show(NLS.text('msg.notauthorized')) => shows an alert box with an internationalized message
 }}}
+NLS can handle missing entries for keys:
+{{{
+NLS.text('column.name') => returns 'columns.name' if that key is absent
+NLS.text('column.name', 'Name') => returns 'Name' if that key is absent
+}}}
 Examples of using NLS in an MXML component:
 {{{
 <mx:Label text={NLS.text('label.name')} />
-<mx:DataGridColumn headerText="{NLS.text('email','email')}" dataField="email" />
+<mx:DataGridColumn headerText="{NLS.text('column.email','Email')}" dataField="email" />
 }}}
 = Tools =
 To keep track of the keys used in NLS expressions you can install the NLSRecorder. The recorder will collect the list of keys for which no entry was found in the resource (nls.properties). This list can be viewed using the NLSRecordingView. Typically, the recorder is installed when the application is run in debug-mode.
