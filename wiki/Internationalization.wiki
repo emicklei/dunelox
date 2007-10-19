@@ -14,7 +14,7 @@ nls.dateformat=YYYY/MM/DD
 }}}
 Set the provider of NLS to US by:
 {{{
-NLS.setProvider(new NLSProviderUS())
+NLS.setProvider(new NLSResourceBundle_US())
 }}}
 Then the following expressions can be used:
 {{{
