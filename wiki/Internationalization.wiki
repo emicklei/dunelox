@@ -6,7 +6,7 @@ Flex provides the class ResourceBundle to access properties stored in a file as 
 
 = Examples =
 
-Suppose you have to the resource nls.us.properties with contents:
+Suppose you have to the resource nls_locale_us.properties with contents:
 {{{
 label.file=File
 label.filenotfound=File {0} cannot be found
@@ -34,7 +34,7 @@ Examples of using NLS in an MXML component:
 <mx:DataGridColumn headerText="{NLS.text('column.email','Email')}" dataField="email" />
 }}}
 = Tools =
-To keep track of the keys used in NLS expressions you can install the NLSRecorder. The recorder will collect the list of keys for which no entry was found in the resource (nls.properties). This list can be viewed using the NLSRecordingView. Typically, the recorder is installed when the application is run in debug-mode.
+To keep track of the keys used in NLS expressions you can install the NLSRecorder. The recorder will collect the list of keys for which no entry was found in the resource (nls_locale_xx.properties). This list can be viewed using the NLSRecordingView. Typically, the recorder is installed when the application is run in debug-mode.
 {{{
 var isDebug:Boolean = Application.application.url.indexOf('debug') > 0
 if (isDebug) {
