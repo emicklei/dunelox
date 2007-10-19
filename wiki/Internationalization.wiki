@@ -10,7 +10,7 @@ Suppose you have to the resource nls.us.properties with contents:
 {{{
 label.file=File
 label.filenotfound=File {0} cannot be found
-nls.dateformat=YYYY/MM/DD
+nls-format-date=YYYY/MM/DD
 }}}
 Set the provider of NLS to language US by:
 {{{
