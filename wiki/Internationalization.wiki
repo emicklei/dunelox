@@ -26,5 +26,11 @@ An example of using NLS in an MXML component is:
 {{{
 <mx:Label text={NLS.text('label.name')} />
 }}}
+= Tools =
+To keep track of the keys using in NLS expression you can install the NLSRecorder and use its NLSRecordingView. The recorder will collect the list of keys for which no entry was found in the resource (nls.properties). This list can be viewed using the NLSRecordingView. Typically, this view is opened when the application is run in debug-mode.
+{{{
+NLS.setProvider(new NLSRecorder(new NLSResourceBundle_US())
+}}}
+
 ===Tips===
 * Define a provider for your own language by subclassing NLSProvider
