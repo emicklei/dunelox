@@ -9,9 +9,64 @@ Class !UseCase can be used to implement the mediation process in which user inte
 
 [ picture ]
 
+=== Class Template ===
+{{{
+[Bindable]
+public class YourUseCase extends UseCase
+{
+	override protected function begin():void {
+		// do not forget to call this.end() in the last step of the usecase when completed with success
+		// or to call this.stop() when the usecase completed with a failure
+	}	
+	override protected function checkPreconditions():Boolean {
+		// check all variable values, raise exceptions or show warnings if values are not as specified
+		// return true if conditions are met
+	}	
+}
+}}}
+
+
 === Examples ===
-Login
-Logout
-SearchAccount
-NewEditDestroyAccount
-AssignAccountToGroup
+{{{
+	public class Login extends UseCase
+	{
+		private var _login:String
+		private var _dialog:LoginDialog;		
+
+		override protected function begin():void {
+			_dialog = LoginDialog.newFor(this.view)
+			_dialog.title = NLS.text('title.login')
+			_dialog.show(loginOkHandler)
+		}
+		private function loginOkHandler(dialog:LoginDialog):void {
+			this.tryLogin(dialog.userText.text, dialog.passwordText.text)
+		}
+		private function tryLogin(user:String,password:String):void {
+			_login = user
+			LoginController(ApplicationContext.current.get("LoginController")).login(user,password,replyHandler)	
+		}
+		private function replyHandler(reply:Reply):void {
+			if (_dialog != null) _dialog.close()
+			if ("denied" == reply.status) {
+				MessageDialog.showInformation(
+					this.view,
+					NLS.expandText('msg.access.denied', [_login] ),
+					handleOkDialog)	
+				return				
+			}
+			this.end()
+		}
+		private function handleOkDialog(dialog:MessageDialog):void {
+			dialog.close()
+			this.begin()
+		}		
+	}
+}}}
+To start the Login usecase in the Application component:
+{{{
+new Login().start(this, handleLoginOk)
+
+private function handleLoginOk(uc:Login):void {
+     current_user = uc.login
+}
+}}{
