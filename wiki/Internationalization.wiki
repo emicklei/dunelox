@@ -12,7 +12,7 @@ label.file=File
 label.filenotfound=File {0} cannot be found
 nls.dateformat=YYYY/MM/DD
 }}}
-Set the provider of NLS to US by:
+Set the provider of NLS to language US by:
 {{{
 NLS.setProvider(new NLSResourceBundle_US())
 }}}
@@ -21,15 +21,26 @@ Then the following expressions can be used:
 NLS.text('label.file') => 'File'
 NLS.expandText('label.filenotfound', '/where.doc') => 'File /where.doc cannot be found'
 NLS.date(new Date()) =>  1967/11/20
+Alert.show(NLS.text('msg.notauthorized')) => shows an alert box with an internationalized message
 }}}
-An example of using NLS in an MXML component is:
+Examples of using NLS in an MXML component:
 {{{
 <mx:Label text={NLS.text('label.name')} />
+<mx:DataGridColumn headerText="{NLS.text('email','email')}" dataField="email" />
 }}}
 = Tools =
 To keep track of the keys used in NLS expressions you can install the NLSRecorder. The recorder will collect the list of keys for which no entry was found in the resource (nls.properties). This list can be viewed using the NLSRecordingView. Typically, the recorder is installed when the application is run in debug-mode.
 {{{
-NLS.setProvider(new NLSRecorder(new NLSResourceBundle_US())
+var isDebug:Boolean = Application.application.url.indexOf('debug') > 0
+if (isDebug) {
+  NLS.setProvider(new RecordingNLSProvider(new NLSResourceBundle_US()))
+} else {
+  NLS.setProvider(new NLSResourceBundle_US()) 
+}
+}}}
+Then you can open the View:
+{{{
+RecordingNLSWindow.show(Application.application as DisplayObject)
 }}}
 
 ===Tips===
