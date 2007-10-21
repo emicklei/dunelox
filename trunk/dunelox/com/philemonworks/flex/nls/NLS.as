@@ -47,9 +47,12 @@ package com.philemonworks.flex.nls
 		 * @param absentValue String if not null and no text was found for key then return this value
 		 */
 		public static function text(key:String,absentValue:String = null):String {
-			Pre.notNull(key,'key')
+			if (key == null) {
+				trace("[NLS WARNING] key is null")
+				return absentValue				
+			}
 			if (nlsProvider == null) {
-				trace("NLS: no provider")
+				trace("[NLS WARNING] no provider")
 				return absentValue
 			}
 			return nlsProvider.getString(key,absentValue)
@@ -63,9 +66,13 @@ package com.philemonworks.flex.nls
 		 * @param parameters Array collection of String
 		 */
 		public static function expandText(key:String,parameters:Array):String {
+			if (key == null) {
+				trace("[NLS WARNING] key is null")
+				return null				
+			}
 			if (nlsProvider == null) {
-				trace("NLS: no provider")
-				return key
+				trace("[NLS WARNING] no provider")
+				return null
 			}
 			var value:String = nlsProvider.getString(key,key)
 			return StringHelper.substituteParameters(value,parameters)
