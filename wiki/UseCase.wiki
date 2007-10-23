@@ -7,7 +7,7 @@ Building an application requires implementing all Usecases. View components are 
 
 Class !UseCase can be used to implement the mediation process in which user interaction, information retrieval and information presentation is coordinated. Class !UseCase provides an implementation of a coding pattern to facilitate this. 
 
-[ picture ]
+[http://s3browse.com/getObject/public.philemonworks.com/Dunelox_UseCase.png]
 
 === Class Template ===
 {{{
