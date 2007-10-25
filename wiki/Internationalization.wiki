@@ -6,7 +6,7 @@ Flex provides the class ResourceBundle to access properties stored in a file as 
 
 = Examples =
 
-Suppose you have to the resource nls_locale_us.properties with contents:
+Suppose you have to the resource *nls_locale_us.properties* with contents:
 {{{
 label.file=File
 label.filenotfound=File {0} cannot be found
