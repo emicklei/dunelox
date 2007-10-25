@@ -1,4 +1,4 @@
-#guidelines in choosing NLS keys and applying NLS in general
+#summary guidelines in choosing NLS keys and applying NLS in general
 
 = Introduction =
 
