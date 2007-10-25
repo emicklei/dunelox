@@ -11,7 +11,7 @@ NLS messages are stored in a resource file with the following structure:
 key=message
 }}}
 Both the *key* and *message* are text entries.
-Following any convention in choosing these keys and messages will help you maintain these resources. Using the "dotted prefix" notation is practice to organize the keys. Examples are:
+Following any convention in choosing these keys and messages will help you maintain these resources. Using the "dotted prefix" notation is a practice to organize the keys. Examples are:
 {{{
 label.student=Student:
 label.course=Course:
@@ -20,4 +20,3 @@ title.form.subject=Edit Subject
 msg.student.notfound=No such Student registered
 msg.exam.timeexpired=Time to finish this exam has expired
 }}}
-
