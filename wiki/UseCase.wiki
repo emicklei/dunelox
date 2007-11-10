@@ -60,11 +60,11 @@ public class YourUseCase extends UseCase
 		}		
 	}
 }}}
-To start the Login usecase in the Application component:
+To start the Login usecase in the Application component.
 {{{
 new Login().start(this, handleLoginOk)
 
 private function handleLoginOk(uc:Login):void {
      current_user = uc.login
 }
-}}{
+}}}
