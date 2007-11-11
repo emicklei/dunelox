@@ -4,7 +4,7 @@
 
 Flex provides the class ResourceBundle to access properties stored in a file as part of the compiled application (SWF). To simplify this access and to provide runtime changing a language, the class NLS can be used.
 
-= Examples =
+== Examples ==
 
 Suppose you have to the resource *nls_locale_us.properties* with contents:
 {{{
@@ -33,7 +33,7 @@ Examples of using NLS in an MXML component:
 <mx:Label text={NLS.text('label.name')} />
 <mx:DataGridColumn headerText="{NLS.text('column.email','Email')}" dataField="email" />
 }}}
-= Tools =
+== Tools ==
 To keep track of the keys used in NLS expressions you can install the NLSRecorder. The recorder will collect the list of keys for which no entry was found in the resource (nls_locale_xx.properties). This list can be viewed using the NLSRecordingView. Typically, the recorder is installed when the application is run in debug-mode.
 {{{
 var isDebug:Boolean = Application.application.url.indexOf('debug') > 0
@@ -47,6 +47,7 @@ Then you can open the View:
 {{{
 RecordingNLSWindow.show(Application.application as DisplayObject)
 }}}
-
+== Recorder Example ==
+[http://s3browse.com/getObject/public.philemonworks.com/nls_recorder_status.png]
 ===Tips===
 * Define a provider for your own language by subclassing NLSProvider
