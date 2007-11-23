@@ -27,10 +27,6 @@
 			labelField="{labelField}" 
 			height="100%" width="100%">
 		</mx:List>
-		<mx:HBox>
-			<mx:Label text="{NLS.text('button.search')}"/>		
-			<mx:TextInput width="100%"/>
-		</mx:HBox>
 		<mx:HBox horizontalAlign="center" width="100%">
 			<mx:Button label="{NLS.text('button.ok')}" click="doOk()" />		
 			<mx:Button label="{NLS.text('button.cancel')}" click="closeThis()"/>
