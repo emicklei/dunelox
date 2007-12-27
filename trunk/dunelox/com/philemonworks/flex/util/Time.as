@@ -85,7 +85,7 @@ package com.philemonworks.flex.util
 		}
 		
 		public function toString():String {
-			return two(hours)+":"+two(minutes)+":"+two(seconds)
+			return String(hours)+":"+two(minutes)+":"+two(seconds)
 		}
 		private function two(value:int):String {
 			return value < 10 ? "0" + String(value) : String(value)
