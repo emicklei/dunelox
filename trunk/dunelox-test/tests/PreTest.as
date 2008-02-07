@@ -7,8 +7,13 @@ package tests
 	{
 		public function testNotNull():void {
 			var somevar:Object = null
-			Pre.notNull(null)
-			Pre.notNull(null,'somevar')
+			Pre.notNull("notnull")
+			try {
+				Pre.notNull(null,'somevar')
+				fail("should have raised an error")
+			} catch (error:Error) {
+				//  ok
+			}
 		}
 	}
 }
