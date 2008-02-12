@@ -3,6 +3,7 @@ package tests
 	import flexunit.framework.TestCase;
 	import com.philemonworks.flex.nls.NLS;
 	import com.philemonworks.flex.nls.NLSResourceBundle_US;
+	import com.philemonworks.flex.util.Day;
 
 	public class NLSTest extends TestCase
 	{
@@ -24,6 +25,11 @@ package tests
 		}
 		public function testParam0():void {
 			assertEquals('this is parameter zero',NLS.expandText('param0',['zero']))
+		}
+		public function testFormatDay():void {
+			var now:Day = new Day()
+			var nowString:String = NLS.day(now)
+			assertNotNull(nowString)
 		}
 	}
 }
