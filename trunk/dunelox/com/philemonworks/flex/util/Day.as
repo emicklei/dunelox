@@ -16,11 +16,11 @@
 package com.philemonworks.flex.util
 {
 	import mx.formatters.DateFormatter;
-	
+		
 	/**
 	 * Day represents the day part of a Date, i.e. no Time information.
 	 * 
-	 * @author ernestt.micklei@philemonworks.com
+	 * @author ernest.micklei@philemonworks.com
 	 */
 	public class Day
 	{
@@ -37,7 +37,7 @@ package com.philemonworks.flex.util
 				this.init(int(parts[0]),int(parts[1])-1,int(parts[2]))
 			} else {
 				var today:Date = new Date()
-				this.init(today.fullYear,today.month,today.day)		
+				this.init(today.fullYear,today.month,today.date)		
 			}
 		}
 		/**
@@ -54,16 +54,9 @@ package com.philemonworks.flex.util
 		}
 		public static function fromDate(dateTime:Date):Day {
 			var newDay:Day = new Day()
-			newDay.init(dateTime.fullYear,dateTime.month,dateTime.day)		
+			if (dateTime == null) return newDay
+			newDay.init(dateTime.fullYear,dateTime.month,dateTime.date)		
 			return newDay
-		}
-		/**
-		 * Parse using format of NLS
-		 */
-		public static function parse(input:String):Day {
-			if (input.length == 0) return new Day()			
-			// return NLS.getDateFormatter().format(input)
-			return new Day()
 		}		
 		/**
 		 * Format using YYYY-MM-DD
@@ -84,6 +77,6 @@ package com.philemonworks.flex.util
 		}
 		public function setDate(dateTime:Date):void {
 			this.init(dateTime.fullYear,dateTime.month,dateTime.date)					
-		}		
-	}	
+		}
+	}
 }

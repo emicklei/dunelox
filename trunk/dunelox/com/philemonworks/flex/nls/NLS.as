@@ -22,6 +22,7 @@ package com.philemonworks.flex.nls
 	import com.philemonworks.flex.util.XMLHelper;
 	import com.philemonworks.flex.util.Day;
 	import com.philemonworks.flex.helpers.Pre;
+	import mx.controls.DateField;
 	/**
 	 * NLS is a class that encapsulates internationalized values for string keys.
 	 * NLS provides convenience methods to access text (with defaults),dates,money,phone formatter values
@@ -84,6 +85,12 @@ package com.philemonworks.flex.nls
 			return getDateFormatter().format(someDay);
 		}
 		/**
+		 * Gets a date by parsing the dateString using the DateFormatter pattern
+		 */
+		public static function parseDate(dateString:String):Date {
+			return DateField.stringToDate(dateString,text(NLS_KEY_DATE,"YYYY-MM-DD"))
+		}
+		/**
 		 * Gets a formatted Day using the ResourceBundle for the current language.
 		 */		
 		public static function day(someDay:Day):String {
@@ -128,13 +135,13 @@ package com.philemonworks.flex.nls
 		public static function getDateFormatter():DateFormatter {
 			if (NLS_DateFormatter != null) return NLS_DateFormatter
 		    var formatter:DateFormatter = new DateFormatter();
-			formatter.formatString = text(NLS_KEY_DATE,"YYYY-DD-MM")
+			formatter.formatString = text(NLS_KEY_DATE,"YYYY-MM-DD")
 			return (NLS_DateFormatter = formatter)			
 		}
 		public static function getDateTimeFormatter():DateFormatter {
 			if (NLS_DateTimeFormatter != null) return NLS_DateTimeFormatter
 		    var formatter:DateFormatter = new DateFormatter();
-			formatter.formatString = text(NLS_KEY_DATETIME,"YYYY-DD-MM HH:NN");
+			formatter.formatString = text(NLS_KEY_DATETIME,"YYYY-MM-DD HH:NN");
 			return (NLS_DateTimeFormatter = formatter);			
 		}		
 		/**
