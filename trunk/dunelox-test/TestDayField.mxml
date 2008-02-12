@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:controls="com.philemonworks.flex.controls.*" creationComplete="init()">
-	<controls:DayField id="field" day="{day}" y="0" x="0" toolTip="yyyy-mm-dd"/>
-	<mx:Button x="10" y="30" label="Apply" click="doApply()"/>
+	
+	<controls:DayField id="field" y="10" x="10" toolTip="yyyy-mm-dd" />
+	
 	<mx:Script>
 		<![CDATA[
+			import com.philemonworks.flex.nls.NLS;
 			import com.philemonworks.flex.util.Day;
 
 			[Bindable]
@@ -14,9 +16,11 @@
 			}
 			
 			private function doApply():void {
-				trace(field.day)
+				result.text = NLS.day(field.day)
 			}
 		]]>
 	</mx:Script>
+	<mx:Button label="Apply" click="doApply()" x="10" y="54"/>
+	<mx:Text id="result" x="10" y="84" text="Text" width="159"/>
 	
 </mx:Application>
