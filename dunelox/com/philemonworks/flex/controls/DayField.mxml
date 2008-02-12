@@ -1,34 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" horizontalGap="0">
-	<mx:TextInput id="dayInput"/>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" horizontalGap="0" creationComplete="init()">
+	<mx:TextInput id="dayInput" focusOut="dateEnteredChanged()"/>
 	<mx:Button id="pickBtn" click="doPickDate()" />
 	<mx:DateChooser id="dateChooser" visible="false" change="dateChosenChanged()" yearNavigationEnabled="true"/>
 	<mx:Script>
 		<![CDATA[
+			import com.philemonworks.flex.helpers.DateHelper;
 			import mx.formatters.DateFormatter;
 			import mx.controls.DateField;
 			import mx.controls.DateChooser;
 			import com.philemonworks.flex.nls.NLS;
 			import com.philemonworks.flex.util.Day;
 			
-			public function set day(newDay:Day):void {
-				dayInput.text = day.toString()
-			}			
-			public function get day():Day {
-				return Day.parse(dayInput.text)
+			[DefaultBindingProperty(source="selectedDay", destination="selectedDay")]
+			[Event(name="change", type="com.philemonworks.events.ObjectDataEvent")]
+			
+			[Bindable]
+			public var day:Day = new Day();
+			[Bindable]
+			public var selectedDay:Day = new Day();
+			[Bindable]
+			public var yearNavigationEnabled:Boolean = true;
+			
+			private function init():void {
+				this.updateInput()
+			}
+			private function updateInput():void {
+				dayInput.text = NLS.getDateFormatter().format(day.toDate())
 			}	
-			public function doPickDate():void {	
+			private function doPickDate():void {	
 				pickBtn.width = 0
-				var now:Date = new Date() 			
+				var now:Date = day.toDate()	
 				dateChooser.visible = true
 			}		
-			public function undoPickDate():void {
+			private function undoPickDate():void {
 				pickBtn.width = pickBtn.measuredWidth
 				dateChooser.visible = false
 			}	
-			public function dateChosenChanged():void {
+			private function dateEnteredChanged():void {
+				var inputDate:Date = NLS.parseDate(dayInput.text);
+				day = Day.fromDate(inputDate)
+				trace(day.toXMLString())
+			}
+			private function dateChosenChanged():void {
 				dayInput.text = NLS.getDateFormatter().format(dateChooser.selectedDate)
 				this.undoPickDate()
+				this.dateEnteredChanged()
 			}			
 		]]>
 	</mx:Script>
