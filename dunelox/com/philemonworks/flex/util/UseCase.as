@@ -89,5 +89,12 @@ package com.philemonworks.flex.util
 		protected function end():void {
 			if (_endHandler != null) _endHandler.call(this,this)
 		}
+		/**
+		 * A finished usecase might want to provide its result using a generic accessor.
+		 * In that case, that subclass should override this definition.
+		 */ 
+		public function get data():Object {
+			return null
+		}
 	}
 }

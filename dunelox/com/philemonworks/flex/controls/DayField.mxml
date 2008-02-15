@@ -5,7 +5,6 @@
 	<mx:DateChooser id="dateChooser" visible="false" change="dateChosenChanged()" yearNavigationEnabled="true"/>
 	<mx:Script>
 		<![CDATA[
-			import com.philemonworks.flex.helpers.DateHelper;
 			import mx.formatters.DateFormatter;
 			import mx.controls.DateField;
 			import mx.controls.DateChooser;
