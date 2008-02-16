@@ -44,9 +44,9 @@ package com.philemonworks.flex.helpers
 				}
 				System.setClipboard(lines)
 			} else { // complete table contents
-				for (var r:int=0;r<grid.dataProvider.length;r++) {
-					if (r>0) lines += "\r\n"
-					lines += rowToStringFromDataGrid(grid.dataProvider[r],grid)
+				for (var s:int=0;s<grid.dataProvider.length;s++) {
+					if (s>0) lines += "\r\n"
+					lines += rowToStringFromDataGrid(grid.dataProvider[s],grid)
 				}
 				System.setClipboard(lines)
 			}
