@@ -120,7 +120,11 @@ package com.philemonworks.flex.navigation
 		}
 
 		public function dataReceived(data:XML):void {			
-			_pageLoaded.call(this,data);
+			_pageLoaded.call(this,data)
+			this.updatePageControls()
+		}
+		
+		public function updatePageControls():void {
 			// update pages on the navigation bar
 			_bar.updatePageControlsByRows(firstRowOnPage,rowsPerPage,totalRows);
 		}
@@ -141,6 +145,7 @@ package com.philemonworks.flex.navigation
 			firstRowOnPage = from
 			lastRowOnPage = to
 			totalRows = total
+			this.updatePageControls()			
 		}
     	public function updateSortInfo(sortkey:String,sortmethod:String):void {
     		sortkey = sortkey
