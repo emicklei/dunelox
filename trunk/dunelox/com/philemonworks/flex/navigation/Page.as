@@ -31,5 +31,18 @@ package com.philemonworks.flex.navigation
 		public var sortMethod:String;
 		public var searchPattern:String;
 		public var data:XMLList;
+		
+		/**
+		 * Page with fixed data set.
+		 */
+		public function Page(newData:XMLList = null) {
+			super()
+			if (newData != null) {
+				this.data = newData
+				this.from = 1
+				this.total = newData.length()
+				this.to = this.total
+			}	
+		}
 	}
 }
