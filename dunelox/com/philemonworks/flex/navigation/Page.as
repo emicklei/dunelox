@@ -44,5 +44,8 @@ package com.philemonworks.flex.navigation
 				this.to = this.total
 			}	
 		}
+		public function isEmpty():Boolean {
+			return this.total == 0
+		}
 	}
 }
