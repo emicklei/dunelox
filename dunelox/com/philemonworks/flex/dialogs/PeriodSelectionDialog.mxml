@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phw:BasicDialog
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:phw="com.philemonworks.flex.dialogs.*" 
+	layout="absolute" width="300" height="160" xmlns:controls="com.philemonworks.flex.controls.*"
+	showCloseButton="true" >
+	
+	<mx:Form width="100%" height="100%" >
+		<mx:FormItem label="{NLS.text('label.period.from')}" >
+			<controls:DayField id="periodBegin_field" day="{periodBegin}" />
+		</mx:FormItem>
+		<mx:FormItem label="{NLS.text('label.period.to')}" >
+			<controls:DayField id="periodEnd_field" day="{periodEnd}" />
+		</mx:FormItem>
+		<mx:HBox horizontalAlign="center" width="100%">
+			<mx:Button id="btnOk" label="Ok" click="doOk()" />		
+			<mx:Button id="btnCancel" label="Cancel" click="closeThis()"/>
+		</mx:HBox>
+	</mx:Form>
+		
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.util.Day;
+			import com.philemonworks.flex.nls.NLS;
+			import mx.managers.PopUpManager;
+			
+			[Bindable]
+			public var periodBegin:Day = new Day();
+			[Bindable]
+			public var periodEnd:Day = new Day();
+			
+			public static function newFor(parent:DisplayObject):PeriodSelectionDialog {
+				return PeriodSelectionDialog(PopUpManager.createPopUp(parent, PeriodSelectionDialog,true));	
+			}
+			override protected function validateOk():Boolean {
+				periodBegin = periodBegin_field.day
+				periodEnd = periodEnd_field.day
+				if (!periodBegin_field.validate())  {
+					periodBegin_field.setFocus()
+					return false	
+				}
+				if (!periodEnd_field.validate())  {
+					periodEnd_field.setFocus()
+					return false	
+				}
+				if (periodBegin > periodEnd) {
+					MessageDialog.showWarning(this,"Start of period is past its end")
+					return false
+				}
+				return true
+			}
+		]]>
+	</mx:Script>
+	
+</phw:BasicDialog>
