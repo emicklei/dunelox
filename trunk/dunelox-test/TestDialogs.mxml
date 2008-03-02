@@ -11,6 +11,9 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import com.philemonworks.flex.nls.NLS;
+			import com.philemonworks.flex.nls.NLSResourceBundle_US;
+			import com.philemonworks.flex.dialogs.PeriodSelectionDialog;
 			import com.philemonworks.flex.dialogs.MessageDialog;
 			import com.philemonworks.flex.dialogs.BasicDialog;			
 			import com.philemonworks.flex.dialogs.LoginDialog;
@@ -62,6 +65,19 @@
 				dialog.setError("Sorry, your disk has crashed")
 				dialog.show()
 			}	
+			public function doSelectPeriod():void {
+				NLS.setProvider(new NLSResourceBundle_US())
+				var dialog:PeriodSelectionDialog = PeriodSelectionDialog.newFor(this)
+				dialog.title = "Select day range"
+				this.setup(dialog)				
+				dialog.show(periodSelected)
+			}			
+			public function periodSelected(dialog:PeriodSelectionDialog):void {
+				trace("period selected")
+				trace("period begin:" + dialog.periodBegin)
+				trace("period end:" + dialog.periodEnd)					
+			}
+			
 			public function setup(dialog:BasicDialog):void {
 				dialog.center = centerBox.selected
 				dialog.slide = slideBox.selected
@@ -74,4 +90,5 @@
 	<mx:Button x="316" y="31" label="Error" click="doError()" />
 	<mx:CheckBox x="27" y="95" label="Slide" id="slideBox" />
 	<mx:CheckBox x="27" y="121" label="Center" id="centerBox" />
+	<mx:Button x="379" y="33" label="Period" click="doSelectPeriod()" />	
 </mx:Application>
