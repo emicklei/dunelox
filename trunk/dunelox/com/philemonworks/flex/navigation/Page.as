@@ -35,17 +35,17 @@ package com.philemonworks.flex.navigation
 		/**
 		 * Page with fixed data set.
 		 */
-		public function Page(newData:XMLList = null) {
+		public function Page(newData:XMLList = null,fromIndex:Number = -1,toIndex:Number = -1, totalDataSize:Number = -1) {
 			super()
 			if (newData != null) {
 				this.data = newData
-				this.from = 1
-				this.total = newData.length()
-				this.to = this.total
+				this.from = fromIndex == -1 ? 1 : fromIndex
+				this.total = totalDataSize == -1 ? newData.length() : totalDataSize 
+				this.to = toIndex == -1 ? newData.length() : toIndex
 			}	
 		}
 		public function isEmpty():Boolean {
-			return this.total == 0
+			return this.data != null && this.data.length() == 0
 		}
 	}
 }
