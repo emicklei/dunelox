@@ -1,3 +1,0 @@
-#summary Link to published source code of current version
-
-[http://philemonworks.com/dunelox/ Source of Dunelox]
