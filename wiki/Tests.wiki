@@ -1,0 +1,12 @@
+#summary Links to mini test applications
+
+= Introduction =
+
+Every library should have a complete set of test cases. This project tries not to be an exception to this rule. Below you find links to little applications that test components of the Dunelox library and a TestSuite runner that performs all Unit testcases.
+
+Sources of these tests can be found in the source repository under the Flex project called "dunelox-test". You will need the testunit Flex library in order to compile and run them.
+
+= Details =
+ * [http://www.philemonworks.com/dunelox/tests/main.html All Unit Tests]
+ * [http://www.philemonworks.com/dunelox/tests/TestDialogs.html Testing Dialogs]
+ * [http://www.philemonworks.com/dunelox/tests/TestApplicationContext.html Test Application Context]
