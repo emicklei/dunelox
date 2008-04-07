@@ -1,0 +1,29 @@
+#summary basic login dialog
+
+= Introduction =
+
+Basic dialog that requests the user for its credentials (user-id and password).
+
+= Example =
+
+{{{
+public function doLogin():void {
+  var dialog:LoginDialog = LoginDialog.newFor(this)
+  dialog.slide = true
+  dialog.title = 'Authorization Required'
+  dialog.show(loginHandler)				
+}
+public function loginHandler(dialog:LoginDialog):void {
+  Alert.show("login accepted:" + dialog.userText.text)
+}
+}}}
+
+= Details =
+
+[NLS] labels used:
+ * label.pleaselogin
+ * label.userid
+ * label.password
+ * button.cancel
+ * button.ok
+ * link.forgottenpassword
