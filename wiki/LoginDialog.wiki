@@ -20,7 +20,7 @@ public function loginHandler(dialog:LoginDialog):void {
 
 = Details =
 
-[NLS] labels used:
+[Internationalization NLS] labels used:
  * label.pleaselogin
  * label.userid
  * label.password
