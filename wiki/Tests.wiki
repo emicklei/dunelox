@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Every library should have a complete set of test cases. This project tries not to be an exception to this rule. Below you find links to little applications that test components of the Dunelox library and a TestSuite runner that performs all Unit testcases.
+Every library should have a complete set of test cases. This project tries not to be an exception to this rule. Below you find links to little applications that test components of the Dunelox library and a !TestSuite runner that performs all Unit testcases.
 
 Sources of these tests can be found in the Source Repository under the Flex project called "dunelox-test". You will need the [http://code.google.com/p/as3flexunitlib/ flexunit library] in order to compile and run them.
 
