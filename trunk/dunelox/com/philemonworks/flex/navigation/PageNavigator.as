@@ -1,5 +1,5 @@
 /*
-   Copyright [2007] Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2007 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -143,8 +143,11 @@ package com.philemonworks.flex.navigation
 		}  
 		public function updatePageInfo(from:Number,to:Number,total:Number):void {
 			firstRowOnPage = from
-			lastRowOnPage = to
+			lastRowOnPage = to			
 			totalRows = total
+			if (lastRowOnPage == totalRows) {
+				this.rowsPerPage = total
+			}
 			this.updatePageControls()			
 		}
     	public function updateSortInfo(sortkey:String,sortmethod:String):void {
