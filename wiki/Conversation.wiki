@@ -1,4 +1,4 @@
-#summary Mediator that implements the flow of a application usecase.
+#summary Mediator that implements the flow of an application usecase.
 
 = Introduction =
 
