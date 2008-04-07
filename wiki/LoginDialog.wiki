@@ -1,4 +1,4 @@
-#summary basic login dialog
+#summary Basic Login Dialog
 
 = Introduction =
 
