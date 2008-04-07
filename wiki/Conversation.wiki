@@ -1,3 +1,7 @@
-#summary Mediator that implements the flow of application and user interactions.
+#summary Mediator that implements the flow of a application usecase.
 
-todo
+= Introduction =
+
+== Example ==
+
+== Details ==
