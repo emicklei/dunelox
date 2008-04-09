@@ -26,6 +26,6 @@ com
  * conversation is a package that holds all Conversation classes
  * test is the package where all Unit tests are defined
  * view is the package for all forms,dialogs and other visual components
- * MyAppInitializer is the class responsible to setting up the ApplicationContext
+ * !MyAppInitializer is the class responsible to setting up the ApplicationContext
 
 == Component Libraries ==
