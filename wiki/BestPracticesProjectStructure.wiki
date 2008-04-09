@@ -1,0 +1,30 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Whatever organization of resources you may choose, it helps to set standards for you and your project members. One possible organization is presented here.
+
+== Details ==
+
+Folder structure of MXML and ActionScript sources
+{{{
+com
+ company
+  <domain>
+   controller
+   helper
+   model
+   conversation
+   test
+   view
+ MyAppInitializer
+}}}
+* domain refers to your business entity such as *customer*,*order*,*account*
+* controller is the package for proxies to remote services
+* helper is a package for any helper classes related to this domain
+* model is a package for your DTO (data transfer object) of VO (value objects)
+* conversation is a package that holds all Conversation classes
+* test is the package where all Unit tests are defined
+* view is the package for all forms,dialogs and other visual components
+
+== Component Libraries ==
