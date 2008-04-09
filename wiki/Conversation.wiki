@@ -1,7 +1,7 @@
 #summary Mediator that implements the flow of application and user interactions
 
 = Introduction =
-As part of Requirements Gathering, Usecases describe the interaction between an actor and the system to be build. A user initiates (start) an Usecase through events from some UI control. In response to that, the system may request information from the user in order to complete (end) the Usecase. The Usecase specified the control of that flow.
+As part of Requirements Gathering, Usecases describe the interaction between an actor and the system to be build. A user initiates (start) an Usecase through events from some UI control. In response to that, the system may request information from the user in order to complete (end) the Usecase. A Usecase specifies the control of that flow.
 
 Building an application requires implementing all Usecases. View components are needed to execute usescases and will present the user with result information. In case of RIA, typically information is needed that is provided using application services.
 
