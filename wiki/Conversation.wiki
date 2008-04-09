@@ -5,7 +5,7 @@ As part of Requirements Gathering, Usecases describe the interaction between an 
 
 Building an application requires implementing all Usecases. View components are needed to execute usescases and will present the user with result information. In case of RIA, typically information is needed that is provided using application services.
 
-Class !Conversation can be used to implement the mediation process in which user interaction, information retrieval and information presentation is coordinated. Class !Conversation provides an implementation of a coding pattern to facilitate this. 
+Class *Conversation* can be used to implement the mediation process in which user interaction, information retrieval and information presentation is coordinated. Class *Conversation* provides an implementation of a coding pattern to facilitate this. 
 
 === Class Template ===
 {{{
