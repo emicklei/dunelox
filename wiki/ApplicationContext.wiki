@@ -11,6 +11,11 @@ ApplicationContext.current.put('shoppingcard', aShoppingCard)
 
 The second example uses the helper class !AppCtx. This helper has been introduced to deal with a Binding related warning by the compiler. When the expression "!ApplicationContext.current" is used in MXML, the compiler will warn you that assignments to "current" will not be visible. And because these assignment will never occur (Singleton), the warning can be ignored. However, if you really are aiming at getting your warnings down to zero then the *!AppCtx* can help you. Another benefit of using this class is that the code is more compact without losing readability.
 
+Initialize the context in your application:
+{{{
+AppCtx.put('country.names', ["Africa", "Bulgaria", "Chilli", "Denmark" ,...])
+}}}
+and use it in your visual components:
 {{{
 <mx:ComboBox dataProvider="{AppCtx.get('country.names')}" />
 }}}
