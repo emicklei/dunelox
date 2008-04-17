@@ -9,7 +9,6 @@ Class *Conversation* can be used to implement the mediation process in which use
 
 === Class Template ===
 {{{
-[Bindable]
 public class SomeActivity extends Conversation
 {
 	override protected function begin():void {
@@ -18,7 +17,7 @@ public class SomeActivity extends Conversation
 	}	
 	override protected function checkPreconditions():Boolean {
 		// check all variable values, raise exceptions or show warnings if values are not as specified
-		// return true if conditions are met
+		// return true if conditions are met, return false otherwise
 	}	
 }
 }}}
@@ -43,10 +42,6 @@ public class SomeActivity extends Conversation
 			_login = user
 			// ... handle user login request by invoking a remote service...
 			this.end()
-		}
-		private function handleOkDialog(dialog:MessageDialog):void {
-			dialog.close()
-			this.begin()
 		}		
 	}
 }}}
