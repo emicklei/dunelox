@@ -49,7 +49,7 @@ To start the Login conversation in the Application component.
 {{{
 new Login().start(this, handleLoginOk)
 
-private function handleLoginOk(uc:Login):void {
-     current_user = uc.login
+private function handleLoginOk(cvs:Login):void {
+     current_user = cvs.login
 }
 }}}
