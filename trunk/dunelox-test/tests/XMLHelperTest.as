@@ -7,6 +7,7 @@ package tests
 	import com.adobe.utils.DateUtil;
 	import mx.controls.Alert;
 	import com.philemonworks.flex.util.XMLHelper;
+	import mx.collections.XMLListCollection;
 	
 	public class XMLHelperTest extends TestCase 
 	{	
@@ -52,5 +53,14 @@ package tests
   			var s:String = XMLHelper.dateToString(d)
   			assertTrue(typedvalues["datetime-zulu"], s)
   		}  
+  		public function testSortXMLList():void {
+			  var xml:XML = <root>
+			  	<item name="C"/>
+			  	<item name="B"/>
+			  	<item name="A"/>
+			  	</root>
+  			var sorted_xml:XMLListCollection = XMLHelper.sort(xml.item,"@name")
+  			trace(sorted_xml.toXMLString())
+  		}
 	}
 }
