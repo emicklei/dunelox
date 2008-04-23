@@ -94,12 +94,13 @@ package com.philemonworks.flex.util
 		 	return stringsXML
 		 }
 		 /**
-		 * Return a new XMLListCollection with elements from the list, sorted by one of its attributes.
+		 * Return a new XMLListCollection with elements from the list, sorted by the field specs.
+		 * Example, "@name" will use the attribute "name" of the element for sorting.
 		 */
-		 public static function sort(list:XMLList,attribute:String,descending:Boolean=true):XMLListCollection {
+		 public static function sort(list:XMLList,fieldSpec:String,descending:Boolean=true):XMLListCollection {
 		 	var collection:XMLListCollection  = new XMLListCollection(list)
 		 	var sort:Sort = new Sort()	 	
-		 	sort.fields = [new SortField("@" + attribute,descending)]
+		 	sort.fields = [new SortField(fieldSpec,descending)]
 		 	collection.sort = sort
 		   	collection.refresh();
 		   	return collection
