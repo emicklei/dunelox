@@ -16,6 +16,9 @@
 package com.philemonworks.flex.util
 {
 	import com.adobe.utils.DateUtil;
+	import mx.collections.XMLListCollection;
+	import mx.collections.Sort;
+	import mx.collections.SortField;
 	
 	/**
 	 * XMLHelper is a utility class used to transform XML data into AS types and back.
@@ -89,6 +92,17 @@ package com.philemonworks.flex.util
 		 		if (strings[i] != null) stringsXML.appendChild(<s>{strings[i]}</s>)
 		 	}
 		 	return stringsXML
+		 }
+		 /**
+		 * Return a new XMLListCollection with elements from the list, sorted by one of its attributes.
+		 */
+		 public static function sort(list:XMLList,attribute:String,descending:Boolean=true):XMLListCollection {
+		 	var collection:XMLListCollection  = new XMLListCollection(list)
+		 	var sort:Sort = new Sort()	 	
+		 	sort.fields = [new SortField("@" + attribute,descending)]
+		 	collection.sort = sort
+		   	collection.refresh();
+		   	return collection
 		 }
 	} // class
 } // package
