@@ -28,7 +28,7 @@ package com.philemonworks.flex.helpers
 	 * 
 	 * 		AppCtx.get("myobject")
 	 * 
-	 * which is more compact but still readable.
+	 * which is more compact and still readable.
 	 */ 
 	public class AppCtx
 	{
@@ -38,5 +38,8 @@ package com.philemonworks.flex.helpers
 		public static function put(key:String,value:Object):void {
 			return ApplicationContext.current.put(key,value)
 		} 
+		public static function isDebug():Boolean {
+			return ApplicationContext.current.DEBUG
+		}
 	}
 }
