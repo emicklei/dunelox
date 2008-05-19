@@ -30,6 +30,7 @@
     <classEntry path="com.philemonworks.flex.nls.RecordingNLSProvider"/>
     <classEntry path="com.philemonworks.flex.nls.RecordingNLSWindow"/>
     <classEntry path="com.philemonworks.flex.util.ApplicationContext"/>
+    <classEntry path="com.philemonworks.flex.util.Conversation"/>
     <classEntry path="com.philemonworks.flex.util.Day"/>
     <classEntry path="com.philemonworks.flex.util.DisplayItem"/>
     <classEntry path="com.philemonworks.flex.util.HashCollection"/>
