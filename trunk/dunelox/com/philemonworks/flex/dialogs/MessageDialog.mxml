@@ -44,8 +44,8 @@
             [Embed(source="/assets/critical_icon.jpg")] 
             public static var criticalSymbol:Class;				
 			
-			public static function newFor(parent:DisplayObject):MessageDialog {
-				return MessageDialog(PopUpManager.createPopUp(parent, MessageDialog,true));	
+			public static function newFor(parent:Object):MessageDialog {
+				return MessageDialog(PopUpManager.createPopUp(parent as DisplayObject, MessageDialog,true));	
 			}
 			public function setConfirmation(msg:String):void {
 				msgText.text = msg
