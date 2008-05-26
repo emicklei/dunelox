@@ -35,14 +35,14 @@ package com.philemonworks.flex.helpers
 		 */
 		public static function copyFromDataGrid(grid:DataGrid):void {
 			var lines:String = ""			
-			if (grid.selectedItem != null) { // single row
-				System.setClipboard(rowToStringFromDataGrid(grid.selectedItem,grid))
-			} else if (grid.selectedIndices.length > 0) { // multiple rows
-				for (var r:int=0;r<grid.selectedIndices.length;r++) {
+			if (grid.selectedItems.length > 0) { // multiple rows
+				for (var r:int=0;r<grid.selectedItems.length;r++) {
 					if (r>0) lines += "\r\n"
 					lines += rowToStringFromDataGrid(grid.selectedItems[r],grid)
 				}
 				System.setClipboard(lines)
+			} else if (grid.selectedItem != null) { // single row
+				System.setClipboard(rowToStringFromDataGrid(grid.selectedItem,grid))
 			} else { // complete table contents
 				for (var s:int=0;s<grid.dataProvider.length;s++) {
 					if (s>0) lines += "\r\n"
