@@ -17,6 +17,13 @@ com
    conversation
    test
    view
+  <other-domain>
+   controller
+   helper
+   model
+   conversation
+   test
+   view
  MyAppInitializer
 }}}
  * domain refers to your business entity such as *customer*,*order*,*account*
