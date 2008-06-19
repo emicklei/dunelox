@@ -11,6 +11,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import com.philemonworks.flex.dialogs.DateSelectionDialog;
 			import com.philemonworks.flex.nls.NLS;
 			import com.philemonworks.flex.nls.NLSResourceBundle_US;
 			import com.philemonworks.flex.dialogs.PeriodSelectionDialog;
@@ -72,6 +73,15 @@
 				this.setup(dialog)				
 				dialog.show(periodSelected)
 			}			
+			public function doSelectDate():void {
+				var dialog:DateSelectionDialog = DateSelectionDialog.newFor(this)
+				dialog.title = "Select day range"
+				this.setup(dialog)				
+				dialog.show(dateSelected)
+			}
+			public function dateSelected(dialog:DateSelectionDialog):void {
+				trace("day selected:" + dialog.getDay())								
+			}			
 			public function periodSelected(dialog:PeriodSelectionDialog):void {
 				trace("period selected")
 				trace("period begin:" + dialog.periodBegin)
@@ -91,4 +101,5 @@
 	<mx:CheckBox x="27" y="95" label="Slide" id="slideBox" />
 	<mx:CheckBox x="27" y="121" label="Center" id="centerBox" />
 	<mx:Button x="379" y="33" label="Period" click="doSelectPeriod()" />	
+	<mx:Button x="450" y="33" label="Date" click="doSelectDate()" />
 </mx:Application>
