@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BasicDialog 
+	xmlns="com.philemonworks.flex.dialogs.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	width="240" height="240" showCloseButton="true">
+	
+	<mx:DateChooser id="dateChooser" width="100%" height="100%" change="doHandleSelection()"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.util.Day;
+			import mx.managers.PopUpManager;
+			import com.philemonworks.flex.nls.NLS;
+
+			public static function newFor(parent:DisplayObject):DateSelectionDialog {
+				return DateSelectionDialog(PopUpManager.createPopUp(parent, DateSelectionDialog,true));	
+			}		
+			private function doHandleSelection():void {
+				this.doOk()
+			}
+			public function getDate():Date {
+				return dateChooser.selectedDate
+			}	
+			public function getDay():Day {
+				var day:Day = new Day()
+				day.setDate(dateChooser.selectedDate)
+				return day
+			}
+		]]>
+	</mx:Script>		
+	
+</BasicDialog>

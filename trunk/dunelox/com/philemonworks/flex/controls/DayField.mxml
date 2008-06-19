@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" horizontalGap="0" creationComplete="init()" width="124" height="24" xmlns:util="com.philemonworks.flex.util.*">
 	<mx:TextInput id="dayInput" focusOut="dateEnteredChanged()" width="100"/>
-	<mx:Button id="pickBtn" width="24" enabled="false"/>
+	<mx:Button id="pickBtn" width="24" click="doChooseDate()" icon="{choosedateSymbol}"/>
 	
 	<!-- mx:StringValidator id="validator" source="{dayInput}" property="text" minLength="3" maxLength="10"
 		tooShortError="{NLS.text('message.day.tooshort')}" 
 		tooLongError="{NLS.text('message.day.toolong')}" 
 		trigger="{dayInput}" triggerEvent="focusOut" 
 		/-->
-		
-	<!-- DateChooser in its own window:  http://livedocs.adobe.com/labs/air/1/devappsflex/help.html?content=QuickStart_LaunchingWindows_1.html -->	
-	
 	<util:Observe source="{day}" handler="updateInput" />	
 		
 	<mx:Script>
 		<![CDATA[
+			import com.philemonworks.flex.dialogs.DateSelectionDialog;
 			import mx.utils.StringUtil;
 			import mx.events.CalendarLayoutChangeEvent;
 			import mx.formatters.DateFormatter;
@@ -22,6 +20,9 @@
 			import mx.controls.DateChooser;
 			import com.philemonworks.flex.nls.NLS;
 			import com.philemonworks.flex.util.Day;
+			
+            [Embed(source="/assets/choosedate_icon.jpg")] 
+            public static var choosedateSymbol:Class;					
 			
 			[Event(name="change", type="com.philemonworks.events.ObjectDataEvent")]
 			
@@ -47,12 +48,23 @@
 				} else {
 					var inputDate:Date = NLS.parseDate(input);
 					day = Day.fromDate(inputDate)
-					dayInput.text = NLS.day(day)
+					// dayInput.text = NLS.day(day)
 				}
 			}	
 			public function validate():Boolean {
 				return day != null
+			}
+			public function doChooseDate():void {
+				var dialog:DateSelectionDialog = DateSelectionDialog.newFor(this)
+				dialog.title = "Select day range"
+				dialog.show(handleDaySelected)
+				var here:Point = localToGlobal(new Point(pickBtn.x,pickBtn.y))
+				dialog.move(here.x,here.y)
 			}		
+			private function handleDaySelected(dialog:DateSelectionDialog):void {
+				day = dialog.getDay()
+				// dayInput.text = NLS.day(day)
+			}
 		]]>
 	</mx:Script>
 </mx:HBox>
