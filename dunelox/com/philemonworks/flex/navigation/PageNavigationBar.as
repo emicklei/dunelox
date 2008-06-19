@@ -37,6 +37,7 @@ package com.philemonworks.flex.navigation
 	 **/
 	public class PageNavigationBar extends HBox
 	{
+		private static var BUTTON_WIDTH:int = 19;
 		[Bindable]
 		public var requestedPage:int = 0; // means no selection
 		[Bindable]
@@ -58,7 +59,7 @@ package com.philemonworks.flex.navigation
 			this.removeAllChildren();
 			// previous
 			var prev:Button = new Button();
-			prev.width = 18;
+			prev.width = BUTTON_WIDTH;
 			prev.label = "<";
 			prev.toolTip = "Goto previous page";
 			prev.addEventListener(MouseEvent.CLICK,previousPageButtonClicked);
@@ -92,7 +93,7 @@ package com.philemonworks.flex.navigation
 		}
 		private function addNext(isEnabled:Boolean):void {
 			var next:Button = new Button();
-			next.width = 18;
+			next.width = BUTTON_WIDTH;
 			next.label = ">";
 			next.toolTip = "Goto next page";
 			next.addEventListener(MouseEvent.CLICK,nextPageButtonClicked);
@@ -114,7 +115,7 @@ package com.philemonworks.flex.navigation
 			var link:LinkButton = new LinkButton();	
 			
 			var label:String = i.toString();
-			link.width = 4+(12*label.length);	// TODO dubious width computation	
+			link.width = 5+(12*label.length);	// TODO dubious width computation	
 			link.label = i.toString();
 			link.addEventListener(MouseEvent.CLICK,pageButtonClicked);
 			if (isCurrent){
