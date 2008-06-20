@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Organizing your ActionScript classes en Flex components.
 
 = Introduction =
 
@@ -24,7 +24,7 @@ com
    conversation
    test
    view
- MyAppInitializer
+ MyAppInitializer.as
 }}}
  * domain refers to your business entity such as *customer*,*order*,*account*
  * controller is the package for proxies to remote services
