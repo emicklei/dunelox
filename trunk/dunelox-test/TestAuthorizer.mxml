@@ -29,9 +29,9 @@
 
 			public function doAuthorize():void {	
 				authorizer.currentRole = "admin"			
-				authorizer.allowEnabled(button,['admin'],'You are not allowed to delete this Account', 'Delete Account')				
+				//authorizer.allowEnabled(button,['admin'],'You are not allowed to delete this Account', 'Delete Account')				
 				authorizer.allowEditable(input,['admin'],'You are not allowed to change the password')
-				authorizer.allowEnabled(panel,['admin','manager'],'You are not allowed to change any of this')
+				//authorizer.allowEnabled(panel,['admin','manager'],'You are not allowed to change any of this')
 				authorizer.allowVisible(dateChooser,['engineer'])
 			}			
 			public function roleChanged(event:Event):void {
