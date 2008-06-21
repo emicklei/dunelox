@@ -16,21 +16,21 @@ package tests
 		}
 		public function testRoot():void {
 			auth.currentRole = "root"
-			assertTrue(auth.isAllowed("read"))
-			assertTrue(auth.isAllowed("write"))
-			assertTrue(auth.isAllowed("execute"))						
+			assertTrue(auth.isAllowedTo("read"))
+			assertTrue(auth.isAllowedTo("write"))
+			assertTrue(auth.isAllowedTo("execute"))						
 		}
 		public function testViewer():void {
 			auth.currentRole = "viewer"
-			assertTrue(auth.isAllowed("read"))
-			assertFalse(auth.isAllowed("write"))
-			assertFalse(auth.isAllowed("execute"))			
+			assertTrue(auth.isAllowedTo("read"))
+			assertFalse(auth.isAllowedTo("write"))
+			assertFalse(auth.isAllowedTo("execute"))			
 		}		
 		public function testEditor():void {
 			auth.currentRole = "editor"
-			assertTrue(auth.isAllowed("read"))
-			assertTrue(auth.isAllowed("write"))
-			assertFalse(auth.isAllowed("execute"))			
+			assertTrue(auth.isAllowedTo("read"))
+			assertTrue(auth.isAllowedTo("write"))
+			assertFalse(auth.isAllowedTo("execute"))			
 		}		
 	}
 }
