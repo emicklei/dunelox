@@ -15,6 +15,8 @@
 */ 
 package com.philemonworks.flex.access
 {
+	import com.philemonworks.flex.util.ApplicationContext;
+	
 	import mx.controls.DateField;
 	import mx.controls.TextArea;
 	import mx.controls.TextInput;
@@ -22,29 +24,39 @@ package com.philemonworks.flex.access
 	/**
 	 * Authorizer is a helper class to change the state of a UIComponent
 	 * in response to whether a user in a role has access to that component.
+	 * It uses an AuthorizationMatrix to manage information about what actions are allowed for what roles.
+	 * Before using the API make sure you set the current role which is typically derived from the current user.
 	 * 
 	 * @author ernest.micklei@philemonworks.com, 2007
 	 */
 	public class Authorizer
 	{	
-		[Bindable]
-		public var currentRole:String = "no-role";
 		public var matrix:AuthorizationMatrix = new AuthorizationMatrix();
 		
-		public function enableIfAllowedTo(widget:UIComponent, action:String):void {
-			this.allowEnabled(widget,matrix.isAuthorizedTo(currentRole,action))
+		public function get currentRole():String {
+			return ApplicationContext.current.currentRole
 		}
+		public function set currentRole(newRole:String):void {
+			ApplicationContext.current.currentRole = newRole
+		}
+		
+		/**
+		 * Return whether a user with currentRole is allowed to perform this action.
+		 * @param action
+		 * @return true if allowed
+		 */
 		public function isAllowedTo(action:String):Boolean {
-			return matrix.isAuthorizedTo(currentRole,action);
+			if (ApplicationContext.current.DEBUG) {
+				var granted:Boolean = matrix.isAuthorizedTo(currentRole,action)
+				trace("[Authorizer] " + currentRole + " is "+(granted?"":"NOT ")+"authorized to do: " + action)
+				return granted
+			} else return matrix.isAuthorizedTo(currentRole,action);
 		}
-		
-		
 		/**
 		 * Changes the editable-property of a component based on whether the current role is one of the expected roles.
 		 * If tooltips are provided, the component will changed with respect to this.
 		 */							
-		public function allowEditable(widget:UIComponent,roles:Array,notAllowedTip:String = null,allowedTip:String = null):void {
-			var allow:Boolean = roles.indexOf(currentRole) != -1
+		public function allowEditable(widget:UIComponent,allow:Boolean,notAllowedTip:String = null,allowedTip:String = null):void {
 			var tip:String = allow ? 
 				 (allowedTip == null ? "" : allowedTip)
 				:(notAllowedTip == null ? "Not allowed" : notAllowedTip)
@@ -76,8 +88,7 @@ package com.philemonworks.flex.access
 		 * In addition to setting the visibility, the size of the component can be zero-ed
 		 * and will be restored to its default when the component is visible.
 		 */
-		public function allowVisible(widget:UIComponent,roles:Array,resize:Boolean = true):void {
-			var show:Boolean = roles.indexOf(currentRole) != -1
+		public function allowVisible(widget:UIComponent,show:Boolean,resize:Boolean = true):void {
 			// check if changes are really needed
 			if (widget.visible && show) return
 			widget.visible = show
@@ -89,18 +100,6 @@ package com.philemonworks.flex.access
 				widget.height = 0
 				widget.width = 0
 			}
-		}		
-		/**
-		 * Changes the visible-property of a collection of components based on whether the current role is one of the expected roles.
-		 * In addition to setting the visibility, the size of the component can be zero-ed
-		 * and will be restored to its default when the component is visible.
-		 * 
-		 * @param widgets the collection of UIComponent
-		 * @param roles the collection of role names (String)
-		 * @param resize if true then width and height are set to zero if not allowed
-		 */		
-		public function allowAllVisible(widgets:Array,roles:Array,resize:Boolean = true):void {
-			for (var i:int;i<widgets.length;i++) this.allowVisible(widgets[i],roles,resize)	
 		}
 	}
 }

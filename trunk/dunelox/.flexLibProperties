@@ -42,6 +42,7 @@
 <classEntry path="com.philemonworks.flex.util.Time"/>
 </includeClasses>
 <includeResources>
+<resourceEntry destPath="assets/choosedate_icon.JPG" sourcePath="assets/choosedate_icon.JPG"/>
 <resourceEntry destPath="assets/README.txt" sourcePath="assets/README.txt"/>
 <resourceEntry destPath="assets/information_icon.jpg" sourcePath="assets/information_icon.jpg"/>
 <resourceEntry destPath="assets/critical_icon.jpg" sourcePath="assets/critical_icon.jpg"/>
