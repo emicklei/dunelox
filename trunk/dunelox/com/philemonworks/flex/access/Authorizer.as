@@ -34,7 +34,7 @@ package com.philemonworks.flex.access
 		public function enableIfAllowedTo(widget:UIComponent, action:String):void {
 			this.allowEnabled(widget,matrix.isAuthorizedTo(currentRole,action))
 		}
-		public function isAllowed(action:String):Boolean {
+		public function isAllowedTo(action:String):Boolean {
 			return matrix.isAuthorizedTo(currentRole,action);
 		}
 		
