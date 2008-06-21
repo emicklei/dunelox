@@ -32,5 +32,10 @@ package tests
 			assertTrue(auth.isAllowedTo("write"))
 			assertFalse(auth.isAllowedTo("execute"))			
 		}		
+		public function testAuthorize():void {
+			auth.matrix.authorize(true,"newrole","newaction")
+			auth.currentRole = "newrole"
+			assertTrue(auth.isAllowedTo("newaction"))
+		}
 	}
 }

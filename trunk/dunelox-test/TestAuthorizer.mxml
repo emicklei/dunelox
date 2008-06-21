@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="doAuthorize()">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()">
 	<mx:ComboBox x="589" y="10" change="roleChanged(event)">
 		<mx:dataProvider>
 			<mx:Array>
@@ -23,18 +23,28 @@
 		
 	<mx:Script>
 		<![CDATA[
+			import com.philemonworks.flex.util.ApplicationContext;
 			import com.philemonworks.flex.access.Authorizer;
 			
 			private var authorizer:Authorizer = new Authorizer();
 
-			public function doAuthorize():void {	
-				authorizer.currentRole = "admin"			
-				//authorizer.allowEnabled(button,['admin'],'You are not allowed to delete this Account', 'Delete Account')				
-				authorizer.allowEditable(input,['admin'],'You are not allowed to change the password')
-				//authorizer.allowEnabled(panel,['admin','manager'],'You are not allowed to change any of this')
-				authorizer.allowVisible(dateChooser,['engineer'])
+			public function init():void {				
+				authorizer.currentRole = "admin"
+				authorizer.matrix.authorize(true,"admin","delete-account")
+				authorizer.matrix.authorize(true,"engineer","choose-date")
+				authorizer.matrix.authorize(true,"manager","check-it")				
+				authorizer.matrix.authorize(true,"admin","check-it")
+				doAuthorize()				
+			}
+
+			public function doAuthorize():void {								
+				authorizer.allowEnabled(button,authorizer.isAllowedTo('delete-account'),'You are not allowed to delete this Account', 'Delete Account')				
+				authorizer.allowEditable(input,authorizer.isAllowedTo('change-password'),'You are not allowed to change the password')
+				authorizer.allowEnabled(panel,authorizer.isAllowedTo('check-it'),'You are not allowed to change any of this')
+				authorizer.allowVisible(dateChooser,authorizer.isAllowedTo('choose-date'))
 			}			
 			public function roleChanged(event:Event):void {
+				ApplicationContext.current.DEBUG = true;
 				authorizer.currentRole = String(ComboBox(event.target).selectedItem)
 				this.doAuthorize()
 			}
