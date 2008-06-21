@@ -5,7 +5,6 @@
 <classEntry path="com.philemonworks.flex.events.ObjectDataEvent"/>
 <classEntry path="com.philemonworks.flex.dialogs.MessageDialog"/>
 <classEntry path="com.philemonworks.flex.dialogs.PeriodSelectionDialog"/>
-<classEntry path="com.philemonworks.flex.access.Authorizable"/>
 <classEntry path="com.philemonworks.flex.nls.RecordingNLSProvider"/>
 <classEntry path="com.philemonworks.flex.helpers.UIComponentHelper"/>
 <classEntry path="com.philemonworks.flex.util.DisplayItem"/>
@@ -17,6 +16,7 @@
 <classEntry path="com.philemonworks.flex.navigation.PageNavigator"/>
 <classEntry path="com.philemonworks.flex.util.XMLHelper"/>
 <classEntry path="com.philemonworks.flex.helpers.StringHelper"/>
+<classEntry path="com.philemonworks.flex.access.AuthorizationMatrix"/>
 <classEntry path="com.philemonworks.flex.nls.NLSResourceBundle_US"/>
 <classEntry path="com.philemonworks.flex.helpers.ClipboardHelper"/>
 <classEntry path="com.philemonworks.flex.controls.DayField"/>
