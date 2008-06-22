@@ -15,13 +15,13 @@
 */
 package com.philemonworks.flex.navigation
 {
+	import flash.events.MouseEvent;
+	
 	import mx.containers.HBox;
 	import mx.controls.Button;
 	import mx.controls.LinkButton;
-	import mx.binding.utils.BindingUtils;
-	import flash.text.TextLineMetrics;
 	import mx.controls.Text;
-	import flash.events.MouseEvent;
+	import mx.core.UIComponent;
 	/**
 	 * PageNavigationBar is a dynamic control containing LinkButtons for pages from a range.
 	 * Depending on the current page and the total number of pages, the bars shows:
@@ -37,7 +37,8 @@ package com.philemonworks.flex.navigation
 	 **/
 	public class PageNavigationBar extends HBox
 	{
-		private static var BUTTON_WIDTH:int = 19;
+		private static var BUTTON_WIDTH:int = 22;
+		private static var WIDTH_PER_CHAR:int = 13;
 		[Bindable]
 		public var requestedPage:int = 0; // means no selection
 		[Bindable]
@@ -59,7 +60,7 @@ package com.philemonworks.flex.navigation
 			this.removeAllChildren();
 			// previous
 			var prev:Button = new Button();
-			prev.width = BUTTON_WIDTH;
+			this.applyStyle(prev)
 			prev.label = "<";
 			prev.toolTip = "Goto previous page";
 			prev.addEventListener(MouseEvent.CLICK,previousPageButtonClicked);
@@ -93,7 +94,7 @@ package com.philemonworks.flex.navigation
 		}
 		private function addNext(isEnabled:Boolean):void {
 			var next:Button = new Button();
-			next.width = BUTTON_WIDTH;
+			this.applyStyle(next)
 			next.label = ">";
 			next.toolTip = "Goto next page";
 			next.addEventListener(MouseEvent.CLICK,nextPageButtonClicked);
@@ -113,9 +114,8 @@ package com.philemonworks.flex.navigation
 		}
 		private function addLink(i:int,isCurrent:Boolean):void {
 			var link:LinkButton = new LinkButton();	
-			
+			this.applyStyle(link)
 			var label:String = i.toString();
-			link.width = 5+(12*label.length);	// TODO dubious width computation	
 			link.label = i.toString();
 			link.addEventListener(MouseEvent.CLICK,pageButtonClicked);
 			if (isCurrent){
@@ -130,6 +130,10 @@ package com.philemonworks.flex.navigation
 			}
 			this.addChild(link);
 		}		
+		private function applyStyle(button:UIComponent):void {
+			button.setStyle("paddingLeft",2)	
+			button.setStyle("paddingRight",2)
+		}
 		private function previousPageButtonClicked(event:MouseEvent):void {
 	    	requestedPage--;
 	    }

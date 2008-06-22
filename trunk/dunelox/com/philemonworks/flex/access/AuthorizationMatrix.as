@@ -55,7 +55,7 @@ package com.philemonworks.flex.access
 		 */
 		public function authorize(isGranted:Boolean,role:String,action:String):void {
 			if (role == null || action == null)
-				throw new Error("Illegal arguments: role="+role+",action="+action)
+				throw new Error("Illegal argument(s): role="+role+",action="+action)
 			this.updateRoles(role)
 			var actions:Array
 			if (isGranted) {
@@ -99,7 +99,34 @@ package com.philemonworks.flex.access
 		public function authorizeRolesToActions(isGranted:Boolean,roles:Array,actions:Array):void {
 			for (var a:int=0;a<actions.length;a++)
 				authorizeRolesToAction(isGranted,roles,actions[a])
-		}		
+		}	
+		/**
+		 * Return the XML representation of the receiver
+		 * @return the XML
+		 * 
+		 */
+		public function toXML():XML {
+			var root:XML = <authorizations />
+			for (var fa:int=0;fa<rolesWithFullAccess.length;fa++) {
+				root.appendChild(<authorization role={rolesWithFullAccess[fa]} granted="true" />)
+			}
+			var actions:Array
+			for (var r:int=0;r<allRoles.length;r++) {
+				actions = grantedRolesToActions[allRoles[r]]
+				if (actions != null) {					
+					for (var ga:int=0;ga<actions.length;ga++) {
+						root.appendChild(<authorization role={allRoles[r]} action={actions[ga]} granted="true" />)
+					}
+				}
+				actions = deniedRolesToActions[allRoles[r]]
+				if (actions != null) {					
+					for (var da:int=0;da<actions.length;da++) {
+						root.appendChild(<authorization role={allRoles[r]} action={actions[da]} granted="false" />)
+					}
+				}				
+			}
+			return root
+		}	
 		/**
 		 * Ensure the role is known in allRoles
 		 */		
@@ -125,6 +152,6 @@ package com.philemonworks.flex.access
 			var actions:Array = deniedRolesToActions[role]
 			if (actions == null) return false
 			return actions.indexOf(action) != -1
-		}		
+		}				
 	}
 }
