@@ -12,7 +12,7 @@ package tests
 			auth = new Authorizer()
 			auth.matrix.allowAll("root")
 			auth.matrix.authorizeRolesToAction(true,["viewer","editor"],"read")
-			auth.matrix.authorize(true,"editor","write")
+			auth.matrix.authorize(true,"editor","write")	
 		}
 		public function testRoot():void {
 			auth.currentRole = "root"
@@ -36,6 +36,9 @@ package tests
 			auth.matrix.authorize(true,"newrole","newaction")
 			auth.currentRole = "newrole"
 			assertTrue(auth.isAllowedTo("newaction"))
+		}
+		public function testXML():void {
+			trace(auth.matrix.toXML().toXMLString())
 		}
 	}
 }

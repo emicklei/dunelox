@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" preinitialize="preInit()">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" preinitialize="preInit()"
+	backgroundImage="background.jpg">
 	<mx:Script>
 		<![CDATA[
 			import com.philemonworks.flex.util.ApplicationContext;

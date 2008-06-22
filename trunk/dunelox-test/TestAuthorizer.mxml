@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()"
+	backgroundImage="background.jpg">
 	<mx:ComboBox x="589" y="10" change="roleChanged(event)">
 		<mx:dataProvider>
 			<mx:Array>
