@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" backgroundImage="background.jpg">
 	<mx:Button x="27" y="31" label="Select..." click="doSelect()"/>
 	
 	<mx:Model id="entries">
 		<root>
-			<entry id="0" value="Maandag" />
-			<entry id="1" value="Dinsdag" />			
+			<entry id="0" value="Monday" />
+			<entry id="1" value="Tuesday" />			
 		</root>
 	</mx:Model>
 	

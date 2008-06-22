@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	xmlns:controls="com.philemonworks.flex.controls.*" creationComplete="init()"
+	backgroundImage="background.jpg" xmlns:navigation="com.philemonworks.flex.navigation.*">
+	
+	<navigation:PageNavigationBar id="bar" width="90%" color="#FFFFFF" x="10" y="10"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.philemonworks.flex.nls.NLS;
+			import com.philemonworks.flex.util.Day;
+
+			public function init():void {
+				updateBar()
+			}
+			public function updateBar():void {
+				view_page.maximum = total_rows.value / rows_per_page.value	
+				bar.updatePageControlsByRows(view_page.value,rows_per_page.value,total_rows.value)
+			}
+
+		]]>
+	</mx:Script>
+	<mx:HSlider id="view_page" x="288" y="91" minimum="1" maximum="10" liveDragging="true" change="updateBar()" snapInterval="1"/>
+	<mx:HSlider id="rows_per_page" x="288" y="144" minimum="1" maximum="100" liveDragging="true" change="updateBar()" snapInterval="1"/>
+	<mx:HSlider id="total_rows" x="288" y="204" minimum="1" maximum="100" liveDragging="true" change="updateBar()" snapInterval="1"/>
+	<mx:Label x="315.5" y="63" text="looking at page" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
+	<mx:Label x="318.5" y="116" text="rows per page" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
+	<mx:Label x="332.5" y="176" text="total rows" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
+	<mx:Label x="256" y="204" text="1" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
+	<mx:Label x="456" y="204" text="100" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
+	<mx:Label x="252.5" y="148" text="1" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
+	<mx:Label x="452.5" y="148" text="100" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
+	<mx:Label x="252.5" y="88" text="1" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
+</mx:Application>
