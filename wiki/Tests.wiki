@@ -10,3 +10,6 @@ Sources of these tests can be found in the Source Repository under the Flex proj
  * [http://www.philemonworks.com/dunelox/tests/main.html All Unit Tests]
  * [http://www.philemonworks.com/dunelox/tests/TestDialogs.html Testing Dialogs]
  * [http://www.philemonworks.com/dunelox/tests/TestApplicationContext.html Test Application Context]
+ * [http://www.philemonworks.com/dunelox/tests/TestPageNavigation.html Test PageNavigationBar]
+ * [http://www.philemonworks.com/dunelox/tests/TestDayField.html Test DayField]
+ * [http://www.philemonworks.com/dunelox/tests/TestAuthorizer.html Test Authorizer]
