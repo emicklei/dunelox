@@ -44,32 +44,4 @@ public class SomeActivity extends Conversation
 
 
 === Examples ===
-{{{
-	public class Login extends Conversation
-	{
-		private var _login:String
-		private var _dialog:LoginDialog;		
-
-		override protected function begin():void {
-			_dialog = LoginDialog.newFor(this.view)
-			_dialog.title = NLS.text('title.login')
-			_dialog.show(loginOkHandler)
-		}
-		private function loginOkHandler(dialog:LoginDialog):void {
-			this.tryLogin(dialog.userText.text, dialog.passwordText.text)
-		}
-		private function tryLogin(user:String,password:String):void {
-			_login = user
-			// ... handle user login request by invoking a remote service...
-			this.end()
-		}		
-	}
-}}}
-To start the Login conversation in the Application component.
-{{{
-new Login().start(this, handleLoginOk)
-
-private function handleLoginOk(cvs:Login):void {
-     current_user = cvs.login
-}
-}}}
+* ConversationExampleLogin
