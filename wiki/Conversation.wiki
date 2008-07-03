@@ -7,7 +7,7 @@ Building an application requires implementing all Usecases. View components are 
 
 Class *Conversation* can be used to implement the mediation process in which user interaction, information retrieval and information presentation is coordinated. Class *Conversation* provides an implementation of a coding pattern to facilitate this. 
 
-A conversion is a non-visual component. It encapsulates the flow of actions needed to complete a UseCase. Because it is not tied to any calling (visual) component, it can be (re)used anywhere in your application.
+A conversion is a non-visual component. It encapsulates the flow of actions needed to complete a !UseCase. Because it is not tied to any calling (visual) component, it can be (re)used anywhere in your application.
 
 === Print Example ===
 Most applications require some sort of reporting functionality. Creating an invoice from your shoppingbasket is such an example. Suppose you have a print button on your main canvas that is connected to the *doPrintInvoice()* function. Instead of coding the complete flow in the main canvas, you place that behavior in the !PrintInvoice conversation. This snippet below shows how to use it:
