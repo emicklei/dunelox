@@ -12,6 +12,7 @@ Suppose we are building an application that requires users to authenticate using
   # After accepting the input to this dialog, the conversation *Login* will send the login command request using an application server (through a !ServiceProxy). The Client will send the request and receive the response and report to the usecase *Login* with the answer (Reply). 
   # The conversation *Login* will store the information (user,logged_in) into the Context and report to the application (View) that the conversation Login is completed. Reporting is done by invoking the handler that was passed when the conversation was started.
 
+= Source Code =
 {{{
 	public class Login extends Conversation
 	{
