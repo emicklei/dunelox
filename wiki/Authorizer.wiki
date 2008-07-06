@@ -12,6 +12,7 @@ To setup RBAC, you need to know what roles are applicable. For each combination 
 The snippets below show an example of using the Authorizer Class.
 Before setting up the authorisation rules, you need to design the matrix.
 === Design the Authorisation Matrix ===
+
 || Action - Role      || supervisor || administrator || dean || planner ||
 || manage students    || x          || x             || -    || -       ||
 || view   students    || x          || x             || x    || x       ||
@@ -27,6 +28,7 @@ Before setting up the authorisation rules, you need to design the matrix.
 || view   reports     || x          || x             || x    || -       ||
 || manage accounts    || x          || x             || -    || -       ||
 || view   accounts    || x          || x             || -    || -       ||
+
 === Setup Authorizer ===
 {{{
 var authorizer:Authorizer = new Authorizer()
