@@ -29,7 +29,7 @@ Before setting up the authorisation rules, you need to design the matrix.
 || manage accounts    || x          || x             || -    || -       ||
 || view   accounts    || x          || x             || -    || -       ||
 
-* manage = create,view,update,delete
+- manage = create,view,update,delete
 
 === Setup Authorizer ===
 {{{
