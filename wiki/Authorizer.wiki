@@ -1,10 +1,32 @@
 #summary Simple RBAC using a Authorization Matrix
 
 = Introduction =
-
-
+RBAC or role-based access control, deals with the accessibility of application functionality that depends on the role of the user. Depending on the role of a user, functionality in your application may:
+ * be enabled or disabled
+ * be visible or hidden
+ * show a different UI layout
+ * provide more of less details
+To setup RBAC, you need to know what roles are applicable. For each combination of role and information access, you must be able to specify whether it is allowed or not. One way to represent this is to setup an authorisation matrix.
 
 == Example ==
+The snippets below show an example of using the Authorizer Class.
+Before setting up the authorisation rules, you need to design the matrix.
+=== Design the Authorisation Matrix ===
+|| Action - Role      || supervisor || administrator || dean || planner ||
+|| manage students    || x          || x             || -    || -       ||
+|| view   students    || x          || x             || x    || x       ||
+|| manage classes     || x          || x             || -    || -       ||
+|| view   classes     || x          || x             || x    || x       ||
+|| manage courses     || x          || x             || -    || x       ||
+|| view   courses     || x          || x             || -    || x       ||
+|| manage absences    || x          || x             || -    || -       ||
+|| view   absences    || x          || x             || x    || x       ||
+|| manage testresults || x          || x             || -    || -       ||
+|| view   testresults || x          || x             || x    || -       ||
+|| manage reports     || x          || x             || -    || -       ||
+|| view   reports     || x          || x             || x    || -       ||
+|| manage accounts    || x          || x             || -    || -       ||
+|| view   accounts    || x          || x             || -    || -       ||
 === Setup Authorizer ===
 {{{
 var authorizer:Authorizer = new Authorizer()
@@ -21,6 +43,7 @@ authorizer.matrix.authorize(true,'planner','manage-courses')
 authorizer.matrix.authorize(true,'planner','manage-subjects')
 }}}
 === Use authorisation to control enablement of UI components ===
+In the code below, *studentTasks* is the name of an UIComponent that contains buttons to invoke actions on a Student object.
 {{{
 studentTasks.enabled = authorizer.isAllowedTo('view-students')				
 studentClassTasks.enabled = authorizer.isAllowedTo('view-classes')
