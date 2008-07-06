@@ -44,7 +44,7 @@ authorizer.matrix.authorize(true,'planner','view-courses')
 authorizer.matrix.authorize(true,'planner','manage-courses')
 authorizer.matrix.authorize(true,'planner','manage-subjects')
 }}}
-=== Use authorisation to control enablement of UI components ===
+=== Use the Authorizer to control enablement of UI components ===
 In the code below, *studentTasks* is the name of an UIComponent that contains buttons to invoke actions on a Student object.
 {{{
 studentTasks.enabled = authorizer.isAllowedTo('view-students')				
