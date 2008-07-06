@@ -28,7 +28,7 @@ Before setting up the authorisation rules, you need to design the matrix.
 || view   reports     || x          || x             || x    || -       ||
 || manage accounts    || x          || x             || -    || -       ||
 || view   accounts    || x          || x             || -    || -       ||
-
+* manage = create,view,update,delete
 === Setup Authorizer ===
 {{{
 var authorizer:Authorizer = new Authorizer()
