@@ -1,3 +1,22 @@
 #summary Simple RBAC using a Authorization Matrix
 
 = Introduction =
+
+
+
+== Example ==
+=== Setup Authorizer ===
+{{{
+var authorizer:Authorizer = new Authorizer()
+authorizer.matrix.allowAll('supervisor')
+authorizer.matrix.allowAll('administrator')
+authorizer.matrix.authorizeRolesToActions(
+	true,
+	['dean','planner'],
+	['view-students','view-classes','view-absences'])
+authorizer.matrix.authorize(true,'dean','view-testresults')
+authorizer.matrix.authorize(true,'dean','view-reports')
+authorizer.matrix.authorize(true,'planner','view-courses')
+authorizer.matrix.authorize(true,'planner','manage-courses')
+authorizer.matrix.authorize(true,'planner','manage-subjects')
+}}}
