@@ -20,3 +20,14 @@ authorizer.matrix.authorize(true,'planner','view-courses')
 authorizer.matrix.authorize(true,'planner','manage-courses')
 authorizer.matrix.authorize(true,'planner','manage-subjects')
 }}}
+=== Use authorisation to control enablement of UI components ===
+{{{
+studentTasks.enabled = authorizer.isAllowedTo('view-students')				
+studentClassTasks.enabled = authorizer.isAllowedTo('view-classes')
+courseTasks.enabled = authorizer.isAllowedTo('view-courses')
+absenceTasks.enabled = authorizer.isAllowedTo('view-absences')
+testResultTasks.enabled = authorizer.isAllowedTo('view-testresults')
+studentReportTasks.enabled = authorizer.isAllowedTo('view-reports')
+subjectTasks.enabled = authorizer.isAllowedTo('view-subjects')				
+accountTasks.enabled = authorizer.isAllowedTo('view-accounts')
+}}}
