@@ -7,7 +7,7 @@ Building an application requires implementing all Usecases. View components are 
 
 Class *Conversation* can be used to implement the mediation process in which user interaction, information retrieval and information presentation is coordinated. Class *Conversation* provides an implementation of a coding pattern to facilitate this. 
 
-A conversion is a non-visual component. It encapsulates the flow of actions needed to complete a !Conversation. Because it is not tied to any calling (visual) component, it can be (re)used anywhere in your application.
+A conversion is a non-visual component. It encapsulates the flow of actions needed to complete a Conversation. Because it is not tied to any calling (visual) component, it can be (re)used anywhere in your application.
 
 The following snippet shows a template that can be used to implement Conversation classes.
 === Class Template ===
