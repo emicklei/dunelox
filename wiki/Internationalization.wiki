@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Flex provides the class ResourceBundle to access properties stored in a file as part of the compiled application (SWF). To simplify this access and to provide runtime changing a language, the class NLS can be used.
+Flex2 provides the class !ResourceBundle to access properties stored in a file as part of the compiled application (SWF). To simplify this access and to provide runtime changing a language, the class NLS can be used.
 
 == Examples ==
 
