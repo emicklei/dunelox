@@ -6,33 +6,31 @@ Whatever organization of resources you may choose, it helps to set standards for
 
 == Details ==
 
-Folder structure of MXML and ActionScript sources
+Folder structure of MXML and !ActionScript sources
 {{{
 com
  company
   <domain>
-   controller
-   helper
-   model
-   conversation
-   test
-   view
+   controllers
+   helpers
+   models
+   conversations
+   tests
+   views
   <other-domain>
-   controller
-   helper
-   model
-   conversation
-   test
-   view
+   controllers
+   helpers
+   models
+   conversations
+   tests
+   views
  MyAppInitializer.as
 }}}
  * domain refers to your business entity such as *customer*,*order*,*account*
- * controller is the package for proxies to remote services
- * helper is a package for any helper classes related to this domain
- * model is a package for your DTO (data transfer object) of VO (value objects)
- * conversation is a package that holds all Conversation classes
- * test is the package where all Unit tests are defined
- * view is the package for all forms,dialogs and other visual components
+ * controllers is the package for proxies to remote services
+ * helpers is a package for any helper classes related to this domain
+ * models is a package for your DTO (data transfer object) of VO (value objects)
+ * conversations is a package that holds all Conversation classes
+ * tests is the package where all Unit tests are defined
+ * views is the package for all forms,dialogs and other visual components
  * !MyAppInitializer is the class responsible to setting up the ApplicationContext
-
-== Component Libraries ==
