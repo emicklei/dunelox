@@ -29,19 +29,13 @@ package com.cae.user.usecases
 	
 	public class Login extends UseCase
 	{
-		private var attempts:int = 0
 		private var _login:String
 		private var _dialog:LoginDialog;		
 
 		override protected function begin():void {
-			if (ApplicationContext.current.DEBUG) {
-				trace("Login - login using debug user/password")
-				this.tryLogin(ApplicationContext.current.debugLogin, ApplicationContext.current.debugPassword)
-			} else {
-				_dialog = LoginDialog.newFor(this.view)
-				_dialog.title = NLS.text('title.login')
-				_dialog.show(loginOkHandler)
-			}
+			_dialog = LoginDialog.newFor(this.view)
+			_dialog.title = NLS.text('title.login')
+			_dialog.show(loginOkHandler)
 		}
 		private function loginOkHandler(dialog:LoginDialog):void {
 			this.tryLogin(dialog.userText.text, dialog.passwordText.text)
