@@ -5,7 +5,7 @@
 [Internationalization] explains how NLS works.
 Here we describe good practices when using NLS in your application.
 
-= Choosing Keys =
+== Choosing Keys ==
 NLS messages are stored in a resource file with the following structure:
 {{{
 key=message
@@ -18,5 +18,7 @@ label.course=Course:
 title.form.student=Edit Student
 title.form.subject=Edit Subject
 msg.student.notfound=No such Student registered
-msg.exam.timeexpired=Time to finish this exam has expired
+msg.student.notassigned=Student {0} has not been assigned to a Class
+column.name=Name
+column.email=Email
 }}}
