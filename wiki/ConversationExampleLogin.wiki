@@ -13,39 +13,65 @@ Suppose we are building an application that requires users to authenticate using
   # The conversation *Login* will store the information (user,logged_in) into the Context and report to the application (View) that the conversation Login is completed. Reporting is done by invoking the handler that was passed when the conversation was started.
 
 = Source Code =
+This implementation is copied from an actual Flex project that uses the *Dunelox* library classes.
 {{{
-	public class Login extends Conversation
+package com.cae.user.usecases
+{
+	import com.philemonworks.flex.dialogs.LoginDialog;
+	import flash.display.DisplayObject;
+	import com.philemonworks.flex.net.Reply;
+	import com.philemonworks.flex.dialogs.MessageDialog;
+	import mx.core.Application;
+	import com.philemonworks.flex.nls.NLS;
+	import com.philemonworks.flex.util.ApplicationContext;
+	import com.philemonworks.flex.util.UseCase;
+	import com.cae.user.controllers.api.LoginController;
+	
+	public class Login extends UseCase
 	{
+		private var attempts:int = 0
 		private var _login:String
 		private var _dialog:LoginDialog;		
 
 		override protected function begin():void {
-			_dialog = LoginDialog.newFor(this.view)
-			_dialog.title = NLS.text('title.login')
-			_dialog.show(loginOkHandler)
+			if (ApplicationContext.current.DEBUG) {
+				trace("Login - login using debug user/password")
+				this.tryLogin(ApplicationContext.current.debugLogin, ApplicationContext.current.debugPassword)
+			} else {
+				_dialog = LoginDialog.newFor(this.view)
+				_dialog.title = NLS.text('title.login')
+				_dialog.show(loginOkHandler)
+			}
 		}
 		private function loginOkHandler(dialog:LoginDialog):void {
 			this.tryLogin(dialog.userText.text, dialog.passwordText.text)
 		}
 		private function tryLogin(user:String,password:String):void {
 			_login = user
-			// handle user login request by invoking a remote service
-                        // a shared UserController object is used as proxy/delegate
-                        var uc:UserController = AppCtx.get('UserController') as UserController
-			uc.login(_login,password,handleLoginReply)
-                        this.end()
+			LoginController(ApplicationContext.current.get("LoginController")).login(user,password,replyHandler)	
 		}
-                private function handleLoginReply(reply:Reply):void {
-                        if (reply.isOk())
-                           this.end()
-                        else {                           
-                           this.stop()
-                        }
-                }
-		public function getLogin():String {
-                        return _login;
-                }
+		private function replyHandler(reply:Reply):void {
+			// always close, creator decides whether to re-open
+			if (_dialog != null) _dialog.close()
+			if ("denied" == reply.status) {
+				MessageDialog.showInformation(
+					this.view,
+					NLS.expandText('msg.access.denied', [_login] ),
+					handleOkDialog)	
+				ApplicationContext.current.currentLogin = null
+				ApplicationContext.current.currentRole = null
+				return				
+			}
+			ApplicationContext.current.currentLogin = _login
+			ApplicationContext.current.currentRole = reply.result as String
+			this.end()
+		}
+		private function handleOkDialog(dialog:MessageDialog):void {
+			dialog.close()
+			this.begin()
+		}		
 	}
+}
 }}}
 To start the Login conversation in the Application component.
 {{{
