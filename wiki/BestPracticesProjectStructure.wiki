@@ -33,4 +33,4 @@ com
  * conversations is a package that holds all Conversation classes
  * tests is the package where all Unit tests are defined
  * views is the package for all forms,dialogs and other visual components
- * !MyAppInitializer is the class responsible to setting up the ApplicationContext
+ * !MyAppInitializer is the class responsible to setting up the ApplicationContext with e.g. singletons of your Controller classes
