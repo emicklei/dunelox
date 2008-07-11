@@ -13,7 +13,7 @@ An application context is typically used as a shared Dictionary of objects such 
 == Message on Change ==
 In addition to binding to the shared ApplicationContext, you can also install an Observer (thanks to Paul Williams) that calls your handler Function whenever an Object is put into the context.
 {{{
-<util:Observe source="{ApplicationContext.current.get('product')}" handler="handleProductChange" >
+<util:Observe source="{ApplicationContext.current.get('product')}" handler="handleProductChange" />
 }}}
 
 == Extra Variables ==
