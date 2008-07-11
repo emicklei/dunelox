@@ -10,6 +10,12 @@ ApplicationContext.current.put('shoppingCard', aShoppingCard)
 
 An application context is typically used as a shared Dictionary of objects such as Singletons (Service Delegates/Controllers), Models (Value Objects) and Session related information (user,role).
 
+== Message on Change ==
+In addition to binding to the shared ApplicationContext, you can also install an Obverser that calls your handler Function whenever an Object is put into the context.
+{{{
+<util:Observe source="{ApplicationContext.current.get('product')}" handler="handleProductChange" >
+}}}
+
 == Extra Variables ==
 Besides being a generic context, the current ApplicationContext also provides bindable variables *currentUser*, *currentRole* and *DEBUG*. The currentUser and currentRole can be used to store user information that needs to be available throughout your application. For instance, the Authorizer can use this to apply its authorisation rules.
 
