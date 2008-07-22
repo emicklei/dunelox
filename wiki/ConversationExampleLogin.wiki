@@ -4,7 +4,7 @@
 
 Suppose we are building an application that requires users to authenticate using the standard login/password request. Typically, you have some kind of a UseCase specification that describes the steps and explains the happy flow. Clearly, there will be an interaction sequence (conversation) between the user, the application and some authentication service.
 
-= Details =
+== Details ==
 
   # The main application (View) will start the conversation *Login* and tell the conversation *Login* to report to the main application when login was succesfull.
   # The conversation will inspect the Context whether credentials (username, password) are available. 
@@ -12,7 +12,17 @@ Suppose we are building an application that requires users to authenticate using
   # After accepting the input to this dialog, the conversation *Login* will send the login command request using an application server (through a !UserController). The Client will send the request and receive the response and report to the conversation *Login* with the answer (Reply). 
   # The conversation *Login* will store the information (user,logged_in) into the Context and report to the application (View) that the conversation Login is completed. Reporting is done by invoking the handler that was passed when the conversation was started.
 
-= Source Code =
+== Usage ==
+To start the Login conversation in the Application component.
+{{{
+new Login().start(this, handleLoginOk)
+
+private function handleLoginOk(cvs:Login):void {
+     // now we are logged in
+}
+}}}
+
+== Source Code ==
 This implementation is copied from an actual Flex project that uses the *Dunelox* library classes.
 {{{
 package com.cae.user.usecases
@@ -65,13 +75,5 @@ package com.cae.user.usecases
 			this.begin()
 		}		
 	}
-}
-}}}
-To start the Login conversation in the Application component.
-{{{
-new Login().start(this, handleLoginOk)
-
-private function handleLoginOk(cvs:Login):void {
-     // now we are logged in
 }
 }}}
