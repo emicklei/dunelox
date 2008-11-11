@@ -1,5 +1,16 @@
 <!-- saved from url=(0014)about:internet -->
 <html lang="en">
+
+<!-- 
+Smart developers always View Source. 
+
+This application was built using Adobe Flex, an open source framework
+for building rich Internet applications that get delivered via the
+Flash Player or to desktops via Adobe AIR. 
+
+Learn more about Flex at http://flex.org 
+// -->
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>${title}</title>
@@ -23,7 +34,6 @@ var requiredRevision = ${version_revision};
 </head>
 
 <body scroll="no">
-<script language="JavaScript" type="text/javascript" src="history.js"></script>
 <script language="JavaScript" type="text/javascript">
 <!--
 // Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
@@ -70,7 +80,6 @@ if ( hasProductInstall && !hasRequestedVersion ) {
 			"quality", "high",
 			"bgcolor", "${bgcolor}",
 			"name", "${application}",
-			"flashvars",'historyUrl=history.htm%3F&lconid=' + lc_id + '',
 			"allowScriptAccess","sameDomain",
 			"type", "application/x-shockwave-flash",
 			"pluginspage", "http://www.adobe.com/go/getflashplayer"
@@ -102,6 +111,5 @@ if ( hasProductInstall && !hasRequestedVersion ) {
 			</embed>
 	</object>
 </noscript>
-<iframe name="_history" src="history.htm" frameborder="0" scrolling="no" width="22" height="0"></iframe>
 </body>
 </html>
