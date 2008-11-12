@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" horizontalGap="0" creationComplete="init()" width="124" height="24" xmlns:util="com.philemonworks.flex.util.*">
-	<mx:TextInput id="dayInput" focusOut="dateEnteredChanged()" width="100"/>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" horizontalGap="0" creationComplete="init()" height="24" xmlns:util="com.philemonworks.flex.util.*">
+	<mx:TextInput id="dayInput" focusOut="dateEnteredChanged()" width="100%"/>
 	<mx:Button id="pickBtn" width="24" click="doChooseDate()" icon="{choosedateSymbol}"/>
 	
 	<!-- mx:StringValidator id="validator" source="{dayInput}" property="text" minLength="3" maxLength="10"
