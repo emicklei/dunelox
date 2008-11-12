@@ -1,5 +1,5 @@
 /*
-   Copyright [2007] Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2007-2008 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package com.philemonworks.flex.util
 {
 	import mx.utils.StringUtil;
-	import com.adobe.utils.IntUtil;
 	
 	[Bindable]
 	public class Time
