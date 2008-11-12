@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()"
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()"
 	backgroundImage="background.jpg">
-	<mx:ComboBox x="589" y="10" change="roleChanged(event)">
+	<mx:ComboBox x="664" y="53" change="roleChanged(event)" fontSize="18">
 		<mx:dataProvider>
 			<mx:Array>
 				<mx:String>admin</mx:String>
@@ -19,8 +19,8 @@
 		<mx:DateChooser id="dateChooser" />
 		<mx:Label text="label below chooser" />
 	</mx:VBox>
-	<mx:Button id="button" x="79" y="10" label="Delete"/>
-	<mx:TextInput id="input" x="79" y="54"/>
+	<mx:Button id="button" x="450" y="100" label="Delete"/>
+	<mx:TextInput id="input" x="531" y="193"/>
 		
 	<mx:Script>
 		<![CDATA[
@@ -51,8 +51,9 @@
 			}
 		]]>
 	</mx:Script>
-	<mx:Label x="10" y="56" text="Password:"/>
-	<mx:Label x="358" y="12" text="Watch component availability for role:"/>
+	<mx:Label x="462" y="195" text="Password:" color="#FFFFFF"/>
+	<mx:Label x="305" y="56" text="Watch component availability for role:" color="#FFFFFF" fontSize="18"/>
+	<mx:Label x="10" y="10" text="Dunelox - TestAuthorizer" color="#E1F409" fontSize="20"/>
 
 	
-</mx:Application>
+</mx:WindowedApplication>

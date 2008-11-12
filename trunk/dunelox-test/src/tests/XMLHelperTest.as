@@ -4,7 +4,6 @@ package tests
 	import flexunit.framework.TestSuite;
 	import flash.utils.describeType;
 	import mx.formatters.DateFormatter;
-	import com.adobe.utils.DateUtil;
 	import mx.controls.Alert;
 	import com.philemonworks.flex.util.XMLHelper;
 	import mx.collections.XMLListCollection;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
 	xmlns:controls="com.philemonworks.flex.controls.*" creationComplete="init()"
 	backgroundImage="background.jpg">
 	
-	<controls:DayField id="field" y="10" x="10" toolTip="yyyy-mm-dd"/>
+	<controls:DayField id="field" y="149" x="266" toolTip="yyyy-mm-dd" fontSize="18" width="155" height="41"/>
 	
 	<mx:Script>
 		<![CDATA[
@@ -22,7 +22,8 @@
 			}
 		]]>
 	</mx:Script>
-	<mx:Button label="Apply" click="doApply()" x="38" y="82"/>
-	<mx:Text id="result" x="118" y="84" text="Text" width="159"/>
+	<mx:Button label="Apply" click="doApply()" x="266" y="198" fontSize="18"/>
+	<mx:Text id="result" x="372" y="200" text="Text" width="159" fontSize="18" color="#FFFFFF"/>
+	<mx:Label x="10" y="10" text="Dunelox - TestDayField" color="#E1F409" fontSize="20"/>
 	
-</mx:Application>
+</mx:WindowedApplication>
