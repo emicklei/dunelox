@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:controls="com.philemonworks.flex.controls.*"
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:controls="com.philemonworks.flex.controls.*"
 	backgroundImage="background.jpg">
-	<controls:TimeField id="field" time="{time}" />
+	<controls:TimeField id="field" time="{time}"  x="209" y="89" fontSize="18"/>
 	
 	<mx:Script>
 		<![CDATA[
@@ -15,5 +15,6 @@
 			}
 		]]>
 	</mx:Script>
-	<mx:Button x="168" y="0" label="Apply" click="doApply()"/>
-</mx:Application>
+	<mx:Button x="377" y="89" label="Apply" click="doApply()" fontSize="18"/>
+	<mx:Label x="10" y="10" text="Dunelox - TestTimeField" color="#E1F409" fontSize="20"/>
+</mx:WindowedApplication>

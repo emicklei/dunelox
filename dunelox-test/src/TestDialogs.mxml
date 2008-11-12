@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" backgroundImage="background.jpg">
-	<mx:Button x="27" y="31" label="Select..." click="doSelect()"/>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" backgroundImage="background.jpg">
+	<mx:Button x="61" y="107" label="Select..." click="doSelect()" fontSize="18"/>
 	
 	<mx:Model id="entries">
 		<root>
@@ -94,12 +94,13 @@
 			}		
 		]]>
 	</mx:Script>
-	<mx:Button x="108" y="31" label="Login" click="doLogin()" />
-	<mx:Button x="172" y="31" label="Confirm" click="doConfirm()" />
-	<mx:Button x="251" y="31" label="Warn" click="doWarning()" />	
-	<mx:Button x="316" y="31" label="Error" click="doError()" />
-	<mx:CheckBox x="27" y="95" label="Slide" id="slideBox" />
-	<mx:CheckBox x="27" y="121" label="Center" id="centerBox" />
-	<mx:Button x="379" y="33" label="Period" click="doSelectPeriod()" />	
-	<mx:Button x="450" y="33" label="Date" click="doSelectDate()" />
-</mx:Application>
+	<mx:Button x="178" y="107" label="Login" click="doLogin()"  fontSize="18"/>
+	<mx:Button x="267" y="107" label="Confirm" click="doConfirm()"  fontSize="18"/>
+	<mx:Button x="381" y="107" label="Warn" click="doWarning()"  fontSize="18"/>	
+	<mx:Button x="469" y="107" label="Error" click="doError()"  fontSize="18"/>
+	<mx:CheckBox x="61" y="174" label="Slide" id="slideBox"  fontSize="18"/>
+	<mx:CheckBox x="61" y="200" label="Center" id="centerBox"  fontSize="18"/>
+	<mx:Button x="554" y="107" label="Period" click="doSelectPeriod()"  fontSize="18"/>	
+	<mx:Button x="653" y="107" label="Date" click="doSelectDate()"  fontSize="18"/>
+	<mx:Label x="10" y="10" text="Dunelox - TestDialogs" color="#E1F409" fontSize="20"/>
+</mx:WindowedApplication>

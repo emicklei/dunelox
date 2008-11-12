@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
 	xmlns:controls="com.philemonworks.flex.controls.*" creationComplete="init()"
 	backgroundImage="background.jpg" xmlns:navigation="com.philemonworks.flex.navigation.*">
 	
-	<navigation:PageNavigationBar id="bar" width="90%" color="#FFFFFF" x="10" y="10"/>
+	<navigation:PageNavigationBar id="bar" width="90%" color="#FFFFFF" x="10" y="52" fontSize="18"/>
 	
 	<mx:Script>
 		<![CDATA[
@@ -20,15 +20,17 @@
 
 		]]>
 	</mx:Script>
-	<mx:HSlider id="view_page" x="288" y="91" minimum="1" maximum="10" liveDragging="true" change="updateBar()" snapInterval="1"/>
-	<mx:HSlider id="rows_per_page" x="288" y="144" minimum="1" maximum="100" liveDragging="true" change="updateBar()" snapInterval="1"/>
-	<mx:HSlider id="total_rows" x="288" y="204" minimum="1" maximum="100" liveDragging="true" change="updateBar()" snapInterval="1"/>
-	<mx:Label x="315.5" y="63" text="looking at page" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
-	<mx:Label x="318.5" y="116" text="rows per page" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
-	<mx:Label x="332.5" y="176" text="total rows" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
-	<mx:Label x="256" y="204" text="1" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
-	<mx:Label x="456" y="204" text="100" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
-	<mx:Label x="252.5" y="148" text="1" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
-	<mx:Label x="452.5" y="148" text="100" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
-	<mx:Label x="252.5" y="88" text="1" color="#FFFFFF" fontWeight="bold" fontSize="12"/>
-</mx:Application>
+	<mx:HSlider id="view_page" x="288" y="133" minimum="1" maximum="10" liveDragging="true" change="updateBar()" snapInterval="1"/>
+	<mx:HSlider id="rows_per_page" x="292.5" y="210" minimum="1" maximum="100" liveDragging="true" change="updateBar()" snapInterval="1"/>
+	<mx:HSlider id="total_rows" x="292.5" y="293" minimum="1" maximum="100" liveDragging="true" change="updateBar()" snapInterval="1"/>
+	<mx:Label x="297" y="97" text="looking at page" color="#FFFFFF" fontWeight="bold" fontSize="18"/>
+	<mx:Label x="297" y="176" text="rows per page" color="#FFFFFF" fontWeight="bold" fontSize="18"/>
+	<mx:Label x="292.5" y="257" text="total rows" color="#FFFFFF" fontWeight="bold" fontSize="18"/>
+	<mx:Label x="252.5" y="293" text="1" color="#FFFFFF" fontWeight="bold" fontSize="18"/>
+	<mx:Label x="460.5" y="293" text="100" color="#FFFFFF" fontWeight="bold" fontSize="18"/>
+	<mx:Label x="252.5" y="210" text="1" color="#FFFFFF" fontWeight="bold" fontSize="18"/>
+	<mx:Label x="460.5" y="210" text="100" color="#FFFFFF" fontWeight="bold" fontSize="18"/>
+	<mx:Label x="252.5" y="130" text="1" color="#FFFFFF" fontWeight="bold" fontSize="18"/>
+	<mx:Label x="475.5" y="130" text="1" fontSize="18" color="#FFFFFF"/>
+	<mx:Label x="10" y="10" text="Dunelox - TestPageNavigation" color="#E1F409" fontSize="20"/>
+</mx:WindowedApplication>

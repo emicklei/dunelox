@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" preinitialize="preInit()"
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" preinitialize="preInit()"
 	backgroundImage="background.jpg">
 	<mx:Script>
 		<![CDATA[
@@ -10,7 +10,7 @@
 			}		
 		]]>
 	</mx:Script>
-	<mx:HBox x="23" y="23" backgroundColor="#ffffff">		
+	<mx:HBox x="304.5" y="120" backgroundColor="#ffffff" fontSize="18">		
 		<mx:Button label="Change" click="doChange()" />		
 		<mx:Label text="{ApplicationContext.current.get('label.text')}" />
 	</mx:HBox>
@@ -23,5 +23,6 @@
 			}
 		]]>
 	</mx:Script>
+	<mx:Label x="10" y="10" text="Dunelox - TestApplicationContext" color="#E1F409" fontSize="20"/>
 	
-</mx:Application>
+</mx:WindowedApplication>
