@@ -10,8 +10,11 @@ package tests
 	
 	public class XMLHelperTest extends TestCase 
 	{	
-		// 
-		private var typedvalues:XML = <types>
+		// fixture
+		private var typedvalues:XML;
+				
+		public override function setUp():void {			
+			typedvalues = <types>
 			<boolean-true>true</boolean-true>
 			<boolean-false>false</boolean-false>
 			<integer>-42</integer>
@@ -19,6 +22,7 @@ package tests
 			<datetime-zulu>2007-06-06T10:59:20Z</datetime-zulu>
 			<float>3.14159</float>
 			</types>
+		}
 		
   		public function testStringToNumber():void {
   			var i:Number = XMLHelper.stringToNumber(typedvalues["integer"])  		
@@ -53,13 +57,20 @@ package tests
   			assertTrue(typedvalues["datetime-zulu"], s)
   		}  
   		public function testSortXMLList():void {
-			  var xml:XML = <root>
+			var xml:XML = <root>
 			  	<item name="C"/>
 			  	<item name="B"/>
 			  	<item name="A"/>
 			  	</root>
   			var sorted_xml:XMLListCollection = XMLHelper.sort(xml.item,"@name")
-  			trace(sorted_xml.toXMLString())
+  			assertEquals("A",sorted_xml[0].@name)
+  			assertEquals("B",sorted_xml[1].@name)
+  			assertEquals("C",sorted_xml[2].@name)  			  			
   		}
+  		public function testSortXMLListEmpty():void {
+			var xml:XML = <root/>
+  			var sorted_xml:XMLListCollection = XMLHelper.sort(xml.item,"@name")
+  			assertEquals(0,sorted_xml.length) 			  			
+  		}  		
 	}
 }

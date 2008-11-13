@@ -2,7 +2,7 @@
 <mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml"
 				xmlns:flexunit="flexunit.flexui.*"
 				creationComplete="onCreationComplete()"
-				backgroundImage="background.jpg">
+				backgroundImage="background.jpg" width="940" height="590">
 	
 	<mx:Script>
 		<![CDATA[
@@ -36,5 +36,5 @@
 	</mx:Script>
 
 	<!-- flexunit provides a very handy default test runner GUI -->
-	<flexunit:TestRunnerBase id="testRunner" width="100%" height="100%" />
+	<flexunit:TestRunnerBase id="testRunner" width="98%" height="98%" />
 </mx:WindowedApplication>
