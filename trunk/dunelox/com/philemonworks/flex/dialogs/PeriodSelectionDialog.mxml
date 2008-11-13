@@ -2,7 +2,7 @@
 <phw:BasicDialog
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:phw="com.philemonworks.flex.dialogs.*" 
-	layout="absolute" width="300" height="160" xmlns:controls="com.philemonworks.flex.controls.*"
+	layout="absolute" width="376" height="158" xmlns:controls="com.philemonworks.flex.controls.*"
 	showCloseButton="true" >
 	
 	<mx:Form width="100%" height="100%" >
