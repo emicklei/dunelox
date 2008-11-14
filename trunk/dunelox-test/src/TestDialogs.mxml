@@ -98,8 +98,8 @@
 	<mx:Button x="267" y="107" label="Confirm" click="doConfirm()"  fontSize="18"/>
 	<mx:Button x="381" y="107" label="Warn" click="doWarning()"  fontSize="18"/>	
 	<mx:Button x="469" y="107" label="Error" click="doError()"  fontSize="18"/>
-	<mx:CheckBox x="61" y="174" label="Slide" id="slideBox"  fontSize="18"/>
-	<mx:CheckBox x="61" y="200" label="Center" id="centerBox"  fontSize="18"/>
+	<mx:CheckBox x="61" y="174" label="Slide" id="slideBox"  fontSize="18" selected="true"/>
+	<mx:CheckBox x="61" y="200" label="Center" id="centerBox"  fontSize="18" selected="true"/>
 	<mx:Button x="554" y="107" label="Period" click="doSelectPeriod()"  fontSize="18"/>	
 	<mx:Button x="653" y="107" label="Date" click="doSelectDate()"  fontSize="18"/>
 	<mx:Label x="10" y="10" text="Dunelox - TestDialogs" color="#E1F409" fontSize="20"/>

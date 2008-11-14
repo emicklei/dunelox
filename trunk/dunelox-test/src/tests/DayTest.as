@@ -19,9 +19,20 @@ package tests
 			day.setDate(new Date(2008,10,13))
 			assertEquals("2008-11-13", day.toString())
 		}
+		
+		public function testDaySetDateShouldFail():void {
+			var day:Day = new Day()
+			try {
+				day.setDate(null)
+				fail("should have failed")
+			} catch (error:Error) {
+				assertTrue(error.errorID,1009) // TypeError
+			}
+		}	
+			
 		public function testDayFromStringShortYear():void {
 			var day:Day = new Day("8-11-13")
-			assertEquals(2008, day.toDate().fullYear)
+			assertEquals(1908, day.toDate().fullYear)
 			assertEquals(10, day.toDate().month)
 			assertEquals(13, day.toDate().date)
 		}		
