@@ -1,5 +1,5 @@
 /*
-   Copyright 2008 Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2009 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,33 +13,26 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.philemonworks.flex.util
+package com.philemonworks.flex.net
 {
 	import mx.controls.Alert;
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
 	import mx.rpc.remoting.RemoteObject;
-	
+	/**
+	 * RemoteService is an abstract class that provides default behavior for handling FaultEvents
+	 * when invoking a remote message.
+	 **/
 	public class RemoteService
 	{
-		private var _handler:Function;
-		private var _remoteObject:RemoteObject;
-
-		public function RemoteService(handler:Function,destination:String) {
-			this._handler = handler
-			this._remoteObject = new RemoteObject()
-			this._remoteObject.destination = destination
-			this._remoteObject.addEventListener("fault", this.onFault)
-			this._remoteObject.addEventListener("result", this.onResult)
-		}		
-		public static function callOnResult(handler:Function,destination:String):RemoteObject {
-			return new RemoteService(handler,destination)._remoteObject
+		public function newRemoteObject(destination:String):RemoteObject {
+			var remoteObject:RemoteObject = new RemoteObject();
+			remoteObject.destination = destination;
+			remoteObject.addEventListener("fault", onFault);
+			return remoteObject;
 		}
 		public function onFault(event:FaultEvent):void {
 			Alert.show(event.toString())
-		}		
-		public function onResult(event:ResultEvent):void {
-			_handler.call(this,event.result);
-		}	
+		}			
 	}
 }
