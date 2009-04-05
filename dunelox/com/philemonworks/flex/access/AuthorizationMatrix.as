@@ -22,6 +22,7 @@ package com.philemonworks.flex.access
 	 * 
 	 * @author ernest 
 	 */
+	[RemoteClass(alias="com.philemonworks.flex.access.AuthorizationMatrix")] 
 	public class AuthorizationMatrix
 	{
 		public var allRoles:Array = [];

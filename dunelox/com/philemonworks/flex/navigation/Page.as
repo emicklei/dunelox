@@ -22,6 +22,7 @@ package com.philemonworks.flex.navigation
 	 * 
 	 * @author emicklei
 	 */	
+	[RemoteClass(alias="com.philemonworks.flex.navigation.Page")]
 	public class Page
 	{
 		public var to:int;

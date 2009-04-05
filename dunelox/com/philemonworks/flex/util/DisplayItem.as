@@ -21,6 +21,7 @@ package com.philemonworks.flex.util
 	 * 
 	 * @author Ernest.Micklei
 	 */
+	[RemoteClass(alias="com.philemonworks.flex.util.DisplayItem")] 
 	public class DisplayItem
 	{
 		public var id:int;
