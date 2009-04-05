@@ -22,6 +22,7 @@ package com.philemonworks.flex.util
 	 * 
 	 * @author ernest.micklei@philemonworks.com
 	 */
+	[RemoteClass(alias="com.philemonworks.flex.util.Day")]
 	public class Day
 	{
 		private var year:int = 0;
