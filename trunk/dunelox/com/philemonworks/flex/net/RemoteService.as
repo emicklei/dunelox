@@ -25,14 +25,49 @@ package com.philemonworks.flex.net
 	 **/
 	public class RemoteService
 	{
+		public static var DefaultTimeout:int = 10;
+		
 		public function newRemoteObject(destination:String):RemoteObject {
-			var remoteObject:RemoteObject = new RemoteObject();
-			remoteObject.destination = destination;
-			remoteObject.addEventListener("fault", onFault);
+			var remoteObject:RemoteObject = new RemoteObject(destination);
+			remoteObject.addEventListener(FaultEvent.FAULT, onFault);
+			remoteObject.requestTimeout = DefaultTimeout;
 			return remoteObject;
 		}
 		public function onFault(event:FaultEvent):void {
-			Alert.show(event.toString())
-		}			
+			trace(this.traceInfo() + "FAULT event thrown");
+			if ("Client.Error.RequestTimeout" == event.fault.faultCode) {
+				this.handleTimeout(event)	
+			} else {
+				this.defaultHandleFaultReceived(event)
+			}			
+		}
+		/**
+		 * This handler is called when the HttpService did not return with a response without the specified time.
+		 * 
+		 * @param event FaultEvent
+		 */			
+		private function handleTimeout(event:FaultEvent):void {
+			// TODO make this an event
+			Alert.show("The application server did not respond within 10 seconds. Please try again later or contact the Helpdesk", "Application timeout")
+		}
+		/**
+		 * This handler is called when the RemoteObject dispatched a Fault event.
+		 * On default, construct a RequestFault object and open a warning dialog.
+		 * 
+		 * @param event FaultEvent
+		 */		
+		private function defaultHandleFaultReceived(event:FaultEvent):void {
+			/*
+			var fault:RequestFault = new RequestFault(null)
+			fault.code = event.fault.faultCode
+			fault.request = event.fault.faultString
+			fault.message = event.fault.message.slice(0,30)
+			fault.controller = "not applicable"
+			fault.method = event.fault.faultString
+			fault.stack = event.fault.getStackTrace()
+			RequestFaultDialog.popup(Sprite(Application.application),fault);	
+			*/	
+			Alert.show(event.toString())	
+		}						
 	}
 }
