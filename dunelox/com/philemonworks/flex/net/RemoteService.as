@@ -34,7 +34,7 @@ package com.philemonworks.flex.net
 			return remoteObject;
 		}
 		public function onFault(event:FaultEvent):void {
-			trace(this.traceInfo() + "FAULT event thrown");
+			trace("FAULT event thrown");
 			if ("Client.Error.RequestTimeout" == event.fault.faultCode) {
 				this.handleTimeout(event)	
 			} else {
