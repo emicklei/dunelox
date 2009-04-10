@@ -17,7 +17,6 @@ package com.philemonworks.flex.net
 {
 	import mx.controls.Alert;
 	import mx.rpc.events.FaultEvent;
-	import mx.rpc.events.ResultEvent;
 	import mx.rpc.remoting.RemoteObject;
 	/**
 	 * RemoteService is an abstract class that provides default behavior for handling FaultEvents
@@ -46,9 +45,13 @@ package com.philemonworks.flex.net
 		 * 
 		 * @param event FaultEvent
 		 */			
-		private function handleTimeout(event:FaultEvent):void {
+		private function handleTimeout(event:FaultEvent):void {			
+			var error:ServiceError = new ServiceError()
+			error.target = "application"
+			error.code = "timeout"
+			error.message = "The application server did not respond within 10 seconds. Please try again later or contact the Helpdesk"
 			// TODO make this an event
-			Alert.show("The application server did not respond within 10 seconds. Please try again later or contact the Helpdesk", "Application timeout")
+			Alert.show(error.message, "Application timeout")
 		}
 		/**
 		 * This handler is called when the RemoteObject dispatched a Fault event.
