@@ -18,7 +18,7 @@ package com.philemonworks.flex.util
 	import mx.utils.StringUtil;
 	
 	[Bindable]
-	[RemoteClass(alias="com.philemonworks.flex.util.Time")]
+	[RemoteClass(alias="Smalltalk.Time")]
 	public class Time
 	{
 		public var hours:int = 12;
