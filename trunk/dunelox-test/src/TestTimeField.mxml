@@ -2,6 +2,7 @@
 <mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:controls="com.philemonworks.flex.controls.*"
 	backgroundImage="background.jpg">
 	<controls:TimeField id="field" time="{time}"  x="209" y="89" fontSize="18"/>
+	<controls:TimeField id="field2" date="{date}"  x="209" y="129" fontSize="18"/>
 	
 	<mx:Script>
 		<![CDATA[
@@ -9,12 +10,20 @@
 
 			[Bindable]
 			private var time:Time = new Time();
+			[Bindable]
+			private var date:Date = new Date();
 			
 			private function doApply():void {
 				time = Time.parse(field.text)
 			}
+			private function doApply2():void {
+				time = Time.parse(field2.text)
+			}			
 		]]>
 	</mx:Script>
 	<mx:Button x="377" y="89" label="Apply" click="doApply()" fontSize="18"/>
+	<mx:Button x="377" y="129" label="Apply" click="doApply2()" fontSize="18"/>	
 	<mx:Label x="10" y="10" text="Dunelox - TestTimeField" color="#E1F409" fontSize="20"/>
+	<mx:Label x="479" y="95" text="(uses Time object)" color="#F6FF00" fontSize="14"/>
+	<mx:Label x="479" y="135" text="(uses Date object)" color="#F6FF00" fontSize="14"/>
 </mx:WindowedApplication>
