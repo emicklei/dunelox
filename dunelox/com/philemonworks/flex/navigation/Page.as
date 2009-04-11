@@ -40,11 +40,11 @@ package com.philemonworks.flex.navigation
 		public function Page(newData:Object = null,fromIndex:Number = -1,toIndex:Number = -1, totalDataSize:Number = -1) {
 			super()
 			if (newData != null) {
-				if (newData instanceof XMLList) {
+				if (newData is XMLList) {
 					this.data = newData as XMLList
 					this.initFromXMLList(fromIndex,toIndex,totalDataSize)
 				} else {
-					if (newData instanceof Array) {
+					if (newData is Array) {
 						this.items = newData as Array
 						this.initFromArray(fromIndex,toIndex,totalDataSize)
 					} else {
