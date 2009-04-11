@@ -15,8 +15,9 @@
 */ 
 package com.philemonworks.flex.controls
 {
-	import mx.controls.TextInput;
 	import com.philemonworks.flex.util.Time;
+	
+	import mx.controls.TextInput;
 
 	public class TimeField extends TextInput
 	{
@@ -28,6 +29,9 @@ package com.philemonworks.flex.controls
 		
 		public function set time(newTime:Time):void {
 			this.text = newTime.toString()
+		}
+		public function set date(newDate:Date):void {
+			this.text = Time.fromDate(newDate).toString()
 		}
 	}
 }
