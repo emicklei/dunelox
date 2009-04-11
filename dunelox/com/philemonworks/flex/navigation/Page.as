@@ -31,12 +31,12 @@ package com.philemonworks.flex.navigation
 		public var sortKey:String;
 		public var sortMethod:String;
 		public var searchPattern:String;
-		public var data:XMLList;
+		public var data:Object;
 		
 		/**
 		 * Page with fixed data set.
 		 */
-		public function Page(newData:XMLList = null,fromIndex:Number = -1,toIndex:Number = -1, totalDataSize:Number = -1) {
+		public function Page(newData:Object = null,fromIndex:Number = -1,toIndex:Number = -1, totalDataSize:Number = -1) {
 			super()
 			if (newData != null) {
 				this.data = newData

@@ -28,6 +28,7 @@
 			import com.philemonworks.flex.nls.NLS;
 			import mx.core.IFlexDisplayObject;
 			import mx.managers.PopUpManager;
+			[Bindable] // to kill the warning
 			public var recorder:RecordingNLSProvider;
 			
 			public function refresh():void {

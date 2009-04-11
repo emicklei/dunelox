@@ -31,7 +31,13 @@ package com.philemonworks.flex.util
 			this.minutes = now.minutes
 			this.seconds = now.seconds
 		}
-		
+		public static function fromDate(any:Date):Time {
+			var time:Time = new Time()
+			time.hours = any.hours
+			time.minutes = any.minutes
+			time.seconds = any.seconds
+			return time
+		}		
 		public static function fromSeconds(secondsValue:int):Time {
 			return new Time().initializeFromSeconds(secondsValue)
 		}
