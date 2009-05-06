@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	xmlns:controls="com.philemonworks.flex.controls.*" creationComplete="init()"
+	backgroundImage="background.jpg" xmlns:util="com.philemonworks.flex.util.*">
+	
+	<controls:DateField  x="166" y="121" width="223" selectedDate="{mydate}" fontSize="18" height="33"/>
+	<mx:Label x="10" y="10" text="Dunelox - TestDateField" color="#E1F409" fontSize="20"/>
+
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var mydate:Date = new Date();
+			
+			public function changedData():void {
+				trace("date changed to:" + mydate.toString());
+			}
+		]]>
+	</mx:Script>
+	<mx:Label x="166" y="162" text="{mydate.toString()}" fontSize="18" width="366" color="#EBF907"/>
+	
+</mx:WindowedApplication>
