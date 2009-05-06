@@ -15,6 +15,8 @@
 */
 package com.philemonworks.flex.net
 {
+	import com.philemonworks.flex.helpers.AppCtx;
+	
 	import mx.controls.Alert;
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.remoting.RemoteObject;
@@ -29,7 +31,9 @@ package com.philemonworks.flex.net
 		public function newRemoteObject(destination:String):RemoteObject {
 			var remoteObject:RemoteObject = new RemoteObject(destination);
 			remoteObject.addEventListener(FaultEvent.FAULT, onFault);
-			remoteObject.requestTimeout = DefaultTimeout;
+			// Only apply timeout if runtime
+			if (!AppCtx.isDebug())
+				remoteObject.requestTimeout = DefaultTimeout;
 			return remoteObject;
 		}
 		public function onFault(event:FaultEvent):void {
