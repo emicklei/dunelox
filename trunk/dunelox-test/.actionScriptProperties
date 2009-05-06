@@ -17,6 +17,7 @@
 <application path="TestAuthorizer.mxml"/>
 <application path="TestApplicationContext.mxml"/>
 <application path="TestDialogs.mxml"/>
+<application path="TestDateField.mxml"/>
 </applications>
 <modules/>
 <buildCSSFiles/>
