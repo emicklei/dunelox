@@ -68,9 +68,15 @@ package com.philemonworks.flex.navigation
 				return data.length() == 0
 			} 
 			if (items != null) {
-				return items.length
+				return items.length == 0
 			}
 			return true
+		}
+		public function contents():Object {
+			if (data != null) 
+				return data
+			else
+				return items
 		}
 	}
 }
