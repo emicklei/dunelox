@@ -1,5 +1,5 @@
 /*
-   Copyright 2007 Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2007-2009 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -25,9 +25,9 @@ package com.philemonworks.flex.util
 	[RemoteClass(alias="com.philemonworks.flex.util.Day")]
 	public class Day
 	{
-		private var year:int = 0;
-		private var month:int = 0; // The month (0 for January, 1 for February, and so on)
-		private var dayInMonth:int = 0; // The day of the month (an integer from 1 to 31)
+		public var year:int = 0;
+		public var month:int = 0; // The month (0 for January, 1 for February, and so on)
+		public var dayInMonth:int = 0; // The day of the month (an integer from 1 to 31)
 						
 		/**
 		 * @xmlFormattedString String YYYY-MM-DD
@@ -74,10 +74,22 @@ package com.philemonworks.flex.util
 			return this.toXMLString()
 		}
 		public function toDate():Date {
-			return new Date(year,month,dayInMonth)
+			return new Date(this.year,this.month,this.dayInMonth)
 		}
 		public function setDate(dateTime:Date):void {
 			this.init(dateTime.fullYear,dateTime.month,dateTime.date)					
+		}
+		public function dayName():String {
+			return "Monday"
+		}
+		public function weekNumber():int {
+			return 31
+		}
+		public function monthName():String {
+			return "January"
+		}
+		public function addDays(numberOfDays:int):Day {
+			return new Day()
 		}
 	}
 }
