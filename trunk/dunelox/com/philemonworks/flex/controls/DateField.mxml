@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="24" xmlns:ns1="com.philemonworks.flex.controls.*" xmlns:util="com.philemonworks.flex.util.*">
+	<ns1:DayField  id="dayField" width="65%" height="100%" day="{_day}" />
+	<ns1:TimeField id="timeField" width="35%" height="100%" change="timeChanged()" />
+	<util:Observe source="{_day}" handler="dayChanged" />
+	<mx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import com.philemonworks.flex.util.Time;
+			import com.philemonworks.flex.util.Day;
+			
+			[Bindable]
+			private var _day:Day;
+			
+			[Bindable]
+			public var yearNavigationEnabled:Boolean = true;
+			
+			public function dayChanged():void {
+				dispatchEvent(new FlexEvent(FlexEvent.VALUE_COMMIT));				
+			}			
+			public function timeChanged():void {
+				dispatchEvent(new FlexEvent(FlexEvent.VALUE_COMMIT));
+			}
+			// Binding support
+			[DefaultBindingProperty(source="selectedDate", destination="selectedDate")]			
+			public function set selectedDate(newDate:Date):void {
+				dayField.day = Day.fromDate(newDate)
+				timeField.time = Time.fromDate(newDate)
+			}			
+			public function get selectedDate():Date {
+				var day:Day = dayField.day
+				var time:Time = timeField._time == null ? new Time() : timeField._time;
+				return new Date(day.year,day.month,day.dayInMonth,time.hours,time.minutes,time.seconds)
+			}
+		]]>
+	</mx:Script>
+</mx:HBox>

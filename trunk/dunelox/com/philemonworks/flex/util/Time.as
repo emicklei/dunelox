@@ -33,6 +33,7 @@ package com.philemonworks.flex.util
 		}		
 		public static function fromDate(any:Date):Time {
 			var time:Time = new Time()
+			if (any == null) return time; // same behavior as Day.fromDate
 			time.hours = any.hours
 			time.minutes = any.minutes
 			time.seconds = any.seconds
