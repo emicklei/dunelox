@@ -12,6 +12,7 @@
 		
 	<mx:Script>
 		<![CDATA[
+			import mx.events.FlexEvent;
 			import com.philemonworks.flex.dialogs.DateSelectionDialog;
 			import mx.utils.StringUtil;
 			import mx.events.CalendarLayoutChangeEvent;
@@ -21,13 +22,13 @@
 			import com.philemonworks.flex.nls.NLS;
 			import com.philemonworks.flex.util.Day;
 			
+			
             [Embed(source="/assets/choosedate_icon.jpg")] 
             public static var choosedateSymbol:Class;					
-			
-			[Event(name="change", type="com.philemonworks.events.ObjectDataEvent")]
-			
-			[Bindable]
+					
+			[Bindable]			
 			public var day:Day = new Day();
+			
 			[Bindable]
 			public var yearNavigationEnabled:Boolean = true;
 			
@@ -48,16 +49,17 @@
 				} else {
 					var inputDate:Date = NLS.parseDate(input);
 					day = Day.fromDate(inputDate)
-					// dayInput.text = NLS.day(day)
 				}
+				dispatchEvent(new FlexEvent(FlexEvent.DATA_CHANGE));
 			}	
 			public function validate():Boolean {
 				return day != null
 			}
 			public function doChooseDate():void {
 				var dialog:DateSelectionDialog = DateSelectionDialog.newFor(this)
-				dialog.dateChooser.selectedDate = day.toDate();
-				dialog.title = "Select day range"
+				if (day != null)
+					dialog.dateChooser.selectedDate = day.toDate();
+				dialog.title = NLS.text("datechooser.title")
 				dialog.show(handleDaySelected)
 				var here:Point = localToGlobal(new Point(pickBtn.x,pickBtn.y))
 				dialog.move(here.x,here.y)
