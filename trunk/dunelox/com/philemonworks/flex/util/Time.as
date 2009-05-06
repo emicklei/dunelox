@@ -1,5 +1,5 @@
 /*
-   Copyright 2007-2008 Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2007-2009 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ package com.philemonworks.flex.util
 			this.hours = now.hours
 			this.minutes = now.minutes
 			this.seconds = now.seconds
-		}
+		}		
 		public static function fromDate(any:Date):Time {
 			var time:Time = new Time()
 			time.hours = any.hours
@@ -41,7 +41,7 @@ package com.philemonworks.flex.util
 		public static function fromSeconds(secondsValue:int):Time {
 			return new Time().initializeFromSeconds(secondsValue)
 		}
-		public static function fromHMS(hours:int,minutes:int,seconds:int):Time {
+		public static function fromHMS(hours:int,minutes:int=0,seconds:int=0):Time {
 			var now:Time = new Time()
 			now.hours = hours
 			now.minutes = minutes
@@ -87,11 +87,13 @@ package com.philemonworks.flex.util
 		}
 		
 		public function toSeconds():int {
-			return ((this.hours * 60) + this.minutes) * 60 + seconds
+			return ((this.hours * 60) + this.minutes) * 60 + this.seconds
 		}
-		
+		public function hhmm():String {
+			return two(this.hours)+":"+two(this.minutes)
+		}
 		public function toString():String {
-			return String(hours)+":"+two(minutes)+":"+two(seconds)
+			return String(this.hours)+":"+two(this.minutes)+":"+two(this.seconds)
 		}
 		private function two(value:int):String {
 			return value < 10 ? "0" + String(value) : String(value)
