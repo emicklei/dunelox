@@ -22,13 +22,17 @@ package com.philemonworks.flex.controls
 	public class TimeField extends TextInput
 	{
 		public var _time:Time;
+		public var showSeconds:Boolean = false;
 		
 		public function TimeField() {
 			super()
 		}
-		
+		public function get time():Time { return _time }
 		public function set time(newTime:Time):void {
-			this.text = newTime.toString()
+			if (showSeconds)
+				this.text = newTime.toString()
+			else
+				this.text = newTime.hhmm()
 		}
 		public function set date(newDate:Date):void {
 			this.text = Time.fromDate(newDate).toString()
