@@ -11,7 +11,7 @@ Folder structure of MXML and !ActionScript sources
 com
  company
   <domain>
-   controllers
+   controllers | services
    helpers
    models
    conversations
@@ -27,7 +27,7 @@ com
  MyAppInitializer.as
 }}}
  * domain refers to your business entity such as *customer*,*order*,*account*
- * controllers is the package for proxies to remote services
+ * controllers (or services) is the package for proxies to remote services
  * helpers is a package for any helper classes related to this domain
  * models is a package for your DTO (data transfer object) of VO (value objects)
  * conversations is a package that holds all Conversation classes
