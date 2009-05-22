@@ -10,7 +10,7 @@
 			}		
 		]]>
 	</mx:Script>
-	<mx:HBox x="304.5" y="120" backgroundColor="#ffffff" fontSize="18">		
+	<mx:HBox x="10" y="49" backgroundColor="#ffffff" fontSize="18" width="343">		
 		<mx:Button label="Change" click="doChange()" />		
 		<mx:Label text="{ApplicationContext.current.get('label.text')}" />
 	</mx:HBox>

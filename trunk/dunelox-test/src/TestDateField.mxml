@@ -3,7 +3,7 @@
 	xmlns:controls="com.philemonworks.flex.controls.*" creationComplete="init()"
 	backgroundImage="background.jpg" xmlns:util="com.philemonworks.flex.util.*">
 	
-	<controls:DateField  x="166" y="121" width="223" selectedDate="{mydate}" fontSize="18" height="33"/>
+	<controls:DateField id="field" x="10" y="58" width="223" selectedDate="{mydate}" dataChange="changedData()" fontSize="18" height="33"/>
 	<mx:Label x="10" y="10" text="Dunelox - TestDateField" color="#E1F409" fontSize="20"/>
 
 	<mx:Script>
@@ -12,10 +12,13 @@
 			public var mydate:Date = new Date();
 			
 			public function changedData():void {
-				trace("date changed to:" + mydate.toString());
+				trace("date changed to:" + field.selectedDate.toString());
+				result.text = field.selectedDate.toString()
 			}
 		]]>
 	</mx:Script>
-	<mx:Label x="166" y="162" text="{mydate.toString()}" fontSize="18" width="366" color="#EBF907"/>
+	<mx:Label id="result" x="43" y="127" fontSize="18" width="366" color="#EBF907"/>
+	<mx:DateField selectedDate="{mydate}" change="changedData()" x="10" y="203" width="152" fontSize="18"/>
+	<mx:Label x="10" y="177" text="Standard Flex DateField" fontSize="18"/>
 	
 </mx:WindowedApplication>
