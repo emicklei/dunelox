@@ -9,29 +9,52 @@
 			import com.philemonworks.flex.util.Time;
 			import com.philemonworks.flex.util.Day;
 			
+			[Event(name="change", type="mx.events.FlexEvent")]
+			[DefaultBindingProperty(source="selectedDate", destination="selectedDate")]
+			[DefaultTriggerEvent("change")]
+			
 			[Bindable]
 			private var _day:Day;
-			
+					
 			[Bindable]
 			public var yearNavigationEnabled:Boolean = true;
 			
-			public function dayChanged():void {
-				dispatchEvent(new FlexEvent(FlexEvent.VALUE_COMMIT));				
+			public function dayChanged():void {		
+				this.updateSelectedDate()	
 			}			
 			public function timeChanged():void {
-				dispatchEvent(new FlexEvent(FlexEvent.VALUE_COMMIT));
+				this.updateSelectedDate()
 			}
-			// Binding support
-			[DefaultBindingProperty(source="selectedDate", destination="selectedDate")]			
-			public function set selectedDate(newDate:Date):void {
-				dayField.day = Day.fromDate(newDate)
-				timeField.time = Time.fromDate(newDate)
-			}			
-			public function get selectedDate():Date {
-				var day:Day = dayField.day
-				var time:Time = timeField._time == null ? new Time() : timeField._time;
-				return new Date(day.year,day.month,day.dayInMonth,time.hours,time.minutes,time.seconds)
-			}
+		    /**
+		     *  @private
+		     *  Storage for the selectedDate property.
+		     */
+		    private var _selectedDate:Date = null;			
+    		private var selectedDateChanged:Boolean = false;
+
+			[Bindable("change")]
+		    [Bindable("valueCommit")]
+		    [Inspectable(category="General")]			
+			
+		    public function get selectedDate():Date
+		    {
+		        return _selectedDate;
+		    }
+		    public function set selectedDate(value:Date):void
+		    {
+		        _selectedDate = value;
+				dayField.day = Day.fromDate(_selectedDate)
+				timeField.time = Time.fromDate(_selectedDate)		        
+		        selectedDateChanged = true;		
+		        invalidateProperties();
+		    }
+		    private function updateSelectedDate():void {
+		    	// read time and day values to create Date
+		    	var when:Date = _day.toDate()
+		    	// update Time
+		    	when.seconds = (timeField.time.seconds)
+		    	selectedDate = when
+		    }
 		]]>
 	</mx:Script>
 </mx:HBox>
