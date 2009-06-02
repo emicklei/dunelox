@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" horizontalGap="0" creationComplete="init()" height="24" xmlns:util="com.philemonworks.flex.util.*">
 	<mx:TextInput id="dayInput" focusOut="dateEnteredChanged()" width="100%"/>
-	<mx:Button id="pickBtn" width="24" click="doChooseDate()" icon="{choosedateSymbol}"/>
+	<mx:Button id="pickBtn" width="24" click="doChooseDate()" icon="@Embed(source='../../../../assets/choosedate_icon.JPG')"/>
 	
 	<!-- mx:StringValidator id="validator" source="{dayInput}" property="text" minLength="3" maxLength="10"
 		tooShortError="{NLS.text('message.day.tooshort')}" 
@@ -21,11 +21,7 @@
 			import mx.controls.DateChooser;
 			import com.philemonworks.flex.nls.NLS;
 			import com.philemonworks.flex.util.Day;
-			
-			
-            [Embed(source="/assets/choosedate_icon.jpg")] 
-            public static var choosedateSymbol:Class;					
-					
+									
 			[Bindable]			
 			public var day:Day = new Day();
 			
