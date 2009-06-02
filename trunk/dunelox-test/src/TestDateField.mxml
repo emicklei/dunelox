@@ -3,7 +3,7 @@
 	xmlns:controls="com.philemonworks.flex.controls.*" creationComplete="init()"
 	backgroundImage="background.jpg" xmlns:util="com.philemonworks.flex.util.*">
 	
-	<controls:DateField id="field" x="10" y="58" width="223" selectedDate="{mydate}" dataChange="changedDataNew()" fontSize="18" height="33"/>
+	<controls:DateField id="field" x="10" y="58" width="223" selectedDate="{mydate}" change="changedDataNew()" fontSize="18" height="33"/>
 	<mx:Label x="10" y="10" text="Dunelox - TestDateField" color="#E1F409" fontSize="20"/>
 
 	<mx:Script>
