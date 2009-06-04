@@ -1,5 +1,5 @@
 /*
-   Copyright [2007] Ernest.Micklei @ PhilemonWorks.com
+   Copyright 2007 Ernest.Micklei @ PhilemonWorks.com
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,21 +21,28 @@ package com.philemonworks.flex.controls
 
 	public class TimeField extends TextInput
 	{
-		public var _time:Time;
 		public var showSeconds:Boolean = false;
 		
 		public function TimeField() {
 			super()
 		}
-		public function get time():Time { return _time }
+		public function get time():Time { return Time.parse(this.text) }
 		public function set time(newTime:Time):void {
-			if (showSeconds)
-				this.text = newTime.toString()
-			else
-				this.text = newTime.hhmm()
+			if (newTime == null) {
+				this.text = ''
+			} else {
+				if (showSeconds)
+					this.text = newTime.toString()
+				else
+					this.text = newTime.hhmm()
+			}
 		}
 		public function set date(newDate:Date):void {
-			this.text = Time.fromDate(newDate).toString()
+			if (newDate == null) {
+				this.text = ""
+			} else {
+				this.text = Time.fromDate(newDate).toString()
+			}
 		}
 	}
 }
