@@ -16,7 +16,7 @@
 				result.text = field.selectedDate.toString()
 			}
 			public function changedDataOld():void {
-				trace("oldie changed date to:" + oldie.selectedDate.toString());
+				trace("old changed date to:" + oldie.selectedDate.toString());
 				result.text = oldie.selectedDate.toString()
 			}
 		]]>
