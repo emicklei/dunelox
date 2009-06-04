@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" horizontalGap="0" creationComplete="init()" height="24" xmlns:util="com.philemonworks.flex.util.*">
+	<mx:Metadata>
+		[Event(name="change", type="mx.events.CalendarLayoutChangeEvent")]
+	</mx:Metadata>
 	<mx:TextInput id="dayInput" focusOut="dateEnteredChanged()" width="100%"/>
 	<mx:Button id="pickBtn" width="24" click="doChooseDate()" icon="@Embed(source='../../../../assets/choosedate_icon.JPG')"/>
 	
@@ -46,7 +49,7 @@
 					var inputDate:Date = NLS.parseDate(input);
 					day = Day.fromDate(inputDate)
 				}
-				dispatchEvent(new FlexEvent(FlexEvent.DATA_CHANGE));
+				this.dispatchEvent(new mx.events.CalendarLayoutChangeEvent(mx.events.CalendarLayoutChangeEvent.CHANGE))
 			}	
 			public function validate():Boolean {
 				return day != null
@@ -62,7 +65,7 @@
 			}		
 			private function handleDaySelected(dialog:DateSelectionDialog):void {
 				day = dialog.getDay()
-				// dayInput.text = NLS.day(day)
+				this.dispatchEvent(new mx.events.CalendarLayoutChangeEvent(mx.events.CalendarLayoutChangeEvent.CHANGE))
 			}
 		]]>
 	</mx:Script>

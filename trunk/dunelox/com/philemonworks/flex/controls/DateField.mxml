@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="24" xmlns:ns1="com.philemonworks.flex.controls.*" xmlns:util="com.philemonworks.flex.util.*">
-	<ns1:DayField  id="dayField" width="65%" height="100%" day="{_day}" />
-	<ns1:TimeField id="timeField" width="35%" height="100%" change="timeChanged()" />
-	<util:Observe source="{_day}" handler="dayChanged" />
+	<mx:Metadata>
+		[Event(name="change", type="mx.events.CalendarLayoutChangeEvent")]
+	</mx:Metadata>
+	<ns1:DayField  id="dayField" width="65%" height="100%" change="dayChanged()" />
+	<ns1:TimeField id="timeField" width="35%" height="100%" focusOut="timeChanged()" />
 	<mx:Script>
 		<![CDATA[
-			import mx.events.FlexEvent;
+			import mx.events.CalendarLayoutChangeEvent;
 			import com.philemonworks.flex.util.Time;
 			import com.philemonworks.flex.util.Day;
-			
-			[Event(name="change", type="mx.events.FlexEvent")]
-			[DefaultBindingProperty(source="selectedDate", destination="selectedDate")]
-			[DefaultTriggerEvent("change")]
-			
-			[Bindable]
-			private var _day:Day;
-					
+								
 			[Bindable]
 			public var yearNavigationEnabled:Boolean = true;
 			
@@ -30,11 +25,6 @@
 		     *  Storage for the selectedDate property.
 		     */
 		    private var _selectedDate:Date = null;			
-    		private var selectedDateChanged:Boolean = false;
-
-			[Bindable("change")]
-		    [Bindable("valueCommit")]
-		    [Inspectable(category="General")]			
 			
 		    public function get selectedDate():Date
 		    {
@@ -45,15 +35,13 @@
 		        _selectedDate = value;
 				dayField.day = Day.fromDate(_selectedDate)
 				timeField.time = Time.fromDate(_selectedDate)		        
-		        selectedDateChanged = true;		
-		        invalidateProperties();
 		    }
 		    private function updateSelectedDate():void {
 		    	// read time and day values to create Date
-		    	var when:Date = _day.toDate()
-		    	// update Time
-		    	when.seconds = (timeField.time.seconds)
-		    	selectedDate = when
+		    	var d:Date = dayField.day.toDate()
+		    	var t:Time = timeField.time
+		    	selectedDate = new Date(d.fullYear,d.month,d.date,t.hours,t.minutes,t.seconds)
+		    	this.dispatchEvent(new CalendarLayoutChangeEvent(CalendarLayoutChangeEvent.CHANGE))
 		    }
 		]]>
 	</mx:Script>
