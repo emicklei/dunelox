@@ -8,7 +8,6 @@
 <classEntry path="com.philemonworks.flex.helpers.UIComponentHelper"/>
 <classEntry path="com.philemonworks.flex.nls.RecordingNLSProvider"/>
 <classEntry path="com.philemonworks.flex.controls.WindowDropDown"/>
-<classEntry path="com.philemonworks.flex.util.DisplayItem"/>
 <classEntry path="com.philemonworks.flex.util.Day"/>
 <classEntry path="com.philemonworks.flex.dialogs.ListSelectionDialog"/>
 <classEntry path="com.philemonworks.flex.dialogs.DateSelectionDialog"/>
@@ -44,7 +43,6 @@
 <classEntry path="com.philemonworks.flex.util.Observe"/>
 <classEntry path="com.philemonworks.flex.nls.NLSProvider"/>
 <classEntry path="com.philemonworks.flex.dialogs.DoubleListSelectionDialog"/>
-<classEntry path="com.philemonworks.flex.util.Randomizer"/>
 <classEntry path="com.philemonworks.flex.util.Time"/>
 <classEntry path="com.philemonworks.flex.net.ServiceError"/>
 </includeClasses>

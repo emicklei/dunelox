@@ -27,16 +27,26 @@ package com.philemonworks.flex.net
 	 **/
 	public class ActiveItemService extends RemoteService
 	{
-		// Subclass responsibilty
+		/**
+		 * Answer the destination name of this service
+		 * Subclass responsibility
+		 **/
 		protected function destination():String { 
 			trace("Subclass should have overriden this method")
 			return null 
 		}
 		
-		// Return a subcollection (page) of objects from a sorted list of search results
-		//
-		// Invoke the listPage function remotely on a LessonService.
-		// resultHandler will be called with an instance of Array
+		/**
+		 * Return a subcollection (page) of objects from a sorted list of search results
+		 *
+		 * Invoke the listPage function remotely on a ActiveItemService.
+		 * 
+		 * @param from zero-based index in result collection
+		 * @param to zero-based index in result collection
+		 * @param sortMethod descending|ascending
+		 * @param searchPattern regular expression
+		 * @param resultHandler function to be called with Array
+		 **/
 		public function listPage(from:int,to:int,sortKey:String,sortMethod:String,searchPattern:String,resultHandler:Function):void {
 			trace(this+">>listPage("+String(from)+","+String(to)+","+String(sortKey)+","+String(sortMethod)+","+String(searchPattern)+")");
 			var remoteObject:RemoteObject = this.newRemoteObject(destination());
@@ -44,10 +54,14 @@ package com.philemonworks.flex.net
 			remoteObject.listPage(from,to,sortKey,sortMethod,searchPattern);
 		}
 
-		// Stores the object into the underlying database. Inspect the service result for errors.
-		//
-		// Invoke the save function remotely on a LessonService.
-		// resultHandler will be called with an instance of ServiceResult
+		/**
+		 * Stores the object into the underlying database. Inspect the service result for errors.
+		 *
+		 * Invoke the save function remotely on a ActiveItemService.
+		 * 
+		 * @param item Object
+		 * @param resultHandler function to be called with ServiceResult
+		 **/
 		public function save(item:Object,resultHandler:Function):void {
 			trace(this+">>save("+String(item)+")");
 			var remoteObject:RemoteObject = this.newRemoteObject(destination());
@@ -55,10 +69,14 @@ package com.philemonworks.flex.net
 			remoteObject.save(item);
 		}
 
-		// Find the object stored at <id> from the underlying database. Returns nil if not found.
-		//
-		// Invoke the find function remotely on a LessonService.
-		// resultHandler will be called with an instance of Lesson
+		/**
+		 * Find the object stored at <id> from the underlying database. Returns nil if not found.
+		 *
+		 * Invoke the find function remotely on a ActiveItemService.
+		 * 
+		 * @param id
+		 * @param resultHandler function to be called with ActiveItem
+		 **/ 
 		public function find(id:String,resultHandler:Function):void {
 			trace(this+">>find("+String(id)+")");
 			var remoteObject:RemoteObject = this.newRemoteObject(destination());
@@ -66,11 +84,13 @@ package com.philemonworks.flex.net
 			remoteObject.find(id);
 		}
 
-		// Removes the object stored at <id> from the underlying database
-		//
-		// Invoke the destroy function remotely on a LessonService.
-		// resultHandler will be called with an instance of Boolean
-		public function destroy(id:String,resultHandler:Function):void {
+		/**
+		 * Removes the object stored at <id> from the underlying database
+		 *
+		 * @param id
+		 * @param resultHandler function to be called with Boolean
+		 **/
+  		public function destroy(id:String,resultHandler:Function):void {
 			trace(this+">>destroy("+String(id)+")");
 			var remoteObject:RemoteObject = this.newRemoteObject(destination());
 			remoteObject.destroy.addEventListener(ResultEvent.RESULT, new ResultToFunctionAdaptor(resultHandler).onResult);
