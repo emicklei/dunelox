@@ -24,7 +24,21 @@ public class YourUseCase extends Conversation
 	}	
 }
 }}}
+=== Example Flow ===
+A typical basic sequence is:
 
+  * a conversation is started by providing a Function to be called after completion
+  * it checks its own preconditions and stops if that fails
+  * it may inspect the shared Application Context for relevant objects
+  * it asks the User (through Dialogs) for additional information if needed
+  * the dialog calls back to the conversation to resume the flow
+  * it checks whether the dialog was accepted or canceled
+  * it asks a Service to perform some operation
+  * the Service calls back to the conversation to resume the flow
+  * it inspects the reply to see if it was successful
+  * it stores (by key) result objects into the shared Application Context
+  * any View that is bound to that key gets notified about changes
+  * the conversation ends
 
 === Examples ===
 * ConversationExampleLogin
