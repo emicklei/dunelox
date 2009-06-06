@@ -16,7 +16,7 @@
 package com.philemonworks.flex.util
 {
 	/**
-	 * DisplayItem can be used to display a Record without having its whole state ; it is a reference.
+	 * DisplayItem can be used to display a Record/Item without having its whole state ; it is a reference.
 	 * Such display objects can be used in Lists, ComboBoxes and Labels.
 	 * 
 	 * @author Ernest.Micklei
@@ -24,15 +24,15 @@ package com.philemonworks.flex.util
 	[RemoteClass(alias="com.philemonworks.flex.util.DisplayItem")] 
 	public class DisplayItem
 	{
-		public var id:int;
-		public var object_class:String;
+		public var id:String;
+		public var objectClass:String;
 		public var display:String;
 		
 		public function DisplayItem(data:XML = null) {
 			super()
 			if (data != null) {
-				this.id = int(data.id)
-				this.object_class = data['object-class']
+				this.id = data.id as String
+				this.objectClass = data['object-class']
 				this.display = data.display
 			}
 		}
@@ -42,7 +42,7 @@ package com.philemonworks.flex.util
 		public function toXML():XML {
 			return <display-item>
 				<id>{id}</id>
-				<object-class>{object_class}</object-class>	
+				<object-class>{objectClass}</object-class>	
 				<display>{display}</display>
 			</display-item>
 		}		
