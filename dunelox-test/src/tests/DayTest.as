@@ -29,7 +29,6 @@ package tests
 				assertTrue(error.errorID,1009) // TypeError
 			}
 		}	
-			
 		public function testDayFromStringShortYear():void {
 			var day:Day = new Day("8-11-13")
 			assertEquals(1908, day.toDate().fullYear)
@@ -51,6 +50,30 @@ package tests
 			assertEquals(1, date.month)
 			// The day of the month (an integer from 1 to 31)
 			assertEquals(4, date.date)
-		}		
+		}	
+		public function testDayOfYear():void{
+			var day:Day = new Day("2008-12-2")
+			assertEquals(336, day.dayOfYear());
+		}
+		public function testAsDays():void {
+			var day:Day = new Day("2008-02-04")
+			assertEquals(39115, day.asDays());
+		}	
+		public function testWeekdayIndex():void {
+			var day:Day = new Day("2008-02-04")
+			assertEquals(1, day.weekdayIndex());
+		}
+		public function testWeekNumber():void {
+			var day:Day = new Day("2008-02-04")
+			assertEquals(6, day.weekNumber());
+		}	
+		public function testMonthName():void {
+			var day:Day = new Day("2008-02-04")
+			assertEquals("February", day.monthName());
+		}	
+		public function testFirstDayOfWeek():void {
+			var first:Day = Day.firstDayOfWeek(23)
+			assertEquals(152,first.asDays())
+		}					
 	}
 }
