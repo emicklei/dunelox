@@ -68,14 +68,45 @@ package com.philemonworks.flex.util
 		 **/
 		public static function fromDays(totalDays:int):Day {
 			var year:int = 1901 + ((totalDays / 1461) * 4)
-			var daysInYear:int = 1 + (totalDays % 1461)
-			var theDay:Day = Day.fromDaysInYear(daysInYear,year)
+			var days:int = 1 + (totalDays % 1461)
+			var theDay:Day = Day.fromDaysAfterYear(days,year)
 			var correction:int = totalDays - theDay.asDays()
 			return correction == 0 ? theDay : theDay.addDays(correction)
 		}	
-		public static function fromDaysInYear(daysInYear:int,year:int):Day {
-			return null //TODO
+		public static function daysInYear(year:int):int {
+			return 365 + leapYear(year)
 		}
+		/**
+		 * Return the Day from 1 January + daysInYear of @year
+		 */
+		public static function fromDaysInYear(daysInYear:int,year:int):Day {			
+			var itsMonth:int = 0
+			while (FirstDayOfMonth[itsMonth] < daysInYear) {itsMonth = itsMonth + 1}
+			var itsDay:int = itsMonth == 0 ? daysInYear : daysInYear - FirstDayOfMonth[itsMonth-1] + 1
+			var day:Day = new Day()
+			day.init(year,itsMonth,itsDay)
+			return day
+		}
+		/**
+		 * Starting @year, compute the new Day after @dayCount
+		 */
+		public static function fromDaysAfterYear(dayCount:int,year:int):Day {
+			var dayNum:int = dayCount
+			var yearNum:int = year
+			var daysInYear:int = 0
+			while (dayNum > (daysInYear = Day.daysInYear(yearNum))) {
+				yearNum += 1
+				dayNum -= daysInYear
+			}
+			while (dayNum <= 0) {
+				yearNum -= 1
+				dayNum += Day.daysInYear(yearNum)
+			}	
+			return Day.fromDaysInYear(dayNum,yearNum)	
+		}
+		/**
+		 * Returns the day of the start of a week
+		 */
 		public static function firstDayOfWeek(weekNumber:int):Day {
 			var today:Day = new Day()
 			var weekNow:int = today.weekNumber()
@@ -99,6 +130,9 @@ package com.philemonworks.flex.util
 		public function toString():String {
 			return this.toXMLString()
 		}
+		/**
+		 * Convert the receiver to a normal Date
+		 */
 		public function toDate():Date {
 			return new Date(this.year,this.month,this.dayInMonth)
 		}
@@ -131,13 +165,21 @@ package com.philemonworks.flex.util
 		public function dayOfYear():int {
 			return FirstDayOfMonth[month] + dayInMonth - 1;
 		}
+		/**
+		 * Monday=1, ... , Sunday=7
+		 */
 		public function weekdayIndex():int {
-			// "Monday=1, ... , Sunday=7"
 			return (this.asDays() + 1) % 7 + 1  // 1 January 1901 was a Tuesday
 		}
+		/**
+		 * Monday, Tuesday,..
+		 */
 		public function weekdayName():String {
 			return DayNames[this.weekdayIndex()]
 		}
+		/**
+		 * 1..53
+		 */
 		public function weekNumber():int {
 			var dayOf11:int = this.weekdayIndex() // Monday=1
 	 		// before or on Thursday = 4
@@ -154,14 +196,23 @@ package com.philemonworks.flex.util
 	 		}
 	 		return weekIndex	
 		}
+		/**
+		 * January,February,...
+		 */
 		public function monthName():String {
 			return MonthNames[month];
 		}
+		/**
+		 * Returns a new Day @numberOfDays in the future/past
+		 */
 		public function addDays(numberOfDays:int):Day {
-			return Day.fromDays(this.asDays()+numberOfDays)
+			return Day.fromDaysAfterYear(this.dayOfYear()+numberOfDays,year)
 		}
+		/**
+		 * Returns a new Day @numberOfDays in the past/future
+		 */		
 		public function subtractDays(numberOfDays:int):Day {
-			return Day.fromDays(this.asDays()-numberOfDays)
+			return Day.fromDaysAfterYear(this.dayOfYear()-numberOfDays,year)
 		}
 	}
 }
