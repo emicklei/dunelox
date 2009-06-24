@@ -59,9 +59,17 @@ package tests
 			var day:Day = new Day("2008-02-04")
 			assertEquals(39115, day.asDays());
 		}	
+		public function testDayOfyear2():void {
+			var then:Day = new Day("2009-06-01")
+			assertEquals(152,then.dayOfYear())
+		}		
+		public function testAsDays2():void {
+			var day:Day = new Day("2009-06-01")
+			assertEquals(39598, day.asDays());
+		}					
 		public function testWeekdayIndex():void {
 			var day:Day = new Day("2008-02-04")
-			assertEquals(1, day.weekdayIndex());
+			assertEquals(1, day.weekdayIndex()); // Monday=1, ... , Sunday=7
 		}
 		public function testWeekNumber():void {
 			var day:Day = new Day("2008-02-04")
@@ -72,8 +80,13 @@ package tests
 			assertEquals("February", day.monthName());
 		}	
 		public function testFirstDayOfWeek():void {
-			var first:Day = Day.firstDayOfWeek(23)
-			assertEquals(152,first.asDays())
-		}					
+			var first:Day = Day.firstDayOfWeek(23) // this year
+			assertEquals(1,first.dayInMonth)
+			assertEquals(5,first.month) // 0=January			
+		}				
+		public function testFromDaysInYear():void {
+			var d:Day = Day.fromDaysInYear(1,2009)
+			assertEquals(1,d.dayInMonth)
+		}			
 	}
 }
