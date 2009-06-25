@@ -59,17 +59,35 @@ package tests
 			var day:Day = new Day("2008-02-04")
 			assertEquals(39115, day.asDays());
 		}	
-		public function testDayOfyear2():void {
+		public function testDayOfyearJune1():void {
 			var then:Day = new Day("2009-06-01")
 			assertEquals(152,then.dayOfYear())
-		}		
-		public function testAsDays2():void {
+		}
+		public function testDayOfyearJanuary1():void {
+			var then:Day = new Day("2009-01-01")
+			assertEquals(1,then.dayOfYear())
+		}				
+		public function testAsDaysJune1():void {
 			var day:Day = new Day("2009-06-01")
 			assertEquals(39598, day.asDays());
-		}					
+		}	
+		public function testFromDaysToDays():void {
+			for (var d:int=1;d<100;d++) {			
+				var day:Day = Day.fromDays(d)
+				assertEquals(d,day.asDays())
+			}
+		}
+		public function testAsDaysJanuary1():void {
+			var day:Day = new Day("2009-01-01")
+			assertEquals(39447, day.asDays());
+		}	
+		public function testAsDaysJanuary11901():void {
+			var day:Day = new Day("1901-01-01")
+			assertEquals(0, day.asDays());
+		}							
 		public function testWeekdayIndex():void {
 			var day:Day = new Day("2008-02-04")
-			assertEquals(1, day.weekdayIndex()); // Monday=1, ... , Sunday=7
+			assertEquals(1, day.weekdayNumber()); // Monday=1, ... , Sunday=7
 		}
 		public function testWeekNumber():void {
 			var day:Day = new Day("2008-02-04")
@@ -79,6 +97,18 @@ package tests
 			var day:Day = new Day("2008-02-04")
 			assertEquals("February", day.monthName());
 		}	
+		public function testWeek53(){
+			var day:Day = new Day("2005-01-01")
+			assertEquals(53, day.weekNumber());
+		}
+		public function testWeek52(){
+			var day:Day = new Day("2005-12-31")
+			assertEquals(52, day.weekNumber());
+		}	
+		public function testWeek1(){
+			var day:Day = new Day("2007-01-01")
+			assertEquals(1, day.weekNumber());
+		}				
 		public function testFirstDayOfWeek():void {
 			var first:Day = Day.firstDayOfWeek(23) // this year
 			assertEquals(1,first.dayInMonth)
@@ -87,6 +117,10 @@ package tests
 		public function testFromDaysInYear():void {
 			var d:Day = Day.fromDaysInYear(1,2009)
 			assertEquals(1,d.dayInMonth)
-		}			
+		}	
+		public function testFromDaysInYearJune1():void {
+			var d:Day = Day.fromDaysInYear(152,2009)
+			assertEquals(1,d.dayInMonth)
+		}				
 	}
 }
