@@ -29,9 +29,9 @@ package com.philemonworks.flex.util
 		public static var DayNames:Array = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 		public static var FirstDayOfMonth:Array = [1,32,60,91,121,152,182,213,244,274,305,335];	
 		
-		public var year:int = 0;
+		public var year:int = 1901;
 		public var month:int = 0; // The month (0 for January, 1 for February, and so on)
-		public var dayInMonth:int = 0; // The day of the month (an integer from 1 to 31)
+		public var dayInMonth:int = 1; // The day of the month (an integer from 1 to 31)
 						
 		/**
 		 * @xmlFormattedString String YYYY-MM-DD
@@ -67,7 +67,7 @@ package com.philemonworks.flex.util
 		 * Answer with an instance of Date that is dayCount days since 1901 began.
 		 **/
 		public static function fromDays(totalDays:int):Day {
-			var year:int = 1901 + ((totalDays / 1461) * 4)
+			var year:int = 1901 + (Math.floor(totalDays / 1461.0) * 4)
 			var days:int = 1 + (totalDays % 1461)
 			var theDay:Day = Day.fromDaysAfterYear(days,year)
 			var correction:int = totalDays - theDay.asDays()
@@ -81,8 +81,8 @@ package com.philemonworks.flex.util
 		 */
 		public static function fromDaysInYear(daysInYear:int,year:int):Day {			
 			var itsMonth:int = 0
-			while (FirstDayOfMonth[itsMonth] < daysInYear) {itsMonth = itsMonth + 1}
-			var itsDay:int = itsMonth == 0 ? daysInYear : daysInYear - FirstDayOfMonth[itsMonth-1] + 1
+			while (daysInYear >= FirstDayOfMonth[itsMonth+1] && itsMonth != 11) {itsMonth = itsMonth + 1}
+			var itsDay:int = daysInYear - FirstDayOfMonth[itsMonth] + 1
 			var day:Day = new Day()
 			day.init(year,itsMonth,itsDay)
 			return day
@@ -110,7 +110,7 @@ package com.philemonworks.flex.util
 		public static function firstDayOfWeek(weekNumber:int):Day {
 			var today:Day = new Day()
 			var weekNow:int = today.weekNumber()
-			var dayNow:int = today.weekdayIndex() // Mon=1
+			var dayNow:int = today.weekdayNumber() // Mon=1
 			var monday:Day = dayNow == 1 ? today : today.subtractDays(dayNow - 1)
 			if (weekNumber == weekNow) return monday
 			if (weekNumber < weekNow) return monday.subtractDays((weekNow - weekNumber)*7)
@@ -153,11 +153,12 @@ package com.philemonworks.flex.util
 		 **/
 		public function asDays():int {
 			var yearIndex:int = year - 1901
-			return yearIndex * 365  // elapsed years
+			var workaroundStrangeProblem:int = (yearIndex / 100)
+			return (yearIndex * 365)  // elapsed years
 				+ (yearIndex / 4)  // ordinary leap years
 				+ ((yearIndex + 300) / 400)  // leap centuries, first one is 2000, i.e. yearIndex = 99
-				- (yearIndex / 100)  // non-leap centuries
-				+ this.dayOfYear() - 1			
+				- workaroundStrangeProblem  // non-leap centuries
+				+ this.dayOfYear() - 1		
 		}
 		/**
 		 * 1 = January 1, 335 = December 1
@@ -168,22 +169,22 @@ package com.philemonworks.flex.util
 		/**
 		 * Monday=1, ... , Sunday=7
 		 */
-		public function weekdayIndex():int {
-			return (this.asDays() + 1) % 7 + 1  // 1 January 1901 was a Tuesday
+		public function weekdayNumber():int {
+			return ((this.asDays() + 1) % 7) + 1  // 1 January 1901 was a Tuesday
 		}
 		/**
 		 * Monday, Tuesday,..
 		 */
 		public function weekdayName():String {
-			return DayNames[this.weekdayIndex()]
+			return DayNames[this.weekdayNumber()]
 		}
 		/**
 		 * 1..53
 		 */
 		public function weekNumber():int {
-			var dayOf11:int = this.weekdayIndex() // Monday=1
+			var dayOf11:int = Day.fromDaysAfterYear(1,year).weekdayNumber() // Monday=1
 	 		// before or on Thursday = 4
-	 		var dayOffset:int = dayOf11 <= 4 ? dayOf11 + 4 : dayOf11 + 11
+	 		var dayOffset:int = dayOf11 <= 4 ? dayOf11 - 1 : dayOf11 - 8
 	 		var weekIndex:int = (this.dayOfYear() + dayOffset - 1) / 7 + 1
 	 		// 1-1 same day in week as 31-12, except for leap
 	 		if (weekIndex == 53 && (dayOf11 < (4 - leapYear(year)))) {
@@ -192,7 +193,7 @@ package com.philemonworks.flex.util
 	 		// if 0 then 31-12 last year can tell
 	 		if (weekIndex == 0) {
 	 			var day3112:Day = new Day()
-	 			return day3112.init(year-1,12,31).weekNumber()
+	 			return day3112.init(year-1,11,31).weekNumber()
 	 		}
 	 		return weekIndex	
 		}
