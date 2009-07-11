@@ -26,13 +26,13 @@ package com.philemonworks.flex.net
 	 **/
 	public class RemoteService
 	{
-		public static var DefaultTimeout:int = 10;
+		public static var DefaultTimeout:int = 10; // seconds
 		
 		public function newRemoteObject(destination:String):RemoteObject {
 			var remoteObject:RemoteObject = new RemoteObject(destination);
 			remoteObject.addEventListener(FaultEvent.FAULT, onFault);
 			// Only apply timeout if runtime
-			if (!ApplicationContext.current.isDebug())
+			if (!ApplicationContext.current.DEBUG)
 				remoteObject.requestTimeout = DefaultTimeout;
 			return remoteObject;
 		}
