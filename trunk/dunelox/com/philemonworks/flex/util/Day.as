@@ -176,7 +176,7 @@ package com.philemonworks.flex.util
 		 * Monday, Tuesday,..
 		 */
 		public function weekdayName():String {
-			return DayNames[this.weekdayNumber()]
+			return DayNames[this.weekdayNumber()-1]
 		}
 		/**
 		 * 1..53
