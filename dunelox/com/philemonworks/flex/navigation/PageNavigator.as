@@ -51,6 +51,8 @@ package com.philemonworks.flex.navigation
 		[Bindable]
 		public var preferredRowHeight:int = 10;
 		[Bindable]
+		public var fixedRowsPerPage = -1; // if -1 then the pageSize is computed from the height of the datagrid.
+		[Bindable]
 		public var sortmethod:String = "ascending";
 		[Bindable]
 		public var sortkey:String = null;
@@ -139,6 +141,8 @@ package com.philemonworks.flex.navigation
     		this.fetchPage();
     	}
     	private function computePageSize():Number {
+    		// unless fixed
+    		if (fixedRowsPerPage > 0) return fixedRowsPerPage;
 			return Math.round(_dataGrid.height / Math.max(_dataGrid.rowHeight,preferredRowHeight)) - 1 - 1; // header & partly visible bottom row
 		}  
 		public function updatePageInfo(from:Number,to:Number,total:Number):void {
