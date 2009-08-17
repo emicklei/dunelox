@@ -51,7 +51,7 @@ package com.philemonworks.flex.navigation
 		[Bindable]
 		public var preferredRowHeight:int = 10;
 		[Bindable]
-		public var fixedRowsPerPage = -1; // if -1 then the pageSize is computed from the height of the datagrid.
+		public var fixedRowsPerPage:int = -1; // if -1 then the pageSize is computed from the height of the datagrid.
 		[Bindable]
 		public var sortmethod:String = "ascending";
 		[Bindable]
